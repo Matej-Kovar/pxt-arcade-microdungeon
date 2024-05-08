@@ -61,7 +61,6 @@ function display(gridData: TileData[], dim: Size): void {
         console.log(gridData[i].tileIndex)
         console.log(gridData[i].colapsed)
             if (gridData[i].colapsed) {
-                console.log(gridData[i].options[0])
                 let newSprite = sprites.create(gridData[i].options[0].imgPath, SpriteKind.Player)
                 newSprite.setPosition(gridData[i].getPosition().x *16 + 8, gridData[i].getPosition().y * 16 + 8)
             }
@@ -123,7 +122,6 @@ randomTile = Math.pickRandom(sortedTileGrid)
 randomTileType = Math.pickRandom(randomTile.options)
 randomTile.options = [randomTileType]
 randomTile.colapsed = true;
-console.log(randomTile.getPosition())
 if(randomTile.getPosition().y != 0){
     tileGrid = modifyTopTile(randomTile,tileGrid);
 }
