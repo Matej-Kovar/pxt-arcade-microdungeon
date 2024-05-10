@@ -38,7 +38,7 @@ class TileData {
         return this.tilePosition
     }
 }
-let Dimensions: Size = { width: 1, height: 6 }
+let Dimensions: Size = { width: 8, height: 8 }
 const TileBlankIndex = new TileTypeData(assets.tile`tile-blank`, ["AAA", "AAA", "AAA", "AAA"], "Tile Blank", 0)
 const TileUpIndex = new TileTypeData(assets.tile`tile-up`, ["ABA", "ABA", "AAA", "ABA"], "Tile Up", 1)
 const TileDownIndex = new TileTypeData(assets.tile`tile-down`, ["AAA", "ABA", "ABA", "ABA"], "Tile Down", 2)
@@ -112,13 +112,13 @@ if(randomTile.getPosition().y != 0){
 if (randomTile.getPosition().y != Dimensions.height-1) {
     modifyNeighbouringTile(randomTile, tileGrid,2);
 }
-/*
+
 if (randomTile.getPosition().x != 0) {
-    modifyNeighbouringTile(randomTile, tileGrid,1);
-}
-if (randomTile.getPosition().x != Dimensions.width - 1) {
     modifyNeighbouringTile(randomTile, tileGrid,3);
 }
-*/
+if (randomTile.getPosition().x != Dimensions.width - 1) {
+    modifyNeighbouringTile(randomTile, tileGrid,1);
+}
+
   display(tileGrid, Dimensions);
 }
