@@ -6,6 +6,12 @@ type Position = {
     x: number
     y: number
 }
+enum Sides {
+    top = 0,
+    right = 1,
+    bottom = 2,
+    left = 3
+}
 class TileTypeData {
     readonly imgPath: Image
     readonly compatibleSides: string[]
@@ -20,15 +26,15 @@ class TileTypeData {
     }
 }
 class TileData {
-    colapsed: boolean
-    options: Array<TileTypeData>
+    TileHasBeenCollapse: boolean
+    tileTypeOptions: Array<TileTypeData>
     private tilePosition: Position
-    tileIndex: number
+    tilesGridIndex: number
     constructor(position: Position, index: number) {
-        this.colapsed = false;
-        this.options = [TileBlankIndex, TileUpIndex, TileRightIndex, TileDownIndex, TileLeftIndex, TileCrossIndex];
+        this.TileHasBeenCollapse = false;
+        this.tileTypeOptions = [TileTypeTop, TileTypeUp, TileTypeRight, TileTypeDown, TileTypeLeft, TileTypeCross];
         this.tilePosition = position;
-        this.tileIndex = index;
+        this.tilesGridIndex = index;
     }
     setPosition(x: number, y: number) {
         this.tilePosition.x = x
@@ -38,31 +44,29 @@ class TileData {
         return this.tilePosition
     }
 }
-let Dimensions: Size = { width: 5, height: 5 }
-const TileBlankIndex = new TileTypeData(assets.tile`tile-blank`, ["AAA", "AAA", "AAA", "AAA"], "Tile Blank", 0)
-const TileUpIndex = new TileTypeData(assets.tile`tile-up`, ["ABA", "ABA", "AAA", "ABA"], "Tile Up", 1)
-const TileDownIndex = new TileTypeData(assets.tile`tile-down`, ["AAA", "ABA", "ABA", "ABA"], "Tile Down", 2)
-const TileRightIndex = new TileTypeData(assets.tile`tile-right`, ["ABA", "ABA", "ABA", "AAA"], "Tile Right", 3)
-const TileLeftIndex = new TileTypeData(assets.tile`tile-left`, ["ABA", "AAA", "ABA", "ABA"], "Tile Left", 4)
-const TileCrossIndex = new TileTypeData(assets.tile`tile-cross`, ["ABA", "ABA", "ABA", "ABA"], "Tile Cross", 5)
+const Dimensions: Size = { width: 5, height: 5 }
+const TileTypeTop = new TileTypeData(assets.tile`tile-blank`, ["AAA", "AAA", "AAA", "AAA"], "Tile Blank", 0)
+const TileTypeUp = new TileTypeData(assets.tile`tile-up`, ["ABA", "ABA", "AAA", "ABA"], "Tile Up", 1)
+const TileTypeDown = new TileTypeData(assets.tile`tile-down`, ["AAA", "ABA", "ABA", "ABA"], "Tile Down", 2)
+const TileTypeRight = new TileTypeData(assets.tile`tile-right`, ["ABA", "ABA", "ABA", "AAA"], "Tile Right", 3)
+const TileTypeLeft = new TileTypeData(assets.tile`tile-left`, ["ABA", "AAA", "ABA", "ABA"], "Tile Left", 4)
+const TileTypeCross = new TileTypeData(assets.tile`tile-cross`, ["ABA", "ABA", "ABA", "ABA"], "Tile Cross", 5)
 let tileGrid: TileData[] = [];
-let sortedTileGrid: TileData[];
-let randomTile: TileData;
-let randomTileType: TileTypeData;
-let grid2Dindex: number;
+let entropyGrid: TileData[];
+let ChosenTile: TileData;
+let ChosenTileType: TileTypeData;
 
 function display(gridData: TileData[], dim: Size): void {
   for (let i = 0; i < dim.height * dim.width; i++) {
-      if (gridData[i].colapsed) {
-          let newSprite = sprites.create(gridData[i].options[0].imgPath, SpriteKind.Player)
+      if (gridData[i].TileHasBeenCollapse) {
+          let newSprite = sprites.create(gridData[i].tileTypeOptions[0].imgPath, SpriteKind.Player)
           newSprite.setPosition(gridData[i].getPosition().x * 16 + 8, gridData[i].getPosition().y * 16 + 8)
       }
   }
 }
-function modifyNeighbouringTile(tileData: TileData, checkSide: number, tilesTypeOptions:TileData) {
-    if(!tilesTypeOptions.colapsed){
-    let optionsLenght: number = tilesTypeOptions.options.length;
-    console.log(optionsLenght)
+function modifyNeighbouringTile(tileData: TileData, checkSide: Sides, NeighbourTile:TileData) {
+    if(!NeighbourTile.TileHasBeenCollapse){
+    let tileTypeOptionsLenght: number = NeighbourTile.tileTypeOptions.length;
     let tileTypesRemoved: number = 0;
     let opositeSide:number;
     if (checkSide >= 2) {
@@ -71,49 +75,41 @@ function modifyNeighbouringTile(tileData: TileData, checkSide: number, tilesType
     else {
         opositeSide = checkSide + 2
     }
-        for (let i = 0; i < optionsLenght; i++) {
-        if (tilesTypeOptions.options[i - tileTypesRemoved].compatibleSides[opositeSide] != tileData.options[0].compatibleSides[checkSide]) {
-            tilesTypeOptions.options.splice(i - tileTypesRemoved, 1)
+        for (let i = 0; i < tileTypeOptionsLenght; i++) {
+        if (NeighbourTile.tileTypeOptions[i - tileTypesRemoved].compatibleSides[opositeSide] != tileData.tileTypeOptions[0].compatibleSides[checkSide]) {
+            NeighbourTile.tileTypeOptions.splice(i - tileTypesRemoved, 1)
             tileTypesRemoved++
         }
     }
     }
 }
-let counter:number = 0
-while(true){
-counter++
-for (let i = 0; i < Dimensions.width * Dimensions.height; i++) {
-    tileGrid[i] = new TileData({ y: Math.floor(i / Dimensions.width), x: i % Dimensions.width }, i);
+function createEntrophyGrid(gridData: TileData[]): TileData[] {
+    let newGrid: TileData[] = tileGrid.filter((a) => !a.TileHasBeenCollapse);
+    newGrid.sort((a,b) => a.tileTypeOptions.length - b.tileTypeOptions.length)
+    newGrid = newGrid.filter((a) => a.tileTypeOptions.length === newGrid[0].tileTypeOptions.length)
+    return newGrid
 }
-for(let z = 0; z < tileGrid.length; z++){
-sprites.destroyAllSpritesOfKind(SpriteKind.Player)
-sortedTileGrid = tileGrid.filter((a) => !a.colapsed);
-sortedTileGrid.sort((a,b) => a.options.length - b.options.length)
-sortedTileGrid = sortedTileGrid.filter((a) => a.options.length === sortedTileGrid[0].options.length)
+function generateDungeonLevelRooms() {
+    for (let i = 0; i < Dimensions.width * Dimensions.height; i++) {
+        tileGrid[i] = new TileData({ y: Math.floor(i / Dimensions.width), x: i % Dimensions.width }, i);
+    }
+    for (let z = 0; z < tileGrid.length; z++) {
+        sprites.destroyAllSpritesOfKind(SpriteKind.Player)
 
-randomTile = Math.pickRandom(sortedTileGrid)
-randomTileType = Math.pickRandom(randomTile.options)
-randomTile.options = [randomTileType]
-randomTile.colapsed = true;
+        entropyGrid = createEntrophyGrid(tileGrid)
+        ChosenTile = Math.pickRandom(entropyGrid)
+        ChosenTileType = Math.pickRandom(ChosenTile.tileTypeOptions)
+        ChosenTile.tileTypeOptions = [ChosenTileType]
+        ChosenTile.TileHasBeenCollapse = true;
+        
+        let x = ChosenTile.getPosition().x;
+        let y = ChosenTile.getPosition().y;
+        let index = ChosenTile.tilesGridIndex;
+        if (y != 0) modifyNeighbouringTile(ChosenTile, Sides.top, tileGrid[index - Dimensions.width]);
+        if (y != Dimensions.height - 1) modifyNeighbouringTile(ChosenTile, Sides.bottom, tileGrid[index + Dimensions.width]);
+        if (x != 0) modifyNeighbouringTile(ChosenTile, Sides.left, tileGrid[index - 1]);
+        if (x != Dimensions.width - 1) modifyNeighbouringTile(ChosenTile, Sides.right, tileGrid[index + 1]);
 
-if(randomTile.getPosition().y != 0){
-    modifyNeighbouringTile(randomTile, 0, tileGrid[randomTile.tileIndex - Dimensions.width]);
-}
-if (randomTile.getPosition().y != Dimensions.height-1) {
-    modifyNeighbouringTile(randomTile, 2, tileGrid[randomTile.tileIndex + Dimensions.width]);
-}
-
-if (randomTile.getPosition().x != 0) {
-    modifyNeighbouringTile(randomTile, 3, tileGrid[randomTile.tileIndex - 1]);
-}
-if (randomTile.getPosition().x != Dimensions.width - 1) {
-    modifyNeighbouringTile(randomTile, 1, tileGrid[randomTile.tileIndex + 1]);
-}
-
-  display(tileGrid, Dimensions);
-
-
-}
-basic.pause(50)
-info.setScore(counter)
+        display(tileGrid, Dimensions);
+    }
 }
