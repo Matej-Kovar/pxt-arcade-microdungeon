@@ -34,6 +34,12 @@
         "tilemapTile": true,
         "displayName": "tile-blank"
     },
+    "tile6": {
+        "data": "hwQQABAAAAD///8iIv///////yIi////////IiL///////8iIv///////yIi////////IiL///8iIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIv///yIi////////IiL///////8iIv///////yIi////////IiL///////8iIv///w==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "tile-cross"
+    },
     "*": {
         "mimeType": "image/x-mkcd-f4",
         "dataEncoding": "base64",
