@@ -1,4 +1,3 @@
-
 type Size = {
     width: number,
     height: number
@@ -7,19 +6,13 @@ type Position = {
     x: number
     y: number
 }
-type Sides = {
-    top: string,
-    right: string,
-    bottom: string,
-    left: string
-}
 class TileTypeData {
     readonly imgPath: Image
-    readonly compatibleSides: Sides
+    readonly compatibleSides: string[]
     readonly tileTypeName: string
     readonly tileTypeId: number
 
-    constructor(imagePath: Image, sidesType: Sides, name: string, id: number) {
+    constructor(imagePath: Image, sidesType: string[], name: string, id: number) {
         this.imgPath = imagePath;
         this.compatibleSides = sidesType;
         this.tileTypeName = name;
@@ -45,83 +38,63 @@ class TileData {
         return this.tilePosition
     }
 }
-let Dimensions: Size = { width: 2, height: 2 }
-const TileBlankIndex = new TileTypeData(assets.tile`tile-blank`, { top: "AAA", right: "AAA", bottom: "AAA", left: "AAA" }, "Tile Blank", 0)
-const TileUpIndex = new TileTypeData(assets.tile`tile-up`, { top: "ABA", right: "ABA", bottom: "AAA", left: "ABA" }, "Tile Up", 1)
-const TileDownIndex = new TileTypeData(assets.tile`tile-down`, { top: "AAA", right: "ABA", bottom: "ABA", left: "ABA" }, "Tile Down", 2)
-const TileRightIndex = new TileTypeData(assets.tile`tile-right`, { top: "ABA", right: "ABA", bottom: "ABA", left: "AAA" }, "Tile Right", 3)
-const TileLeftIndex = new TileTypeData(assets.tile`tile-left`, { top: "ABA", right: "AAA", bottom: "ABA", left: "ABA" }, "Tile Left", 4)
+let Dimensions: Size = { width: 1, height: 6 }
+const TileBlankIndex = new TileTypeData(assets.tile`tile-blank`, ["AAA", "AAA", "AAA", "AAA"], "Tile Blank", 0)
+const TileUpIndex = new TileTypeData(assets.tile`tile-up`, ["ABA", "ABA", "AAA", "ABA"], "Tile Up", 1)
+const TileDownIndex = new TileTypeData(assets.tile`tile-down`, ["AAA", "ABA", "ABA", "ABA"], "Tile Down", 2)
+const TileRightIndex = new TileTypeData(assets.tile`tile-right`, ["ABA", "ABA", "ABA", "AAA"], "Tile Right", 3)
+const TileLeftIndex = new TileTypeData(assets.tile`tile-left`, ["ABA", "AAA", "ABA", "ABA"], "Tile Left", 4)
 let tileGrid: TileData[] = [];
 let sortedTileGrid: TileData[];
 let randomTile: TileData;
 let randomTileType: TileTypeData;
 let grid2Dindex: number;
-scene.setBackgroundColor(1)
-/*
+
 function display(gridData: TileData[], dim: Size): void {
-    for (let i = 0; i < dim.height * dim.width; i++) {
-        if (gridData[i].colapsed) {
-            console.log(JSON.stringify(gridData[i].options[0]))
-            let newSprite = sprites.create(gridData[i].options[0].imgPath, SpriteKind.Player)
-            newSprite.setPosition(gridData[i].getPosition().x * 16 + 8, gridData[i].getPosition().y * 16 + 8)
-        }
-    }
+  for (let i = 0; i < dim.height * dim.width; i++) {
+      if (gridData[i].colapsed) {
+          let newSprite = sprites.create(gridData[i].options[0].imgPath, SpriteKind.Player)
+          newSprite.setPosition(gridData[i].getPosition().x * 16 + 8, gridData[i].getPosition().y * 16 + 8)
+      }
+  }
 }
-function modifyLeftTile(tileData: TileData, gridData: TileData[]) {
-    let nextTilesTypeOptions = gridData[tileData.tileIndex - Dimensions.width].options
-    for (let i = 0; i < gridData[tileData.tileIndex - Dimensions.width].options.length; i++) {
-        if (gridData[tileData.tileIndex - Dimensions.width].options[i].compatibleSides.bottom != tileData.options[0].compatibleSides.top) {
-            nextTilesTypeOptions.splice(i, 1)
-        }
+function modifyNeighbouringTile(tileData: TileData, gridData: TileData[], checkSide:number) {
+    let tilesTypeOptions;
+    if(checkSide === 0){
+        tilesTypeOptions = gridData[tileData.tileIndex - Dimensions.width].options
     }
-    gridData[tileData.tileIndex - Dimensions.width].options = nextTilesTypeOptions
-
-}
-function modifyRightTile(tileData: TileData, gridData: TileData[]) {
-    let nextTilesTypeOptions = gridData[tileData.tileIndex - Dimensions.width].options
-    for (let i = 0; i < gridData[tileData.tileIndex - Dimensions.width].options.length; i++) {
-        if (gridData[tileData.tileIndex - Dimensions.width].options[i].compatibleSides.bottom != tileData.options[0].compatibleSides.top) {
-            nextTilesTypeOptions.splice(i, 1)
-        }
+    else if(checkSide === 1){
+        tilesTypeOptions = gridData[tileData.tileIndex + 1].options
     }
-    gridData[tileData.tileIndex - Dimensions.width].options = nextTilesTypeOptions
-
-}
-*/
-function modifyTopTile(tileData: TileData, gridData: TileData[]): TileData[] {
-    let newTilesTypeOptions = gridData[tileData.tileIndex - Dimensions.width].options
-    let oldTilesTypeOptions = gridData[tileData.tileIndex - Dimensions.width].options
+    else if(checkSide === 2){
+        tilesTypeOptions = gridData[tileData.tileIndex + Dimensions.width].options
+    }
+    else{
+        tilesTypeOptions = gridData[tileData.tileIndex - 1].options
+    }
+    let optionsLenght: number = tilesTypeOptions.length;
     let tileTypesRemoved: number = 0;
-    oldTilesTypeOptions.forEach((tileType:TileTypeData) => {
-        console.log(tileType.compatibleSides.bottom)
-        console.log(compatibleSides.top)
-        if (oldTilesTypeOptions[i].compatibleSides.bottom != tileData.options[0].compatibleSides.top) {
-            newTilesTypeOptions.splice(i - tileTypesRemoved, 1)
-            tileTypesRemoved++
-        }
-    })
-    gridData[tileData.tileIndex - Dimensions.width].options = newTilesTypeOptions
-    return gridData;
-}
-function modifyBottomTile(tileData: TileData, gridData: TileData[]): TileData[] {
-    let newTilesTypeOptions = gridData[tileData.tileIndex + Dimensions.width].options
-    let oldTilesTypeOptions = gridData[tileData.tileIndex + Dimensions.width].options
-    let tileTypesRemoved: number = 0;
-    for (let i = 0; i < oldTilesTypeOptions.length; i++) {
-        if (oldTilesTypeOptions[i].compatibleSides.top != tileData.options[0].compatibleSides.bottom) {
-            newTilesTypeOptions.splice(i - tileTypesRemoved, 1)
+    let opositeSide:number;
+    if (checkSide > 1) {
+        opositeSide = checkSide - 2
+    }
+    else {
+        opositeSide = checkSide + 2
+    }
+        for (let i = 0; i < optionsLenght; i++) {
+        if (tilesTypeOptions[i - tileTypesRemoved].compatibleSides[opositeSide] != tileData.options[0].compatibleSides[checkSide]) {
+            tilesTypeOptions.splice(i - tileTypesRemoved, 1)
             tileTypesRemoved++
         }
     }
-    gridData[tileData.tileIndex + Dimensions.width].options = newTilesTypeOptions
-    return gridData;
-
 }
+
 //grid constructor
 for (let i = 0; i < Dimensions.width * Dimensions.height; i++) {
     tileGrid[i] = new TileData({ y: Math.floor(i / Dimensions.width), x: i % Dimensions.width }, i);
 }
-/*
+
+
 for(let z = 0; z < tileGrid.length; z++){
 sprites.destroyAllSpritesOfKind(SpriteKind.Player)
 sortedTileGrid = tileGrid.filter((a) => !a.colapsed);
@@ -134,24 +107,18 @@ randomTile.options = [randomTileType]
 randomTile.colapsed = true;
 
 if(randomTile.getPosition().y != 0){
-    tileGrid = modifyTopTile(randomTile,tileGrid);
+    modifyNeighbouringTile(randomTile,tileGrid,0);
 }
-if (randomTile.getPosition().y != Dimensions.height - 1) {
-    tileGrid = modifyBottomTile(randomTile, tileGrid);
+if (randomTile.getPosition().y != Dimensions.height-1) {
+    modifyNeighbouringTile(randomTile, tileGrid,2);
 }
-
-if (randomTile.getPosition().y != 0) {
-    modifyLeftTile(randomTile, tileGrid);
+/*
+if (randomTile.getPosition().x != 0) {
+    modifyNeighbouringTile(randomTile, tileGrid,1);
 }
-if (randomTile.getPosition().y != Dimensions.width - 1) {
-    modifyRightTile(randomTile, tileGrid);
-}
-    display(tileGrid, Dimensions);
+if (randomTile.getPosition().x != Dimensions.width - 1) {
+    modifyNeighbouringTile(randomTile, tileGrid,3);
 }
 */
-randomTile = tileGrid[3]
-randomTile.options = [TileBlankIndex]
-tileGrid = modifyTopTile(randomTile, tileGrid);
-for (let i = 0; i < tileGrid[randomTile.tileIndex - Dimensions.width].options.length; i++) {
-    console.log(tileGrid[randomTile.tileIndex - Dimensions.width].options[i].tileTypeName);
+  display(tileGrid, Dimensions);
 }
