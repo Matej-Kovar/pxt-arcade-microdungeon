@@ -28,39 +28,30 @@ class TileTypeData {
 class TileData {
     TileHasBeenCollapse: boolean
     tileTypeOptions: Array<TileTypeData>
-    private tilePosition: Position
+    tilePosition: Position
     tilesGridIndex: number
-    constructor(position: Position, index: number) {
+    constructor(position: Position, index: number, tileSet:TileTypeData[]) {
         this.TileHasBeenCollapse = false;
-        this.tileTypeOptions = [TileTypeTop, TileTypeUp, TileTypeRight, TileTypeDown, TileTypeLeft, TileTypeCross];
+        this.tileTypeOptions = tileSet;
         this.tilePosition = position;
         this.tilesGridIndex = index;
     }
-    setPosition(x: number, y: number) {
-        this.tilePosition.x = x
-        this.tilePosition.y = y
-    }
-    getPosition(): Position {
-        return this.tilePosition
-    }
 }
 const Dimensions: Size = { width: 5, height: 5 }
-const TileTypeTop = new TileTypeData(assets.tile`tile-blank`, ["AAA", "AAA", "AAA", "AAA"], "Tile Blank", 0)
+const TileTypeBlank = new TileTypeData(assets.tile`tile-blank`, ["AAA", "AAA", "AAA", "AAA"], "Tile Blank", 0)
 const TileTypeUp = new TileTypeData(assets.tile`tile-up`, ["ABA", "ABA", "AAA", "ABA"], "Tile Up", 1)
 const TileTypeDown = new TileTypeData(assets.tile`tile-down`, ["AAA", "ABA", "ABA", "ABA"], "Tile Down", 2)
 const TileTypeRight = new TileTypeData(assets.tile`tile-right`, ["ABA", "ABA", "ABA", "AAA"], "Tile Right", 3)
 const TileTypeLeft = new TileTypeData(assets.tile`tile-left`, ["ABA", "AAA", "ABA", "ABA"], "Tile Left", 4)
 const TileTypeCross = new TileTypeData(assets.tile`tile-cross`, ["ABA", "ABA", "ABA", "ABA"], "Tile Cross", 5)
+let tileSize: number = 16;
 let tileGrid: TileData[] = [];
-let entropyGrid: TileData[];
-let ChosenTile: TileData;
-let ChosenTileType: TileTypeData;
 
 function display(gridData: TileData[], dim: Size): void {
   for (let i = 0; i < dim.height * dim.width; i++) {
       if (gridData[i].TileHasBeenCollapse) {
           let newSprite = sprites.create(gridData[i].tileTypeOptions[0].imgPath, SpriteKind.Player)
-          newSprite.setPosition(gridData[i].getPosition().x * 16 + 8, gridData[i].getPosition().y * 16 + 8)
+          newSprite.setPosition(gridData[i].tilePosition.x * tileSize + (0.5 * tileSize), gridData[i].tilePosition.y * tileSize + (0.5 * tileSize))
       }
   }
 }
@@ -84,32 +75,41 @@ function modifyNeighbouringTile(tileData: TileData, checkSide: Sides, NeighbourT
     }
 }
 function createEntrophyGrid(gridData: TileData[]): TileData[] {
-    let newGrid: TileData[] = tileGrid.filter((a) => !a.TileHasBeenCollapse);
+    let newGrid: TileData[] = gridData.filter((a) => !a.TileHasBeenCollapse);
     newGrid.sort((a,b) => a.tileTypeOptions.length - b.tileTypeOptions.length)
     newGrid = newGrid.filter((a) => a.tileTypeOptions.length === newGrid[0].tileTypeOptions.length)
     return newGrid
 }
-function generateDungeonLevelRooms() {
-    for (let i = 0; i < Dimensions.width * Dimensions.height; i++) {
-        tileGrid[i] = new TileData({ y: Math.floor(i / Dimensions.width), x: i % Dimensions.width }, i);
-    }
-    for (let z = 0; z < tileGrid.length; z++) {
-        sprites.destroyAllSpritesOfKind(SpriteKind.Player)
-
-        entropyGrid = createEntrophyGrid(tileGrid)
-        ChosenTile = Math.pickRandom(entropyGrid)
-        ChosenTileType = Math.pickRandom(ChosenTile.tileTypeOptions)
-        ChosenTile.tileTypeOptions = [ChosenTileType]
-        ChosenTile.TileHasBeenCollapse = true;
-        
-        let x = ChosenTile.getPosition().x;
-        let y = ChosenTile.getPosition().y;
-        let index = ChosenTile.tilesGridIndex;
-        if (y != 0) modifyNeighbouringTile(ChosenTile, Sides.top, tileGrid[index - Dimensions.width]);
-        if (y != Dimensions.height - 1) modifyNeighbouringTile(ChosenTile, Sides.bottom, tileGrid[index + Dimensions.width]);
-        if (x != 0) modifyNeighbouringTile(ChosenTile, Sides.left, tileGrid[index - 1]);
-        if (x != Dimensions.width - 1) modifyNeighbouringTile(ChosenTile, Sides.right, tileGrid[index + 1]);
-
-        display(tileGrid, Dimensions);
+function initializeTileGrid(gridData: TileData[], tileSet:TileTypeData[], dim:Size) {
+    for (let i = 0; i < dim.width * dim.height; i++) {
+        gridData[i] = new TileData({ y: Math.floor(i / dim.width), x: i % dim.width }, i, [TileTypeBlank,TileTypeUp,TileTypeDown,TileTypeLeft,TileTypeRight,TileTypeCross]);
     }
 }
+function resetTileGrid(gridData: TileData[], tileSet:TileTypeData[], dim:Size) {
+    for (let i = 0; i < dim.width * dim.height; i++) {
+        gridData[i] = { TileHasBeenCollapse: false, tileTypeOptions: tileSet, tilePosition: { y: Math.floor(i / dim.width), x: i % dim.width }, tilesGridIndex: i};
+    }
+}
+function generateDungeonLevelRooms(gridData:TileData[], dim:Size) {
+
+    for (let index = 0; index < gridData.length; index++) {
+        sprites.destroyAllSpritesOfKind(SpriteKind.Player)
+
+        let entropyGrid: TileData[] = createEntrophyGrid(gridData)
+        let chosenTile: TileData = Math.pickRandom(entropyGrid)
+        chosenTile.tileTypeOptions = [Math.pickRandom(chosenTile.tileTypeOptions)]
+        chosenTile.TileHasBeenCollapse = true;
+        
+        let { x, y } = chosenTile.tilePosition;
+        let index = chosenTile.tilesGridIndex;
+        if (y != 0) modifyNeighbouringTile(chosenTile, Sides.top, gridData[index - dim.width]);
+        if (y != dim.height - 1) modifyNeighbouringTile(chosenTile, Sides.bottom, gridData[index + dim.width]);
+        if (x != 0) modifyNeighbouringTile(chosenTile, Sides.left, gridData[index - 1]);
+        if (x != dim.width - 1) modifyNeighbouringTile(chosenTile, Sides.right, gridData[index + 1]);
+    }
+}
+
+initializeTileGrid(tileGrid,[TileTypeBlank,TileTypeUp,TileTypeDown,TileTypeLeft,TileTypeRight,TileTypeCross], Dimensions);
+generateDungeonLevelRooms(tileGrid, Dimensions);
+console.log(tileGrid)
+display(tileGrid, Dimensions);
