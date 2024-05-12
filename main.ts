@@ -7,11 +7,11 @@
         x: number
         y: number
     }
-    enum Sides {
-        top = 0,
-        right = 1,
-        bottom = 2,
-        left = 3
+enum Sides {
+    top = 0,
+    right = 1,
+    bottom = 2,
+    left = 3
 }
     class TileData {
         TileHasBeenCollapse: boolean
@@ -96,4 +96,6 @@
             if (x != dim.width - 1) modifyNeighbouringTile(chosenTile, Sides.right, gridData[index + 1]);
         }
     }
-    
+initializeTileGrid(tileGrid,[TileTypeBlank, TileTypeCross, TileTypeDown, TileTypeLeft,TileTypeRight, TileTypeUp],Dimensions);
+generateDungeonLevelRooms(tileGrid, Dimensions)
+display(tileGrid, Dimensions)
