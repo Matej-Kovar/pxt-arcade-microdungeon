@@ -96,9 +96,4 @@
             if (x != dim.width - 1) modifyNeighbouringTile(chosenTile, Sides.right, gridData[index + 1]);
         }
     }
-
-    initializeTileGrid(tileGrid, [TileTypeBlank, TileTypeUp, TileTypeDown, TileTypeLeft, TileTypeRight, TileTypeCross], Dimensions);
-    generateDungeonLevelRooms(tileGrid, Dimensions);
-    console.log(tileGrid)
-    display(tileGrid, Dimensions);
-
+    
