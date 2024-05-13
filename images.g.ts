@@ -5,16 +5,16 @@ namespace myImages {
         switch(helpers.stringTrim(name)) {
             case "image1":
             case "tileSet-hallway":return img`
-3 f f f f f 3 . f e d e f 1 
-. e e e e e . . e e d e e . 
-. d d d d d . . d d d d d . 
-. e e e e e . . e e d e e . 
-. f f f f f 3 . f e d e f . 
-3 f e d e f . 3 f e d e f 2 
-. e e d e e . . e e d e f . 
-. d d d d d . . d d d e f . 
-. e e e e e . . e e e e f . 
-. f f f f f 3 . f f f f f . 
+3 f f f f f 4 3 f e d e f 4 
+. e e e e e 4 . e e d e e 4 
+. d d d d d 4 . d d d d d 4 
+. e e e e e 4 . e e d e e 4 
+. f f f f f 3 . f e d e f 1 
+3 f e d e f 4 3 f e d e f 4 
+. e e d e e 4 . e e d e f 4 
+. d d d d d 4 . d d d e f 4 
+. e e e e e 4 . e e e e f 4 
+. f f f f f 3 . f f f f f 2 
 `;
         }
         return null;

@@ -13,7 +13,7 @@ class TileTypeData {
 }
 
 function loadTileSet(tileSet: Image) {
-    let imageData: Number[];
+    let imageData: Number[][];
     let pixelPosition: Position = { x: 0, y: 0 };
     let tileRecordingStart: Position = { x: 0, y: 0 };
     let recordingTile: boolean = false;
@@ -26,19 +26,24 @@ function loadTileSet(tileSet: Image) {
             }
         }
         else {
-            if (tileSet.getPixel(pixelPosition.x, pixelPosition.y) === 3) {
-                recordingTile = false;
-                pixelPosition.y = tileRecordingStart.y;
-                
-            }
-            else if (tileSet.getPixel(pixelPosition.x, pixelPosition.y) === 4) {
-                pixelPosition.x = tileRecordingStart.x;
-                pixelPosition.y++;
-            }
-            else if (tileSet.getPixel(pixelPosition.x, pixelPosition.y) === 1) {
-                recordingTile = false;
-                pixelPosition.y++;
-                pixelPosition.x = -1;  
+            switch (tileSet.getPixel(pixelPosition.x, pixelPosition.y)) {
+                case 3:
+                    recordingTile = false;
+                    pixelPosition.y = tileRecordingStart.y;
+                    break;
+                case 4:
+                    pixelPosition.x = tileRecordingStart.x;
+                    pixelPosition.y++;;
+                    break;
+                case 1:
+                    recordingTile = false;
+                    pixelPosition.y++;
+                    pixelPosition.x = -1;  
+                    break;
+                default:
+                    imageData[pixelPosition.y-tileRecordingStart.y][pixelPosition.x-(tileRecordingStart.y+1)] = tileSet.getPixel(pixelPosition.x, pixelPosition.y)
+                    console.log(imageData)
+                    break;
             }
         }
         pixelPosition.x++
@@ -49,4 +54,4 @@ function loadTileSet(tileSet: Image) {
     }    
     
 }
-
+loadTileSet(assets.image`tileSet-hallway`)
