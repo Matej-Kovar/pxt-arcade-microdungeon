@@ -5,13 +5,13 @@ class TileTypeData {
     readonly tileTypeId: number
     readonly imgData: number[][]
 
-    constructor(imagePath: Image, sidesType: string[], name: string, id: number,array:number[][]) {
-        this.imgPath = imagePath;
-        this.compatibleSides = sidesType;
-        this.tileTypeName = name;
-        this.tileTypeId = id;
-        this.imgData = array;
-    }
+constructor(imagePath: Image, sidesType: string[], name: string, id: number,array:number[][]) {
+    this.imgPath = imagePath;
+    this.compatibleSides = sidesType;
+    this.tileTypeName = name;
+    this.tileTypeId = id;
+    this.imgData = array;
+}
 }
 
 const loadTileSet = (tileSetImg: Image) => {
@@ -83,9 +83,21 @@ const createTileRotations = (tileSet: TileTypeData[]) => {
         tileImg = JSON.parse(JSON.stringify(tileSet[i].imgData));
         for (let j = 0; j < 3; j++) {
             rotateMatrix(tileImg);
-            tileSet.push(new TileTypeData(myTiles.tile1, [], "test", 0, JSON.parse(JSON.stringify(tileImg))))
+            tileSet.push(new TileTypeData(myTiles.tile1, [], "test", 0, JSON.parse(JSON.stringify(tileImg))));
         }
     }
+    let orderedTileSet: TileTypeData[] = [];
+tileSet.forEach((element: TileTypeData) => {
+    if (!orderedTileSet.some(orderedElement => 
+        element.imgData.every((row, i) => JSON.stringify(row) === JSON.stringify(orderedElement.imgData[i]))
+    )) {
+        orderedTileSet.push(element);
+    }
+});
+    tileSet = orderedTileSet;
+    return tileSet
 }
+
 let testingTileSet: TileTypeData[] = loadTileSet(assets.image`tileSet-hallway`)
-createTileRotations(testingTileSet)
+testingTileSet = createTileRotations(testingTileSet)
+console.log(testingTileSet.length)
