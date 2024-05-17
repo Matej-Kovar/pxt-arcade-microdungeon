@@ -14,7 +14,7 @@ class TileTypeData {
     }
 }
 
-function loadTileSet(tileSetImg: Image) {
+const loadTileSet = (tileSetImg: Image) => {
     let imageData: number[][] = [[]];
     let pixelPosition: Position = { x: 0, y: 0 };
     let tileRecordingStart: Position = { x: 0, y: 0 };
@@ -34,12 +34,9 @@ function loadTileSet(tileSetImg: Image) {
                     recordingTile = false;
                     pixelPosition.y = tileRecordingStart.y;
                     tileSet.push(new TileTypeData(myTiles.tile1, [], "test", 0, imageData))
-                    imageData.splice(0, imageData.length);
                     imageData = [[]]
                     break;
                 case 4:
-                    console.log("orange detected at: ")
-                    console.log(pixelPosition)
                     pixelPosition.x = tileRecordingStart.x;
                     pixelPosition.y++;
                     imageData.push([]);
@@ -49,11 +46,10 @@ function loadTileSet(tileSetImg: Image) {
                     pixelPosition.y++;
                     pixelPosition.x = -1;
                     tileSet.push(new TileTypeData(myTiles.tile1, [], "test", 0, imageData))
-                    imageData.splice(0, imageData.length);
                     imageData = [[]]
                     break;
                 default:
-                    imageData[pixelPosition.y - tileRecordingStart.y][pixelPosition.x - (tileRecordingStart.x + 1)] = tileSetImg.getPixel(pixelPosition.x, pixelPosition.x)
+                    imageData[pixelPosition.y - tileRecordingStart.y][pixelPosition.x - (tileRecordingStart.x + 1)] = tileSetImg.getPixel(pixelPosition.x, pixelPosition.y)
                     break;
             }
         }
@@ -67,5 +63,29 @@ function loadTileSet(tileSetImg: Image) {
     return tileSet
     
 }
-
-let testingTileSet:TileTypeData[] = (loadTileSet(assets.image`tileSet-hallway`))
+const rotateMatrix = (matrix: number[][]) => {
+    let width = matrix.length;
+    for (let i = 0; i < width / 2; i++) {
+        for (let j = i; j < width - i - 1; j++) {
+            let tmp = matrix[i][j];
+            matrix[i][j] = matrix[width - j - 1][i];
+            matrix[width - j - 1][i] = matrix[width - i - 1][width - j - 1];
+            matrix[width - i - 1][width - j - 1] = matrix[j][width - i - 1];
+            matrix[j][width - i - 1] = tmp;
+        }
+    }
+    return matrix;
+}
+const createTileRotations = (tileSet: TileTypeData[]) => {
+    let originalTileNum = tileSet.length;
+    let tileImg: number[][];
+    for (let i = 0; i < originalTileNum; i++) {
+        tileImg = JSON.parse(JSON.stringify(tileSet[i].imgData));
+        for (let j = 0; j < 3; j++) {
+            rotateMatrix(tileImg);
+            tileSet.push(new TileTypeData(myTiles.tile1, [], "test", 0, JSON.parse(JSON.stringify(tileImg))))
+        }
+    }
+}
+let testingTileSet: TileTypeData[] = loadTileSet(assets.image`tileSet-hallway`)
+createTileRotations(testingTileSet)
