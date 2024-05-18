@@ -24,30 +24,27 @@ enum Sides {
             this.tilesGridIndex = index;
         }
     }
-    const Dimensions: Size = { width: 5, height: 5 };
-    const tileSize = 16;
-    const tileGrid: TileData[] = [];
-    
-    const TileTypes = [
-        new TileTypeData(assets.tile`tile-blank`, ["AAA", "AAA", "AAA", "AAA"], "Tile Blank", 0, [[]]),
-        new TileTypeData(assets.tile`tile-up`, ["ABA", "ABA", "AAA", "ABA"], "Tile Up", 1,[[]]),
-        new TileTypeData(assets.tile`tile-down`, ["AAA", "ABA", "ABA", "ABA"], "Tile Down", 2,[[]]),
-        new TileTypeData(assets.tile`tile-right`, ["ABA", "ABA", "ABA", "AAA"], "Tile Right", 3,[[]]),
-        new TileTypeData(assets.tile`tile-left`, ["ABA", "AAA", "ABA", "ABA"], "Tile Left", 4,[[]]),
-        new TileTypeData(assets.tile`tile-cross`, ["ABA", "ABA", "ABA", "ABA"], "Tile Cross", 5,[[]])
-    ];
-    
+    const Dimensions: Size = { width: 20, height: 20 };
+    const TileSize = 5;
+    const TileGrid: TileData[] = [];
+        
     function display(gridData: TileData[], dim: Size): void {
         gridData.filter(tile => tile.TileHasBeenCollapse).forEach(tile => {
-            let newSprite = sprites.create(tile.tileTypeOptions[0].imgPath, SpriteKind.Player);
-            newSprite.setPosition(tile.tilePosition.x * tileSize + (0.5 * tileSize), tile.tilePosition.y * tileSize + (0.5 * tileSize));
+            let newImage = image.create(TileSize, TileSize)
+            for (let i = 0; i < TileSize; i++) {
+                for (let j = 0; j < TileSize; j++) {
+                    newImage.setPixel(j,i,tile.tileTypeOptions[0].imgData[i][j])
+                }
+            }
+            let newSprite = sprites.create(newImage, SpriteKind.Player);
+            newSprite.setPosition(tile.tilePosition.x * TileSize + (0.5 * TileSize), tile.tilePosition.y * TileSize + (0.5 * TileSize));
         });
     }
     
     function modifyNeighbouringTile(tileData: TileData, checkSide: Sides, NeighbourTile: TileData) {
         if (!NeighbourTile.TileHasBeenCollapse) {
             let opositeSide = checkSide >= 2 ? checkSide - 2 : checkSide + 2;
-            NeighbourTile.tileTypeOptions = NeighbourTile.tileTypeOptions.filter(option => option.compatibleSides[opositeSide] === tileData.tileTypeOptions[0].compatibleSides[checkSide]);
+            NeighbourTile.tileTypeOptions = NeighbourTile.tileTypeOptions.filter(option => option.getSide(opositeSide) === tileData.tileTypeOptions[0].getSide(checkSide));
         }
     }
     
@@ -59,13 +56,12 @@ enum Sides {
     
     function initializeTileGrid(gridData: TileData[], tileSet: TileTypeData[], dim: Size) {
         for (let i = 0; i < dim.width * dim.height; i++) {
-            gridData[i] = new TileData({ y: Math.floor(i / dim.width), x: i % dim.width }, i, [...TileTypes]);
+            gridData[i] = new TileData({ y: Math.floor(i / dim.width), x: i % dim.width }, i, tileSet);
         }
     }
     
     function generateDungeonLevelRooms(gridData: TileData[], dim: Size) {
         for (let index = 0; index < gridData.length; index++) {
-            sprites.destroyAllSpritesOfKind(SpriteKind.Player);
             let entropyGrid = createEntrophyGrid(gridData);
             let chosenTile = Math.pickRandom(entropyGrid);
             chosenTile.tileTypeOptions = [Math.pickRandom(chosenTile.tileTypeOptions)];
@@ -79,6 +75,6 @@ enum Sides {
         }
     }
     
-    initializeTileGrid(tileGrid, TileTypes, Dimensions);
-    generateDungeonLevelRooms(tileGrid, Dimensions);
-    display(tileGrid, Dimensions);
+    initializeTileGrid(TileGrid, testingTileSet, Dimensions);
+    generateDungeonLevelRooms(TileGrid, Dimensions);
+    display(TileGrid, Dimensions);
