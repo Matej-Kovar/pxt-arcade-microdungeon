@@ -115,6 +115,6 @@ const createTileRotations = (tileSet: TileTypeData[]) => {
     return tileSet
 }
 
-let testingTileSet: TileTypeData[] = loadTileSet(assets.image`tileSet-hallway`)
+let testingTileSet: TileTypeData[] = loadTileSet(assets.image`tileSet-main`)
 testingTileSet = createTileRotations(testingTileSet)
 console.log(testingTileSet.length)
