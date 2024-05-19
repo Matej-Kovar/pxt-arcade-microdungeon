@@ -27,8 +27,18 @@ enum Sides {
     const Dimensions: Size = { width: 30, height: 20 };
     const TileSize = 5;
     const TileGrid: TileData[] = [];
-    let globalSeed: number = Math.randomRange(1000000000, 2147483647);
-        
+    let globalSeed: number = Math.randomRange(1000000000,2147483647);
+    function splitmix32(a:number) {
+        return function () {
+            a |= 0;
+            a = a + 0x9e3779b9 | 0;
+            let t = a ^ a >>> 16;
+            t = Math.imul(t, 0x21f0aaad);
+            t = t ^ t >>> 15;
+            t = Math.imul(t, 0x735a2d97);
+            return ((t = t ^ t >>> 15) >>> 0) / 4294967296;
+        }
+    } 
 function display(gridData: TileData[], dim: Size): void {
             gridData.filter(tile => tile.TileHasBeenCollapse).forEach(tile => {
             let newImage = image.create(TileSize, TileSize)
@@ -68,13 +78,13 @@ function display(gridData: TileData[], dim: Size): void {
     }
     }
     
-    function generateDungeonLevelRooms(gridData: TileData[], dim: Size) {
-        for (let index:number = 0; index < gridData.length; index++) {
-            sprites.destroyAllSpritesOfKind(SpriteKind.Player)
-            let ChunkSeed:number = (globalSeed * gridData[index].tilePosition.x * gridData[index].tilePosition.y)
+function generateDungeonLevelRooms(gridData: TileData[], dim: Size) {
+    const random = splitmix32((globalSeed) >>> 0) 
+    for (let index: number = 0; index < gridData.length; index++) {
+            sprites.destroyAllSpritesOfKind(SpriteKind.Player)    
             let entropyGrid = createEntrophyGrid(gridData);
-            let chosenTile = Math.pickRandom(entropyGrid);
-            chosenTile.tileTypeOptions = [Math.pickRandom(chosenTile.tileTypeOptions)];
+            let chosenTile = entropyGrid[Math.floor(random()*entropyGrid.length)];
+            chosenTile.tileTypeOptions = [chosenTile.tileTypeOptions[Math.floor(random() * chosenTile.tileTypeOptions.length)]];
             chosenTile.TileHasBeenCollapse = true;
             let { x, y } = chosenTile.tilePosition;
             let chosenIndex = chosenTile.tilesGridIndex;
@@ -86,8 +96,10 @@ function display(gridData: TileData[], dim: Size): void {
             basic.pause(10)
         }
     }
+    
     initializeTileGrid(TileGrid, testingTileSet, Dimensions);
-    while (true) {
+while (true) {
+        globalSeed = 2147483647
         generateDungeonLevelRooms(TileGrid, Dimensions);
         resetTileGrid(TileGrid, testingTileSet, Dimensions)
     }
