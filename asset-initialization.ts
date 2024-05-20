@@ -1,16 +1,8 @@
 class TileTypeData {
-    readonly imgPath: Image
-    readonly compatibleSides: string[]
-    readonly tileTypeName: string
-    readonly tileTypeId: number
     readonly imgData: number[][]
     readonly weight:number
 
-    constructor(imagePath: Image, sidesType: string[], name: string, id: number, array:number[][], number:number) {
-        this.imgPath = imagePath;
-        this.compatibleSides = sidesType;
-        this.tileTypeName = name;
-        this.tileTypeId = id;
+    constructor(array:number[][], number:number) {
         this.imgData = array;
         this.weight = number;
     }
@@ -51,7 +43,7 @@ const loadTileSet = (tileSetImg: Image, tileSet: TileTypeData[], weight:number) 
                 case 3:
                     recordingTile = false;
                     pixelPosition.y = tileRecordingStart.y;
-                    tileSet.push(new TileTypeData(myTiles.tile1, [], "test", 0, imageData, weight))
+                    tileSet.push(new TileTypeData(imageData, weight))
                     imageData = [[]]
                     break;
                 case 4:
@@ -63,7 +55,7 @@ const loadTileSet = (tileSetImg: Image, tileSet: TileTypeData[], weight:number) 
                     recordingTile = false;
                     pixelPosition.y++;
                     pixelPosition.x = -1;
-                    tileSet.push(new TileTypeData(myTiles.tile1, [], "test", 0, imageData, weight))
+                    tileSet.push(new TileTypeData(imageData, weight))
                     imageData = [[]]
                     break;
                 default:
@@ -77,7 +69,7 @@ const loadTileSet = (tileSetImg: Image, tileSet: TileTypeData[], weight:number) 
             pixelPosition.y++;
         }
     }
-    tileSet.push(new TileTypeData(myTiles.tile1, [], "test", 0, imageData, weight))
+    tileSet.push(new TileTypeData(imageData, weight))
 }
 const rotateMatrix = (matrix: number[][]) => {
     let width = matrix.length;
@@ -99,7 +91,7 @@ const createTileRotations = (tileSet: TileTypeData[]) => {
         tileImg = JSON.parse(JSON.stringify(tileSet[i].imgData));
         for (let j = 0; j < 3; j++) {
             rotateMatrix(tileImg);
-            tileSet.push(new TileTypeData(myTiles.tile1, [], "test", 0, JSON.parse(JSON.stringify(tileImg)), tileSet[i].weight));
+            tileSet.push(new TileTypeData(JSON.parse(JSON.stringify(tileImg)), tileSet[i].weight));
         }
     }
     let orderedTileSet: TileTypeData[] = [];
