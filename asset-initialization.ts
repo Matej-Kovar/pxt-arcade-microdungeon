@@ -108,5 +108,5 @@ const createTileRotations = (tileSet: TileTypeData[]) => {
 
 let testingTileSet: TileTypeData[] = [];
 loadTileSet(assets.image`tileSet-main`, testingTileSet, 10)
-loadTileSet(assets.image`tileSet-broken`, testingTileSet, 1)
+//loadTileSet(assets.image`tileSet-broken`, testingTileSet, 1)
 testingTileSet = createTileRotations(testingTileSet)

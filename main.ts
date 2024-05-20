@@ -34,7 +34,7 @@ class TileData {
     }
 }
 //velikost celkového dungeonu
-const Dimensions: Size = { width: 30, height: 20 };
+const Dimensions: Size = { width: 10, height: 10 };
 //velikost tilů 
 const TileSize: Size = { width: 5, height: 5 };
 //zde jsou uchovány všechny tily
@@ -78,10 +78,16 @@ function display(gridData: TileData[], dim: Size): void {
         }
     }
 //vytvoří array ve kterém se nachízí pouze tily s nejnižším počtem možných typů tilů
-function createEntrophyGrid(gridData: TileData[]): TileData[] {
-     let newGrid = gridData.filter(tile => !tile.TileHasBeenCollapse);
-    newGrid.sort((a, b) => a.tileTypeOptions.length - b.tileTypeOptions.length);
-    return newGrid.filter(tile => tile.tileTypeOptions.length === newGrid[0].tileTypeOptions.length);
+function createEntrophyGrid(gridData: TileData[]): TileData {
+    let minOptions: number = Infinity;
+    let bestTile: TileData;
+    gridData.forEach((tile) => {
+        if (!tile.TileHasBeenCollapse && tile.tileTypeOptions.length < minOptions) {
+            minOptions = tile.tileTypeOptions.length
+            bestTile = tile
+        }
+    })
+    return bestTile
 }
 //vytvoří tile grid
 function initializeTileGrid(gridData: TileData[], tileSet: TileTypeData[], dim: Size) {
@@ -118,9 +124,8 @@ function generateDungeonLevelRooms(gridData: TileData[], dim: Size) {
     const random = splitmix32((globalSeed) >>> 0) 
     for (let index: number = 0; index < gridData.length; index++) {
         sprites.destroyAllSpritesOfKind(SpriteKind.Player)
-        let entropyGrid = createEntrophyGrid(gridData);
         //vybere tile na colapsnutí
-        let chosenTile = entropyGrid[Math.floor(random() * entropyGrid.length)];
+        let chosenTile = createEntrophyGrid(gridData);
         //vybere typ tilu
         chosenTile.tileTypeOptions = [chosenTile.tileTypeOptions[weightedRandom(chosenTile.tileTypeOptions, random())]];
         //colapsne
@@ -134,11 +139,12 @@ function generateDungeonLevelRooms(gridData: TileData[], dim: Size) {
             if (x != dim.width - 1) modifyNeighbouringTile(chosenTile, Sides.right, gridData[chosenIndex + 1]);
         }
     }
+
     initializeTileGrid(TileGrid, testingTileSet, Dimensions);
 while (true) {
     globalSeed = Math.randomRange(1000000000,2147483647);
     generateDungeonLevelRooms(TileGrid, Dimensions);
-    resetTileGrid(TileGrid, testingTileSet, Dimensions)
     display(TileGrid, Dimensions);
-    basic.pause(5)
+    basic.pause(1)
+    resetTileGrid(TileGrid, testingTileSet, Dimensions)
     }
