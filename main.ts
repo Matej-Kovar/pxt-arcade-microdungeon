@@ -77,7 +77,23 @@ function display(gridData: TileData[], dim: Size): void {
             gridData[i].tileTypeOptions = tileSet;
     }
     }
-    
+    function weightedRandom(weights:number[], generatedNum:number) {
+        let cumulativeWeights:number[] = [];
+        for (let i = 0; i < weights.length; i += 1) {
+          cumulativeWeights[i] = weights[i] + (cumulativeWeights[i - 1] || 0);
+        }
+        let randomNumber = cumulativeWeights[cumulativeWeights.length - 1] * Math.random();
+      
+        for (let itemIndex = 0; itemIndex < items.length; itemIndex += 1) {
+          if (cumulativeWeights[itemIndex] >= randomNumber) {
+            return {
+              item: items[itemIndex],
+              index: itemIndex,
+            };
+          }
+        }
+      }
+    }
 function generateDungeonLevelRooms(gridData: TileData[], dim: Size) {
     const random = splitmix32((globalSeed) >>> 0) 
     for (let index: number = 0; index < gridData.length; index++) {
@@ -97,9 +113,9 @@ function generateDungeonLevelRooms(gridData: TileData[], dim: Size) {
         }
     }
     
-    initializeTileGrid(TileGrid, testingTileSet, Dimensions);
+    initializeTileGrid(TileGrid, testingTileSet.tiles, Dimensions);
 while (true) {
         globalSeed = 2147483647
         generateDungeonLevelRooms(TileGrid, Dimensions);
-        resetTileGrid(TileGrid, testingTileSet, Dimensions)
+        resetTileGrid(TileGrid, testingTileSet.tiles, Dimensions)
     }
