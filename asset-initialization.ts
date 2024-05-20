@@ -1,20 +1,18 @@
-type TileSet = {
-    tiles: TileTypeData[]
-    weights: number[]
-}
 class TileTypeData {
     readonly imgPath: Image
     readonly compatibleSides: string[]
     readonly tileTypeName: string
     readonly tileTypeId: number
     readonly imgData: number[][]
+    readonly weight:number
 
-    constructor(imagePath: Image, sidesType: string[], name: string, id: number,array:number[][]) {
-    this.imgPath = imagePath;
-    this.compatibleSides = sidesType;
-    this.tileTypeName = name;
-    this.tileTypeId = id;
-    this.imgData = array;
+    constructor(imagePath: Image, sidesType: string[], name: string, id: number, array:number[][], number:number) {
+        this.imgPath = imagePath;
+        this.compatibleSides = sidesType;
+        this.tileTypeName = name;
+        this.tileTypeId = id;
+        this.imgData = array;
+        this.weight = number;
     }
     getSide(side: number): string {
         let tempData: number[] = [];
@@ -35,7 +33,7 @@ class TileTypeData {
     }
 }
 
-const loadTileSet = (tileSetImg: Image, tileSet: TileSet, weight:number) => {
+const loadTileSet = (tileSetImg: Image, tileSet: TileTypeData[], weight:number) => {
     let imageData: number[][] = [[]];
     let pixelPosition: Position = { x: 0, y: 0 };
     let tileRecordingStart: Position = { x: 0, y: 0 };
@@ -53,8 +51,7 @@ const loadTileSet = (tileSetImg: Image, tileSet: TileSet, weight:number) => {
                 case 3:
                     recordingTile = false;
                     pixelPosition.y = tileRecordingStart.y;
-                    tileSet.tiles.push(new TileTypeData(myTiles.tile1, [], "test", 0, imageData))
-                    tileSet.weights.push(weight)
+                    tileSet.push(new TileTypeData(myTiles.tile1, [], "test", 0, imageData, weight))
                     imageData = [[]]
                     break;
                 case 4:
@@ -66,8 +63,7 @@ const loadTileSet = (tileSetImg: Image, tileSet: TileSet, weight:number) => {
                     recordingTile = false;
                     pixelPosition.y++;
                     pixelPosition.x = -1;
-                    tileSet.tiles.push(new TileTypeData(myTiles.tile1, [], "test", 0, imageData))
-                    tileSet.weights.push(weight)
+                    tileSet.push(new TileTypeData(myTiles.tile1, [], "test", 0, imageData, weight))
                     imageData = [[]]
                     break;
                 default:
@@ -81,8 +77,7 @@ const loadTileSet = (tileSetImg: Image, tileSet: TileSet, weight:number) => {
             pixelPosition.y++;
         }
     }
-    tileSet.tiles.push(new TileTypeData(myTiles.tile1, [], "test", 0, imageData))
-    tileSet.weights.push(weight)
+    tileSet.push(new TileTypeData(myTiles.tile1, [], "test", 0, imageData, weight))
 }
 const rotateMatrix = (matrix: number[][]) => {
     let width = matrix.length;
@@ -104,7 +99,7 @@ const createTileRotations = (tileSet: TileTypeData[]) => {
         tileImg = JSON.parse(JSON.stringify(tileSet[i].imgData));
         for (let j = 0; j < 3; j++) {
             rotateMatrix(tileImg);
-            tileSet.push(new TileTypeData(myTiles.tile1, [], "test", 0, JSON.parse(JSON.stringify(tileImg))));
+            tileSet.push(new TileTypeData(myTiles.tile1, [], "test", 0, JSON.parse(JSON.stringify(tileImg)), tileSet[i].weight));
         }
     }
     let orderedTileSet: TileTypeData[] = [];
@@ -119,8 +114,7 @@ const createTileRotations = (tileSet: TileTypeData[]) => {
     return tileSet
 }
 
-let testingTileSet: TileSet = {tiles:[],weights:[]}
+let testingTileSet: TileTypeData[] = [];
 loadTileSet(assets.image`tileSet-main`, testingTileSet, 10)
 loadTileSet(assets.image`tileSet-broken`, testingTileSet, 1)
-testingTileSet.tiles = createTileRotations(testingTileSet.tiles)
-console.log(testingTileSet.tiles.length)
+testingTileSet = createTileRotations(testingTileSet)

@@ -77,31 +77,28 @@ function display(gridData: TileData[], dim: Size): void {
             gridData[i].tileTypeOptions = tileSet;
     }
     }
-    /*function weightedRandom(weights:number[], generatedNum:number) {
-        let cumulativeWeights:number[] = [];
-        for (let i = 0; i < weights.length; i += 1) {
-          cumulativeWeights[i] = weights[i] + (cumulativeWeights[i - 1] || 0);
+    function weightedRandom(tileTypeOptions:TileTypeData[], generatedNum:number) {
+        let cumulativeWeights: number[] = [];
+        for (let i = 0; i < tileTypeOptions.length; i += 1) {
+          cumulativeWeights[i] = tileTypeOptions[i].weight + (cumulativeWeights[i - 1]||0);
         }
-        let randomNumber = cumulativeWeights[cumulativeWeights.length - 1] * Math.random();
+        let randomNumber = cumulativeWeights[cumulativeWeights.length - 1] * generatedNum;
       
-        for (let itemIndex = 0; itemIndex < items.length; itemIndex += 1) {
-          if (cumulativeWeights[itemIndex] >= randomNumber) {
-            return {
-              item: items[itemIndex],
-              index: itemIndex,
-            };
+        for (let index = 0; index < tileTypeOptions.length; index ++) {
+          if (cumulativeWeights[index] >= randomNumber) {
+              randomNumber = index
+              break
           }
         }
+        return randomNumber
       }
-    }
-    */
 function generateDungeonLevelRooms(gridData: TileData[], dim: Size) {
     const random = splitmix32((globalSeed) >>> 0) 
     for (let index: number = 0; index < gridData.length; index++) {
             sprites.destroyAllSpritesOfKind(SpriteKind.Player)    
             let entropyGrid = createEntrophyGrid(gridData);
             let chosenTile = entropyGrid[Math.floor(random()*entropyGrid.length)];
-            chosenTile.tileTypeOptions = [chosenTile.tileTypeOptions[Math.floor(random() * chosenTile.tileTypeOptions.length)]];
+            chosenTile.tileTypeOptions = [chosenTile.tileTypeOptions[weightedRandom(chosenTile.tileTypeOptions, random())]];
             chosenTile.TileHasBeenCollapse = true;
             let { x, y } = chosenTile.tilePosition;
             let chosenIndex = chosenTile.tilesGridIndex;
@@ -110,13 +107,13 @@ function generateDungeonLevelRooms(gridData: TileData[], dim: Size) {
             if (x != 0) modifyNeighbouringTile(chosenTile, Sides.left, gridData[chosenIndex - 1]);
             if (x != dim.width - 1) modifyNeighbouringTile(chosenTile, Sides.right, gridData[chosenIndex + 1]);
             display(TileGrid, Dimensions);
-            basic.pause(10)
+            basic.pause(5)
         }
     }
     
-    initializeTileGrid(TileGrid, testingTileSet.tiles, Dimensions);
+    initializeTileGrid(TileGrid, testingTileSet, Dimensions);
 while (true) {
-        globalSeed = 2147483647
+        globalSeed = Math.randomRange(1000000000,2147483647);
         generateDungeonLevelRooms(TileGrid, Dimensions);
-        resetTileGrid(TileGrid, testingTileSet.tiles, Dimensions)
+        resetTileGrid(TileGrid, testingTileSet, Dimensions)
     }

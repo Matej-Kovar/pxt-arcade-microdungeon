@@ -5,11 +5,11 @@ namespace myImages {
         switch(helpers.stringTrim(name)) {
             case "image1":
             case "tileSet-main":return img`
-3ffdff43ffdff43ffdff43fffff43fffff43ffdff4
-.ffdff4.ffdff4.ffdff4.fffff4.fdddd4.ffdff4
+3ffdff43ffdff43ffdff43fffff43fffff43fdddd4
+.ffdff4.ffdff4.ffdff4.fffff4.fdddd4.ddddd4
 .ddddd4.ffddd4.ffdff4.fffff4.fdddd4.ddddd4
-.fffff4.fffff4.ffdff4.fffff4.fdddd4.ffdff4
-.fffff3.fffff3.ffdff3.fffff3.fdddd3.ffdff1
+.fffff4.fffff4.ffdff4.fffff4.fdddd4.ddddd4
+.fffff3.fffff3.ffdff3.fffff3.fdddd3.ddddf1
 3ddddd43fdddd43fdddd43fdddd43fdddd43fffff4
 .ddddd4.fdddd4.fdddd4.ddddd4.fdddd4.fdddd4
 .ddddd4.ddddd4.fdddd4.ddddd4.ddddd4.ddddd4
@@ -19,9 +19,9 @@ namespace myImages {
             case "image2":
             case "tileSet-broken":return img`
 3fffff43fffff43fffff43fffff4
-.ffddd4.ffffd4.ffddd4.ffffd4
-.fdddd4.ffddd4.fffdd4.ffddd4
-.fffdd4.fdddd4.fdddd4.ffddd4
+.ffddd4.fffdd4.ffddd4.ffffd4
+.fdddd4.ffddd4.fdddd4.fdddd4
+.fdddd4.fdddd4.fffdd4.ffddd4
 .fdddd3.fdddd3.fdddd3.fdddd2
 ............................
 ............................
