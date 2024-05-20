@@ -24,7 +24,7 @@ enum Sides {
             this.tilesGridIndex = index;
         }
     }
-    const Dimensions: Size = { width: 30, height: 20 };
+    const Dimensions: Size = { width: 10, height: 10 };
     const TileSize = 5;
     const TileGrid: TileData[] = [];
     let globalSeed: number = Math.randomRange(1000000000,2147483647);
@@ -106,8 +106,6 @@ function generateDungeonLevelRooms(gridData: TileData[], dim: Size) {
             if (y != dim.height - 1) modifyNeighbouringTile(chosenTile, Sides.bottom, gridData[chosenIndex + dim.width]);
             if (x != 0) modifyNeighbouringTile(chosenTile, Sides.left, gridData[chosenIndex - 1]);
             if (x != dim.width - 1) modifyNeighbouringTile(chosenTile, Sides.right, gridData[chosenIndex + 1]);
-            display(TileGrid, Dimensions);
-            basic.pause(5)
         }
     }
     
@@ -115,5 +113,7 @@ function generateDungeonLevelRooms(gridData: TileData[], dim: Size) {
 while (true) {
         globalSeed = Math.randomRange(1000000000,2147483647);
         generateDungeonLevelRooms(TileGrid, Dimensions);
+        display(TileGrid, Dimensions);
+        basic.pause(100)
         resetTileGrid(TileGrid, testingTileSet, Dimensions)
     }
