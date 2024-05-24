@@ -1,73 +1,12 @@
 {
-    "myTiles.transparency16": {
-        "id": "myTiles.transparency16",
+    "transparency16": {
         "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-        "dataEncoding": "base64",
-        "namespace": "myTiles.",
         "mimeType": "image/x-mkcd-f4",
         "tilemapTile": true
     },
-    "myTiles.tile7": {
-        "id": "myTiles.tile7",
-        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-        "dataEncoding": "base64",
-        "namespace": "myTiles.",
+    "*": {
         "mimeType": "image/x-mkcd-f4",
-        "tilemapTile": true,
-        "displayName": "myTile"
-    },
-    "myTiles.tile2": {
-        "id": "myTiles.tile2",
-        "data": "hwQQABAAAAD///8iIv///////yIi////////IiL///////8iIv///////yIi////////IiL///8iIiIiIv///yIiIiIi////IiIiIiL///8iIiIiIv///////yIi////////IiL///////8iIv///////yIi////////IiL///////8iIv///w==",
         "dataEncoding": "base64",
-        "namespace": "myTiles.",
-        "mimeType": "image/x-mkcd-f4",
-        "tilemapTile": true,
-        "displayName": "tile-up"
-    },
-    "myTiles.tile1": {
-        "id": "myTiles.tile1",
-        "data": "hwQQABAAAAD///8iIv///////yIi////////IiL///////8iIv///////yIi////////IiL///////8iIiIiIv///yIiIiIi////IiIiIiL///8iIiIiIv///yIi////////IiL///////8iIv///////yIi////////IiL///////8iIv///w==",
-        "dataEncoding": "base64",
-        "namespace": "myTiles.",
-        "mimeType": "image/x-mkcd-f4",
-        "tilemapTile": true,
-        "displayName": "tile-down"
-    },
-    "myTiles.tile6": {
-        "id": "myTiles.tile6",
-        "data": "hwQQABAAAAD///8iIv///////yIi////////IiL///////8iIv///////yIi////////IiL///8iIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIv///yIi////////IiL///////8iIv///////yIi////////IiL///////8iIv///w==",
-        "dataEncoding": "base64",
-        "namespace": "myTiles.",
-        "mimeType": "image/x-mkcd-f4",
-        "tilemapTile": true,
-        "displayName": "tile-cross"
-    },
-    "myTiles.tile4": {
-        "id": "myTiles.tile4",
-        "data": "hwQQABAAAAD///8iIv///////yIi////////IiL///////8iIv///////yIi////////IiL///8iIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIv///////////////////////////////////////////////////////////////w==",
-        "dataEncoding": "base64",
-        "namespace": "myTiles.",
-        "mimeType": "image/x-mkcd-f4",
-        "tilemapTile": true,
-        "displayName": "tile-left"
-    },
-    "myTiles.tile3": {
-        "id": "myTiles.tile3",
-        "data": "hwQQABAAAAD///////////////////////////////////////////////////////////////8iIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIv///yIi////////IiL///////8iIv///////yIi////////IiL///////8iIv///w==",
-        "dataEncoding": "base64",
-        "namespace": "myTiles.",
-        "mimeType": "image/x-mkcd-f4",
-        "tilemapTile": true,
-        "displayName": "tile-right"
-    },
-    "myTiles.tile5": {
-        "id": "myTiles.tile5",
-        "data": "hwQQABAAAAD//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w==",
-        "dataEncoding": "base64",
-        "namespace": "myTiles.",
-        "mimeType": "image/x-mkcd-f4",
-        "tilemapTile": true,
-        "displayName": "tile-blank"
+        "namespace": "myTiles"
     }
 }
