@@ -137,7 +137,8 @@ function generateDungeonLevelRooms(gridData: TileData[], dim: Size) {
             if (y != dim.height - 1) modifyNeighbouringTile(chosenTile, Sides.bottom, gridData[chosenIndex + dim.width]);
             if (x != 0) modifyNeighbouringTile(chosenTile, Sides.left, gridData[chosenIndex - 1]);
             if (x != dim.width - 1) modifyNeighbouringTile(chosenTile, Sides.right, gridData[chosenIndex + 1]);
-        }
+
+    }
     }
 
     initializeTileGrid(TileGrid, testingTileSet, Dimensions);
