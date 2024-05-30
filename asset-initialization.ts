@@ -1,4 +1,4 @@
-class TileTypeData {
+class ChunkTypeData {
     readonly imgData: number[][]
     readonly weight:number
 
@@ -25,29 +25,29 @@ class TileTypeData {
     }
 }
 
-const loadTileSet = (tileSetImg: Image, tileSet: TileTypeData[], weight:number) => {
+const loadTileSet = (chunksetImg: Image, chunkset: ChunkTypeData[], weight:number) => {
     let imageData: number[][] = [[]];
     let pixelPosition: Position = { x: 0, y: 0 };
-    let tileRecordingStart: Position = { x: 0, y: 0 };
+    let chunkRecordingStart: Position = { x: 0, y: 0 };
     let recordingTile: boolean = false;
-    while (tileSetImg.getPixel(pixelPosition.x, pixelPosition.y) != 2) {
+    while (chunksetImg.getPixel(pixelPosition.x, pixelPosition.y) != 2) {
         if (!recordingTile) {
-            if (tileSetImg.getPixel(pixelPosition.x, pixelPosition.y) === 3) {
+            if (chunksetImg.getPixel(pixelPosition.x, pixelPosition.y) === 3) {
                 recordingTile = true;
-                tileRecordingStart.x = pixelPosition.x;
-                tileRecordingStart.y = pixelPosition.y;
+                chunkRecordingStart.x = pixelPosition.x;
+                chunkRecordingStart.y = pixelPosition.y;
             }
         }
         else {
-            switch (tileSetImg.getPixel(pixelPosition.x, pixelPosition.y)) {
+            switch (chunksetImg.getPixel(pixelPosition.x, pixelPosition.y)) {
                 case 3:
                     recordingTile = false;
-                    pixelPosition.y = tileRecordingStart.y;
-                    tileSet.push(new TileTypeData(imageData, weight))
+                    pixelPosition.y = chunkRecordingStart.y;
+                    chunkset.push(new ChunkTypeData(imageData, weight))
                     imageData = [[]]
                     break;
                 case 4:
-                    pixelPosition.x = tileRecordingStart.x;
+                    pixelPosition.x = chunkRecordingStart.x;
                     pixelPosition.y++;
                     imageData.push([]);
                     break;
@@ -55,21 +55,21 @@ const loadTileSet = (tileSetImg: Image, tileSet: TileTypeData[], weight:number) 
                     recordingTile = false;
                     pixelPosition.y++;
                     pixelPosition.x = -1;
-                    tileSet.push(new TileTypeData(imageData, weight))
+                    chunkset.push(new ChunkTypeData(imageData, weight))
                     imageData = [[]]
                     break;
                 default:
-                    imageData[pixelPosition.y - tileRecordingStart.y][pixelPosition.x - (tileRecordingStart.x + 1)] = tileSetImg.getPixel(pixelPosition.x, pixelPosition.y)
+                    imageData[pixelPosition.y - chunkRecordingStart.y][pixelPosition.x - (chunkRecordingStart.x + 1)] = chunksetImg.getPixel(pixelPosition.x, pixelPosition.y)
                     break;
             }
         }
         pixelPosition.x++
-        if (pixelPosition.x > tileSetImg.width) {
+        if (pixelPosition.x > chunksetImg.width) {
             pixelPosition.x = 0;
             pixelPosition.y++;
         }
     }
-    tileSet.push(new TileTypeData(imageData, weight))
+    chunkset.push(new ChunkTypeData(imageData, weight))
 }
 const rotateMatrix = (matrix: number[][]) => {
     let width = matrix.length;
@@ -84,30 +84,28 @@ const rotateMatrix = (matrix: number[][]) => {
     }
     return matrix;
 }
-const createTileRotations = (tileSet: TileTypeData[]) => {
-    let originalTileNum = tileSet.length;
-    let tileImg: number[][];
+const createTileRotations = (chunkset: ChunkTypeData[]) => {
+    let originalTileNum = chunkset.length;
+    let chunkImg: number[][];
     for (let i = 0; i < originalTileNum; i++) {
-        tileImg = JSON.parse(JSON.stringify(tileSet[i].imgData));
+        chunkImg = JSON.parse(JSON.stringify(chunkset[i].imgData));
         for (let j = 0; j < 3; j++) {
-            rotateMatrix(tileImg);
-            tileSet.push(new TileTypeData(JSON.parse(JSON.stringify(tileImg)), tileSet[i].weight));
+            rotateMatrix(chunkImg);
+            chunkset.push(new ChunkTypeData(JSON.parse(JSON.stringify(chunkImg)), chunkset[i].weight));
         }
     }
-    let orderedTileSet: TileTypeData[] = [];
-    tileSet.forEach((element: TileTypeData) => {
-    if (!orderedTileSet.some(orderedElement => 
+    let orderedChunkSet: ChunkTypeData[] = [];
+    chunkset.forEach((element: ChunkTypeData) => {
+    if (!orderedChunkSet.some(orderedElement => 
         element.imgData.every((row, i) => JSON.stringify(row) === JSON.stringify(orderedElement.imgData[i]))
     )) {
-        orderedTileSet.push(element);
+        orderedChunkSet.push(element);
     }
 });
-    tileSet = orderedTileSet;
-    return tileSet
+    chunkset = orderedChunkSet;
+    return chunkset
 }
-
-let testingTileSet: TileTypeData[] = [];
-loadTileSet(assets.image`tileSet-main`, testingTileSet, 10)
-loadTileSet(assets.image`tileSet-broken`, testingTileSet, 1)
-//loadTileSet(assets.image`tileSet-broken`, testingTileSet, 1)
+let testingTileSet: ChunkTypeData[] = [];
+loadTileSet(assets.image`chunkset-main`, testingTileSet, 10)
+loadTileSet(assets.image`chunkset-broken`, testingTileSet, 1)
 testingTileSet = createTileRotations(testingTileSet)

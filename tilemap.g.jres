@@ -1,12 +1,28 @@
 {
-    "transparency16": {
+    "myTiles.transparency16": {
+        "id": "myTiles.transparency16",
         "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "dataEncoding": "base64",
+        "namespace": "myTiles.",
         "mimeType": "image/x-mkcd-f4",
         "tilemapTile": true
     },
-    "*": {
-        "mimeType": "image/x-mkcd-f4",
+    "myTiles.tile1": {
+        "id": "myTiles.tile1",
+        "data": "hwQQABAAAACqqqqqqqoAAMrMzMzMrAAAyszMzMysAADKzMzMzKwAAMrMzMzMrAAAyszMzMysAADKzMzMzKwAAMrMzMzMrAAAyszMzMysAADKzMzMzKwAAMrMzMzMrAAAqqqqqqqqAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
         "dataEncoding": "base64",
-        "namespace": "myTiles"
+        "namespace": "myTiles.",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "wall"
+    },
+    "myTiles.tile2": {
+        "id": "myTiles.tile2",
+        "data": "hwQQABAAAAC7u7u7u7sAALu7u7u7uwAAu7u7u7u7AAC7u7u7u7sAALu7u7u7uwAAu7u7u7u7AAC7u7u7u7sAALu7u7u7uwAAu7u7u7u7AAC7u7u7u7sAALu7u7u7uwAAu7u7u7u7AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "dataEncoding": "base64",
+        "namespace": "myTiles.",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "floor"
     }
 }

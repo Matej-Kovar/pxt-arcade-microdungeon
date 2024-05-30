@@ -1,47 +1,54 @@
-//logicky type na size, co by to asi bylo?
+namespace userconfig {
+    export const ARCADE_SCREEN_WIDTH = 600
+    export const ARCADE_SCREEN_HEIGHT = 600
+}
+namespace SpriteKind {
+    export const Tile = SpriteKind.create()
+}
 type Size = {
     width: number,
     height: number
 }
-//logicky type na position, co by to asi bylo?
+type Player = {
+    inChunkPosition: Position
+    inWorldPosition: Position
+}
 type Position = {
     x: number
     y: number
 }
-//reprezentace stran tilu, tak jak jsou zasebou
 enum Sides {
     top = 0,
     right = 1,
     bottom = 2,
     left = 3
 }
-//class pro jednotlivé tily
-class TileData {
-    //jestli už byl zcolapsován
-    TileHasBeenCollapse: boolean
-    //jákým tipem tilu se může stát
-    tileTypeOptions: Array<TileTypeData>
-    //pozice na obrazovce, v závislosti na onstaních tilech
-    tilePosition: Position
-    //index, kvůli debugingu
-    tilesGridIndex: number
-    //construktor
-    constructor(position: Position, index: number, tileSet: TileTypeData[]) {
-        this.TileHasBeenCollapse = false;
-        this.tileTypeOptions = tileSet;
-        this.tilePosition = position; 
-        this.tilesGridIndex = index; 
+class ChunkData {
+    chunkHasBeenColapsed: boolean
+    chunkTypeOptions: Array<ChunkTypeData>
+    chunkPositon: Position
+    ChunkIndex: number
+    constructor(position: Position, index: number, chunkSet: ChunkTypeData[]) {
+        this.chunkHasBeenColapsed = false;
+        this.chunkTypeOptions = chunkSet;
+        this.chunkPositon = position;
+        this.ChunkIndex = index;
     }
 }
-//velikost celkového dungeonu
-const Dimensions: Size = { width: 10, height: 10 };
-//velikost tilů 
-const TileSize: Size = { width: 5, height: 5 };
-//zde jsou uchovány všechny tily
-const TileGrid: TileData[] = [];
-//seed
-let globalSeed: number = Math.randomRange(1000000000, 2147483647);
-//získá random číslo ze seedu
+const Dimensions: Size = { width: 10, height: 15 };
+const ChunkSize: Size = { width: 5, height: 5 };
+const TileSize: Size = { width: 12, height: 12 };
+const RenderDistance:Size = { width: 10, height: 15 }
+const ChunkGrid: ChunkData[] = [];
+const TestingPlayer:Player = {inChunkPosition:{x:0, y:0}, inWorldPosition:{x:3, y:10}}
+let globalSeed: number = 0;
+const VoidTypeTile = new ChunkTypeData([
+    [15,15,15,15,15],
+    [15,15,15,15,15],
+    [15,15,15,15,15],
+    [15,15,15,15,15],
+    [15,15,15,15,15]
+], 1)
 function splitmix32(a:number) {
     return function () {
         a |= 0;
@@ -52,100 +59,130 @@ function splitmix32(a:number) {
         t = Math.imul(t, 0x735a2d97);
         return ((t = t ^ t >>> 15) >>> 0) / 4294967296;
     }
-} 
-//ukáže to co se vygenerovalo na displey, myslím že není důležité
-function display(gridData: TileData[], dim: Size): void {
-    gridData.filter(tile => tile.TileHasBeenCollapse).forEach(tile => {
-    let newImage = image.create(TileSize.width, TileSize.height)
-    for (let i = 0; i < TileSize.width; i++) {
-        for (let j = 0; j < TileSize.height; j++) {
-            newImage.setPixel(j,i,tile.tileTypeOptions[0].imgData[i][j])
+}
+function display(gridData: ChunkData[], dim: Size): void {
+    gridData.forEach(chunk => {
+    let newImage = image.create(ChunkSize.width, ChunkSize.height)
+    for (let i = 0; i < ChunkSize.width; i++) {
+        for (let j = 0; j < ChunkSize.height; j++) {
+            newImage.setPixel(j, i, chunk.chunkTypeOptions[0].imgData[i][j]);
         }
     }
     let newSprite = sprites.create(newImage, SpriteKind.Player);
-    newSprite.setPosition(tile.tilePosition.x * TileSize.width + TileSize.width, tile.tilePosition.y * TileSize.height + TileSize.height);
+    newSprite.setPosition(chunk.chunkPositon.x * ChunkSize.width + ChunkSize.width, chunk.chunkPositon.y * ChunkSize.height + ChunkSize.height);
         });
 }
-//upraví možnosti sousedů právě vygenerovaného tilu
-    function modifyNeighbouringTile(tileData: TileData, checkSide: Sides, NeighbourTile: TileData) {
-        if (!NeighbourTile.TileHasBeenCollapse) {
-            //checkSide je strana právě colapsnutému tilu na ke které je přilehlý tile který se bude upravovat
-            //opposite side je strana na tilu který se bude upravovat, přilehlá k právě colapsnutému tilu
-            let opositeSide = checkSide >= 2 ? checkSide - 2 : checkSide + 2;
-            //nechá pouze ty typy tilů, které jsou mají schodnou stranu s právě kolapsnutým tilem, aka sedí k němu
-            NeighbourTile.tileTypeOptions = NeighbourTile.tileTypeOptions.filter(option => option.getSide(opositeSide) ===
-                tileData.tileTypeOptions[0].getSide(checkSide));
+function displayTiles(gridData: ChunkData[], dim: Size): void {
+    for (let m = 0; m < RenderDistance.height; m++) {
+        for (let n = 0; n < RenderDistance.width; n++) {
+            for (let i = 0; i < ChunkSize.width; i++) {
+                for (let j = 0; j < ChunkSize.height; j++) {
+                    const imgData = gridData[n + m * RenderDistance.width].chunkTypeOptions[0].imgData[j][i];
+                    const tile = imgData === 15 ? assets.tile`wall` : assets.tile`floor`;
+                    const newSprite = sprites.create(tile, SpriteKind.Tile);
+                    newSprite.setPosition(
+                        (i * TileSize.width + 0.5 * TileSize.width) + (n * ChunkSize.width * TileSize.width),
+                        (j * TileSize.height + 0.5 * TileSize.height) + (m * ChunkSize.height * TileSize.height)
+                    );
+                }
+            }
         }
     }
-//vytvoří array ve kterém se nachízí pouze tily s nejnižším počtem možných typů tilů
-function createEntrophyGrid(gridData: TileData[]): TileData {
+}     
+    function modifyNeighbouringTile(chunkData: ChunkTypeData, checkSide: Sides, NeighbourTile: ChunkData) {
+        if (!NeighbourTile.chunkHasBeenColapsed) {
+            let opositeSide = checkSide >= 2 ? checkSide - 2 : checkSide + 2;
+            NeighbourTile.chunkTypeOptions = NeighbourTile.chunkTypeOptions.filter(option => option.getSide(opositeSide) === chunkData.getSide(checkSide));
+        }
+    }
+function createEntrophyGrid(gridData: ChunkData[]): ChunkData {
     let minOptions: number = Infinity;
-    let bestTile: TileData;
-    gridData.forEach((tile) => {
-        if (!tile.TileHasBeenCollapse && tile.tileTypeOptions.length < minOptions) {
-            minOptions = tile.tileTypeOptions.length
-            bestTile = tile
+    let bestTile: ChunkData;
+    gridData.forEach((chunk) => {
+        if (!chunk.chunkHasBeenColapsed && chunk.chunkTypeOptions.length < minOptions) {
+            minOptions = chunk.chunkTypeOptions.length
+            bestTile = chunk
         }
     })
     return bestTile
 }
-//vytvoří tile grid
-function initializeTileGrid(gridData: TileData[], tileSet: TileTypeData[], dim: Size) {
+function initializeChunkGrid(gridData: ChunkData[], chunkSet: ChunkTypeData[], dim: Size) {
     for (let i = 0; i < dim.width * dim.height; i++) {
-        gridData[i] = new TileData({ y: Math.floor(i / dim.width), x: i % dim.width }, i, tileSet);
+        gridData[i] = new ChunkData({ y: Math.floor(i / dim.width), x: i % dim.width }, i, chunkSet);
     }
 }
-//resetuje tile grid do původního stavu
-function resetTileGrid(gridData: TileData[], tileSet: TileTypeData[], dim: Size) {
+function resetChunkGrid(gridData: ChunkData[], chunkSet: ChunkTypeData[], dim: Size) {
     for (let i = 0; i < dim.width * dim.height; i++) {
-         gridData[i].TileHasBeenCollapse = false;
-        gridData[i].tileTypeOptions = tileSet;
+         gridData[i].chunkHasBeenColapsed = false;
+        gridData[i].chunkTypeOptions = chunkSet;
 }
 }
-//vrácí index na základě vah a vygenerovaného čísla
-function weightedRandom(tileTypeOptions:TileTypeData[], generatedNum:number) {
+function weightedRandom(chunkTypeOptions:ChunkTypeData[], generatedNum:number) {
     let cumulativeWeights: number[] = [];
-    //vytvoří array sečtených vah, nejlepší metoda jak tohle počítat co jsem našel
-    for (let i = 0; i < tileTypeOptions.length; i += 1) {
-        cumulativeWeights[i] = tileTypeOptions[i].weight + (cumulativeWeights[i - 1]||0);
+    for (let i = 0; i < chunkTypeOptions.length; i += 1) {
+        cumulativeWeights[i] = chunkTypeOptions[i].weight + (cumulativeWeights[i - 1]||0);
     }
-    //získá min/max číslo
     let randomNumber = cumulativeWeights[cumulativeWeights.length - 1] * generatedNum;
-    //najde odpovídající číslo
-    for (let index = 0; index < tileTypeOptions.length; index ++) {
+    for (let index = 0; index < chunkTypeOptions.length; index ++) {
         if (cumulativeWeights[index] >= randomNumber) {
             randomNumber = index
             break
         }
     }
     return randomNumber
-    }
-function generateDungeonLevelRooms(gridData: TileData[], dim: Size) {
-    const random = splitmix32((globalSeed) >>> 0) 
+}
+function generateDungeonLevelRooms(gridData: ChunkData[], dim: Size) {
+    const random = splitmix32((globalSeed) >>> 0)
     for (let index: number = 0; index < gridData.length; index++) {
-        sprites.destroyAllSpritesOfKind(SpriteKind.Player)
-        //vybere tile na colapsnutí
         let chosenTile = createEntrophyGrid(gridData);
-        //vybere typ tilu
-        chosenTile.tileTypeOptions = [chosenTile.tileTypeOptions[weightedRandom(chosenTile.tileTypeOptions, random())]];
-        //colapsne
-        chosenTile.TileHasBeenCollapse = true;
-        //upraví sousedy
-            let { x, y } = chosenTile.tilePosition;
-            let chosenIndex = chosenTile.tilesGridIndex;
-            if (y != 0) modifyNeighbouringTile(chosenTile, Sides.top, gridData[chosenIndex - dim.width]);
-            if (y != dim.height - 1) modifyNeighbouringTile(chosenTile, Sides.bottom, gridData[chosenIndex + dim.width]);
-            if (x != 0) modifyNeighbouringTile(chosenTile, Sides.left, gridData[chosenIndex - 1]);
-            if (x != dim.width - 1) modifyNeighbouringTile(chosenTile, Sides.right, gridData[chosenIndex + 1]);
-
+        if (chosenTile.chunkTypeOptions.length === 0) {
+            chosenTile.chunkTypeOptions = [VoidTypeTile];
+        }
+        else {
+            chosenTile.chunkTypeOptions = [chosenTile.chunkTypeOptions[weightedRandom(chosenTile.chunkTypeOptions, random())]];
+        }
+        chosenTile.chunkHasBeenColapsed = true;
+            let { x, y } = chosenTile.chunkPositon;
+            let chosenIndex = chosenTile.ChunkIndex;
+            if (y != 0) modifyNeighbouringTile(chosenTile.chunkTypeOptions[0], Sides.top, gridData[chosenIndex - dim.width]);
+            if (y != dim.height - 1) modifyNeighbouringTile(chosenTile.chunkTypeOptions[0], Sides.bottom, gridData[chosenIndex + dim.width]);
+            if (x != 0) modifyNeighbouringTile(chosenTile.chunkTypeOptions[0], Sides.left, gridData[chosenIndex - 1]);
+            if (x != dim.width - 1) modifyNeighbouringTile(chosenTile.chunkTypeOptions[0], Sides.right, gridData[chosenIndex + 1]);
     }
     }
-
-    initializeTileGrid(TileGrid, testingTileSet, Dimensions);
-while (true) {
-    globalSeed = Math.randomRange(1000000000,2147483647);
-    generateDungeonLevelRooms(TileGrid, Dimensions);
-    display(TileGrid, Dimensions);
-    basic.pause(1)
-    resetTileGrid(TileGrid, testingTileSet, Dimensions)
+const modifyDungeonBorder = (gridData: ChunkData[], voidType:ChunkTypeData ,dim:Size) => {
+    for (let j = 0; j < dim.width; j++) {
+        modifyNeighbouringTile(voidType, 2 , gridData[j])  
     }
+    for (let j = 0; j < dim.width; j++) {
+        modifyNeighbouringTile(voidType, 0 , gridData[gridData.length - j - 1])  
+    }
+    for (let j = 0; j < dim.height; j++) {
+        modifyNeighbouringTile(voidType, 1 , gridData[(dim.width) * j])  
+    }
+    for (let j = 0; j < dim.height; j++) {
+        modifyNeighbouringTile(voidType, 3 , gridData[(dim.width) * j + dim.width-1])  
+    }
+}
+    initializeChunkGrid(ChunkGrid, testingTileSet, Dimensions);
+globalSeed = Math.random() * 2 ** 32;
+modifyDungeonBorder(ChunkGrid, VoidTypeTile, Dimensions)
+generateDungeonLevelRooms(ChunkGrid, Dimensions);
+displayTiles(ChunkGrid, Dimensions);
+/*
+for (let j = 0; j < ChunkGrid.length; j++) {
+    if (ChunkGrid[j].chunkPositon.x === TestingPlayer.inWorldPosition.x - 1 && ChunkGrid[j].chunkPositon.y === TestingPlayer.inWorldPosition.y - 1) {
+        const ChunksToDisplay: ChunkData[] = [];
+        for (let m = 0; m < RenderDistance.height; m++) {
+            for (let i = 0; i < RenderDistance.width; i++) {
+                ChunksToDisplay.push(ChunkGrid[j + i + m * Dimensions.width])
+            }
+        }
+        displayTiles(ChunksToDisplay, Dimensions);
+        break
+    }
+}
+*/
+let player = sprites.create(assets.tile`wall`, SpriteKind.Player)
+controller.moveSprite(player, 100, 100)
+scene.cameraFollowSprite(player)
