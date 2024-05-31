@@ -23,6 +23,20 @@ class ChunkTypeData {
                 return "";
         }
     }
+    testColision(player:Player, direction:number):Boolean {
+        switch (direction) {
+            case 0:
+                if (this.imgData[player.inChunkPosition.y - 1][player.inChunkPosition.x] === 15) {
+                    return false;
+                } else {
+                    return true
+                }
+                break;
+            default:
+                return false;
+                break;
+        }
+    }
 }
 
 const loadTileSet = (chunksetImg: Image, chunkset: ChunkTypeData[], weight:number) => {

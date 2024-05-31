@@ -24,5 +24,23 @@
         "mimeType": "image/x-mkcd-f4",
         "tilemapTile": true,
         "displayName": "floor"
+    },
+    "myTiles.tile4": {
+        "id": "myTiles.tile4",
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "dataEncoding": "base64",
+        "namespace": "myTiles.",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "myTile0"
+    },
+    "myTiles.tile3": {
+        "id": "myTiles.tile3",
+        "data": "hwQQABAAAAD///////8AAA8AAAAA8AAADwAAAADwAAAP//////AAAA8P8AAA8AAADw/wAADwAAAPD/AAAPAAAA/wDwAA8AAADwAAAADwAAAPAAAAAPAAAA8AAAAA8AAA////////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "dataEncoding": "base64",
+        "namespace": "myTiles.",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "player"
     }
 }

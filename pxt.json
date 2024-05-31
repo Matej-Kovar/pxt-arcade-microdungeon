@@ -12,7 +12,8 @@
         "tilemap.g.ts",
         "images.g.jres",
         "images.g.ts",
-        "asset-initialization.ts"
+        "asset-initialization.ts",
+        "level-generation.ts"
     ],
     "testFiles": [],
     "targetVersions": {

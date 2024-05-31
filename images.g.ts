@@ -24,15 +24,15 @@ namespace myImages {
 `;
             case "image1":
             case "chunkset-main":return img`
-3fdddf43fdddf43fdddf43fffff43fffff43fdddd4
-.ddddd4.fdddd4.fdddf4.fffff4.fdddd4.ddddd4
-.ddddd4.fdddd4.fdddf4.fffff4.fdddd4.ddddd4
-.ddddd4.fdddd4.fdddf4.fffff4.fdddd4.ddddd4
-.fffff3.fffff3.fdddf3.fffff3.fdddd3.ddddf1
+3ffdff43ffdff43ffdff43fffff43fffff43fdddd4
+.ffdff4.ffdff4.ffdff4.fffff4.fdddd4.ddddd4
+.ddddd4.ffddd4.ffdff4.fffff4.fdddd4.ddddd4
+.fffff4.fffff4.ffdff4.fffff4.fdddd4.ddddd4
+.fffff3.fffff3.ffdff3.fffff3.fdddd3.ddddf1
 3ddddd43fdddd43fdddd43fdddd43fdddd43fffff4
+.ddddd4.fdddd4.fdddd4.ddddd4.fdddd4.fdddd4
 .ddddd4.ddddd4.fdddd4.ddddd4.ddddd4.ddddd4
-.ddddd4.ddddd4.fdddd4.ddddd4.ddddd4.ddddd4
-.ddddd4.ddddd4.fdddd4.ddddd4.ddddd4.ddddd4
+.ddddd4.fdddd4.fdddd4.ddddd4.fdddd4.fdddd4
 .ddddd3.fdddd3.fdddd3.ddddd3.fffff3.fdddd2
 `;
         }

@@ -59,6 +59,44 @@ b b b b b b b b b b b b . . . .
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 `;
+            case "myTiles.tile4":
+            case "myTile0":return img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`;
+            case "myTiles.tile3":
+            case "player":return img`
+f f f f f f f f f f f f . . . . 
+f . . . . . . . . . . f . . . . 
+f . . f f f f . . . . f . . . . 
+f . . f . . . f . . . f . . . . 
+f . . f . . . f . . . f . . . . 
+f . . f f f f . . . . f . . . . 
+f . . f . . . . . . . f . . . . 
+f . . f . . . . . . . f . . . . 
+f . . f . . . . . . . f . . . . 
+f . . f . . . . . . . f . . . . 
+f . . . . . . . . . . f . . . . 
+f f f f f f f f f f f f . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`;
         }
         return null;
     })
@@ -88,6 +126,10 @@ namespace myTiles {
     export const tile1 = image.ofBuffer(hex``);
     //% fixedInstance jres blockIdentity=images._tile
     export const tile2 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._tile
+    export const tile4 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._tile
+    export const tile3 = image.ofBuffer(hex``);
 
     helpers._registerFactory("tile", function(name: string) {
         switch(helpers.stringTrim(name)) {
@@ -96,6 +138,10 @@ namespace myTiles {
             case "tile1":return myTiles.tile1;
             case "floor":
             case "tile2":return myTiles.tile2;
+            case "myTile0":
+            case "tile4":return myTiles.tile4;
+            case "player":
+            case "tile3":return myTiles.tile3;
         }
         return null;
     })
