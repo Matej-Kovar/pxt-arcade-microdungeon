@@ -1,50 +1,37 @@
 {
-    "myImages.image2": {
-        "id": "myImages.image2",
+    "image2": {
         "data": "hwQcABAAAAADADAAAAMAAP//393d390N/93d/9//3w3f3d3/3//dDd/d3f/f390N393d3d3f3Q1ERENENEREAwMAMAAAAwAA///f3d3f3Q3/393f3//fDf/d3d3d/90N393d39//3Q3f3d3d3d/dDUREQ0Q0REQDAwAwAAADAAD//9/d3d/dDf/93d/d/90N3/3d3d3/3Q3f3d3d3//dDd/d3d3d390NRERDRDRERAMDADAAAAMAAP//393d390N//3d/d3f3Q3/3d3d3f/dDf/d3f3d390N393d3d3f3Q1EREFEFEREAg==",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "chunkset-broken"
     },
-    "myImages.image1": {
-        "id": "myImages.image1",
+    "image1": {
         "data": "hwQqAAoAAAADADAAAAAAAP/9393dAAAA//3f3d0AAADd/d/d3QAAAP/9393dAAAA//3f3d0AAABERENENAAAAAMAMAAAAAAA////3/8AAAD//9/d3QAAAN39393dAAAA//3f3d0AAAD//d/d3QAAAEREQ0Q0AAAAAwAwAAAAAAD//////wAAAP//393dAAAA3d3d3d0AAAD//9/d3QAAAP//393dAAAARERDRDQAAAADADAAAAAAAP///93dAAAA///f3d0AAAD//9/d3QAAAP//393dAAAA///f3d0AAABERENENAAAAAMAMAAAAAAA////3/8AAADf3d3d/QAAAN/d3d39AAAA393d3f0AAADf3d3d/QAAAEREQ0Q0AAAAAwAwAAAAAADf3f3f/wAAAN3d/d3dAAAA3d393d0AAADd3f3d3QAAAN3d/93dAAAARERBRCQAAAA=",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "chunkset-main"
     },
-    "myImages.image3": {
-        "id": "myImages.image3",
+    "image3": {
         "data": "hwQMAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "void-tile"
     },
-    "myImages.image4": {
-        "id": "myImages.image4",
+    "image4": {
         "data": "hwQMAAwAAACqqqqqqqoAAMrMzMzMrAAAyszMzMysAADKzMzMzKwAAMrMzMzMrAAAyszMzMysAADKzMzMzKwAAMrMzMzMrAAAyszMzMysAADKzMzMzKwAAMrMzMzMrAAAqqqqqqqqAAA=",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "wall"
     },
-    "myImages.image5": {
-        "id": "myImages.image5",
-        "data": "hwQQABAAAAC7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7uw==",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
+    "image6": {
+        "data": "hwQMAAwAAAD///////8AAP///////wAA////////AAAfEREREfEAAB//H////wAAH/8f////AAAf/x////8AAB//H////wAA/xHx////AAD///////8AAP///////wAA////////AAA=",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "player"
+    },
+    "image5": {
+        "data": "hwQMAAwAAAC7u7u7u7sAALu7u7u7uwAAu7u7u7u7AAC7u7u7u7sAALu7u7u7uwAAu7u7u7u7AAC7u7u7u7sAALu7u7u7uwAAu7u7u7u7AAC7u7u7u7sAALu7u7u7uwAAu7u7u7u7AAA=",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "floor"
     },
-    "myImages.image6": {
-        "id": "myImages.image6",
-        "data": "hwQMAAwAAAD///////8AAP///////wAA////////AAAfEREREfEAAB//H////wAAH/8f////AAAf/x////8AAB//H////wAA/xHx////AAD///////8AAP///////wAA////////AAA=",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
+    "*": {
         "mimeType": "image/x-mkcd-f4",
-        "displayName": "player"
+        "dataEncoding": "base64",
+        "namespace": "myImages"
     }
 }

@@ -65,25 +65,6 @@ a c c c c c c c c c c a
 a c c c c c c c c c c a 
 a a a a a a a a a a a a 
 `;
-            case "image5":
-            case "floor":return img`
-b b b b b b b b b b b b b b b b 
-b b b b b b b b b b b b b b b b 
-b b b b b b b b b b b b b b b b 
-b b b b b b b b b b b b b b b b 
-b b b b b b b b b b b b b b b b 
-b b b b b b b b b b b b b b b b 
-b b b b b b b b b b b b b b b b 
-b b b b b b b b b b b b b b b b 
-b b b b b b b b b b b b b b b b 
-b b b b b b b b b b b b b b b b 
-b b b b b b b b b b b b b b b b 
-b b b b b b b b b b b b b b b b 
-b b b b b b b b b b b b b b b b 
-b b b b b b b b b b b b b b b b 
-b b b b b b b b b b b b b b b b 
-b b b b b b b b b b b b b b b b 
-`;
             case "image6":
             case "player":return img`
 f f f f f f f f f f f f 
@@ -98,6 +79,21 @@ f f f 1 f f f f f f f f
 f f f 1 f f f f f f f f 
 f f f 1 f f f f f f f f 
 f f f f f f f f f f f f 
+`;
+            case "image5":
+            case "floor":return img`
+b b b b b b b b b b b b 
+b b b b b b b b b b b b 
+b b b b b b b b b b b b 
+b b b b b b b b b b b b 
+b b b b b b b b b b b b 
+b b b b b b b b b b b b 
+b b b b b b b b b b b b 
+b b b b b b b b b b b b 
+b b b b b b b b b b b b 
+b b b b b b b b b b b b 
+b b b b b b b b b b b b 
+b b b b b b b b b b b b 
 `;
         }
         return null;
@@ -116,12 +112,6 @@ f f f f f f f f f f f f
         }
         return null;
     })
-
-}
-// Auto-generated code. Do not edit.
-
-// Auto-generated code. Do not edit.
-namespace myTiles {
 
 }
 // Auto-generated code. Do not edit.

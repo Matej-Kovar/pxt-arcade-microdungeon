@@ -1,46 +1,12 @@
 {
-    "myTiles.transparency16": {
-        "id": "myTiles.transparency16",
+    "transparency16": {
         "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-        "dataEncoding": "base64",
-        "namespace": "myTiles.",
         "mimeType": "image/x-mkcd-f4",
         "tilemapTile": true
     },
-    "myTiles.tile1": {
-        "id": "myTiles.tile1",
-        "data": "hwQQABAAAACqqqqqqqoAAMrMzMzMrAAAyszMzMysAADKzMzMzKwAAMrMzMzMrAAAyszMzMysAADKzMzMzKwAAMrMzMzMrAAAyszMzMysAADKzMzMzKwAAMrMzMzMrAAAqqqqqqqqAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-        "dataEncoding": "base64",
-        "namespace": "myTiles.",
+    "*": {
         "mimeType": "image/x-mkcd-f4",
-        "tilemapTile": true,
-        "displayName": "wall"
-    },
-    "myTiles.tile2": {
-        "id": "myTiles.tile2",
-        "data": "hwQQABAAAAC7u7u7u7sAALu7u7u7uwAAu7u7u7u7AAC7u7u7u7sAALu7u7u7uwAAu7u7u7u7AAC7u7u7u7sAALu7u7u7uwAAu7u7u7u7AAC7u7u7u7sAALu7u7u7uwAAu7u7u7u7AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
         "dataEncoding": "base64",
-        "namespace": "myTiles.",
-        "mimeType": "image/x-mkcd-f4",
-        "tilemapTile": true,
-        "displayName": "floor"
-    },
-    "myTiles.tile4": {
-        "id": "myTiles.tile4",
-        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-        "dataEncoding": "base64",
-        "namespace": "myTiles.",
-        "mimeType": "image/x-mkcd-f4",
-        "tilemapTile": true,
-        "displayName": "myTile0"
-    },
-    "myTiles.tile3": {
-        "id": "myTiles.tile3",
-        "data": "hwQQABAAAAD///////8AAP///////wAA////////AAD///////8AAP///////wAA////////AAD////z//8AAP///////wAA////////AAD///////8AAP///////wAA////////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-        "dataEncoding": "base64",
-        "namespace": "myTiles.",
-        "mimeType": "image/x-mkcd-f4",
-        "tilemapTile": true,
-        "displayName": "player"
+        "namespace": "myTiles"
     }
 }
