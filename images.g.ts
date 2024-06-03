@@ -35,6 +35,70 @@ namespace myImages {
 .ddddd4.fdddd4.fdddd4.ddddd4.fdddd4.fdddd4
 .ddddd3.fdddd3.fdddd3.ddddd3.fffff3.fdddd2
 `;
+            case "image3":
+            case "void-tile":return img`
+. . . . . . . . . . . . 
+. . . . . . . . . . . . 
+. . . . . . . . . . . . 
+. . . . . . . . . . . . 
+. . . . . . . . . . . . 
+. . . . . . . . . . . . 
+. . . . . . . . . . . . 
+. . . . . . . . . . . . 
+. . . . . . . . . . . . 
+. . . . . . . . . . . . 
+. . . . . . . . . . . . 
+. . . . . . . . . . . . 
+`;
+            case "image4":
+            case "wall":return img`
+a a a a a a a a a a a a 
+a c c c c c c c c c c a 
+a c c c c c c c c c c a 
+a c c c c c c c c c c a 
+a c c c c c c c c c c a 
+a c c c c c c c c c c a 
+a c c c c c c c c c c a 
+a c c c c c c c c c c a 
+a c c c c c c c c c c a 
+a c c c c c c c c c c a 
+a c c c c c c c c c c a 
+a a a a a a a a a a a a 
+`;
+            case "image5":
+            case "floor":return img`
+b b b b b b b b b b b b b b b b 
+b b b b b b b b b b b b b b b b 
+b b b b b b b b b b b b b b b b 
+b b b b b b b b b b b b b b b b 
+b b b b b b b b b b b b b b b b 
+b b b b b b b b b b b b b b b b 
+b b b b b b b b b b b b b b b b 
+b b b b b b b b b b b b b b b b 
+b b b b b b b b b b b b b b b b 
+b b b b b b b b b b b b b b b b 
+b b b b b b b b b b b b b b b b 
+b b b b b b b b b b b b b b b b 
+b b b b b b b b b b b b b b b b 
+b b b b b b b b b b b b b b b b 
+b b b b b b b b b b b b b b b b 
+b b b b b b b b b b b b b b b b 
+`;
+            case "image6":
+            case "player":return img`
+f f f f f f f f f f f f 
+f f f 1 1 1 1 1 f f f f 
+f f f 1 f f f f 1 f f f 
+f f f 1 f f f f 1 f f f 
+f f f 1 f f f f 1 f f f 
+f f f 1 1 1 1 1 f f f f 
+f f f 1 f f f f f f f f 
+f f f 1 f f f f f f f f 
+f f f 1 f f f f f f f f 
+f f f 1 f f f f f f f f 
+f f f 1 f f f f f f f f 
+f f f f f f f f f f f f 
+`;
         }
         return null;
     })

@@ -36,7 +36,7 @@
     },
     "myTiles.tile3": {
         "id": "myTiles.tile3",
-        "data": "hwQQABAAAAD///////8AAA8AAAAA8AAADwAAAADwAAAP//////AAAA8P8AAA8AAADw/wAADwAAAPD/AAAPAAAA/wDwAA8AAADwAAAADwAAAPAAAAAPAAAA8AAAAA8AAA////////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "data": "hwQQABAAAAD///////8AAP///////wAA////////AAD///////8AAP///////wAA////////AAD////z//8AAP///////wAA////////AAD///////8AAP///////wAA////////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
         "dataEncoding": "base64",
         "namespace": "myTiles.",
         "mimeType": "image/x-mkcd-f4",

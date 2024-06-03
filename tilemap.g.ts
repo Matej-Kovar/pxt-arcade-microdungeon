@@ -81,16 +81,16 @@ b b b b b b b b b b b b . . . .
             case "myTiles.tile3":
             case "player":return img`
 f f f f f f f f f f f f . . . . 
-f . . . . . . . . . . f . . . . 
-f . . f f f f . . . . f . . . . 
-f . . f . . . f . . . f . . . . 
-f . . f . . . f . . . f . . . . 
-f . . f f f f . . . . f . . . . 
-f . . f . . . . . . . f . . . . 
-f . . f . . . . . . . f . . . . 
-f . . f . . . . . . . f . . . . 
-f . . f . . . . . . . f . . . . 
-f . . . . . . . . . . f . . . . 
+f f f f f f f f f f f f . . . . 
+f f f f f f f f f f f f . . . . 
+f f f f f f f f f f f f . . . . 
+f f f f f f f f f f f f . . . . 
+f f f f f f f f f f f f . . . . 
+f f f f f f 3 f f f f f . . . . 
+f f f f f f f f f f f f . . . . 
+f f f f f f f f f f f f . . . . 
+f f f f f f f f f f f f . . . . 
+f f f f f f f f f f f f . . . . 
 f f f f f f f f f f f f . . . . 
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 

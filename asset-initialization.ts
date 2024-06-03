@@ -23,15 +23,36 @@ class ChunkTypeData {
                 return "";
         }
     }
-    testColision(player:Player, direction:number):Boolean {
+    colisionWillHappen(player:Player, direction:number):Boolean {
         switch (direction) {
             case 0:
                 if (this.imgData[player.inChunkPosition.y - 1][player.inChunkPosition.x] === 15) {
-                    return false;
+                    return true;
                 } else {
-                    return true
+                    return false
                 }
                 break;
+            case 1:
+                if (this.imgData[player.inChunkPosition.y][player.inChunkPosition.x + 1] === 15) {
+                    return true;
+                } else {
+                    return false
+                }
+                break;
+            case 2:
+                if (this.imgData[player.inChunkPosition.y + 1][player.inChunkPosition.x] === 15) {
+                    return true;
+                } else {
+                    return false
+                }
+                break;
+            case 3:
+                if (this.imgData[player.inChunkPosition.x - 1][player.inChunkPosition.x] === 15) {
+                    return true;
+                } else {
+                    return false
+                }
+                    break;
             default:
                 return false;
                 break;
@@ -119,6 +140,7 @@ const createTileRotations = (chunkset: ChunkTypeData[]) => {
     chunkset = orderedChunkSet;
     return chunkset
 }
+tilemap
 let testingTileSet: ChunkTypeData[] = [];
 loadTileSet(assets.image`chunkset-main`, testingTileSet, 10)
 loadTileSet(assets.image`chunkset-broken`, testingTileSet, 1)

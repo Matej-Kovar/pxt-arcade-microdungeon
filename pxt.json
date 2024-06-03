@@ -13,7 +13,8 @@
         "images.g.jres",
         "images.g.ts",
         "asset-initialization.ts",
-        "level-generation.ts"
+        "level-generation.ts",
+        "rendering.ts"
     ],
     "testFiles": [],
     "targetVersions": {

@@ -14,5 +14,37 @@
         "namespace": "myImages.",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "chunkset-main"
+    },
+    "myImages.image3": {
+        "id": "myImages.image3",
+        "data": "hwQMAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+        "dataEncoding": "base64",
+        "namespace": "myImages.",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "void-tile"
+    },
+    "myImages.image4": {
+        "id": "myImages.image4",
+        "data": "hwQMAAwAAACqqqqqqqoAAMrMzMzMrAAAyszMzMysAADKzMzMzKwAAMrMzMzMrAAAyszMzMysAADKzMzMzKwAAMrMzMzMrAAAyszMzMysAADKzMzMzKwAAMrMzMzMrAAAqqqqqqqqAAA=",
+        "dataEncoding": "base64",
+        "namespace": "myImages.",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "wall"
+    },
+    "myImages.image5": {
+        "id": "myImages.image5",
+        "data": "hwQQABAAAAC7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7uw==",
+        "dataEncoding": "base64",
+        "namespace": "myImages.",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "floor"
+    },
+    "myImages.image6": {
+        "id": "myImages.image6",
+        "data": "hwQMAAwAAAD///////8AAP///////wAA////////AAAfEREREfEAAB//H////wAAH/8f////AAAf/x////8AAB//H////wAA/xHx////AAD///////8AAP///////wAA////////AAA=",
+        "dataEncoding": "base64",
+        "namespace": "myImages.",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "player"
     }
 }
