@@ -14,7 +14,8 @@
         "images.g.ts",
         "asset-initialization.ts",
         "level-generation.ts",
-        "rendering.ts"
+        "rendering.ts",
+        "player-actions.ts"
     ],
     "testFiles": [],
     "targetVersions": {

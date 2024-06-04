@@ -6,15 +6,16 @@ namespace SpriteKind {
     export const Tile = SpriteKind.create()
     
 }
-const TestingPlayer:Player = {inChunkPosition:{x:0, y:0}, inWorldPosition:{x:3, y:10}}
+type Player = {
+    Position: Position
+    sprite: Sprite
+}
 let globalSeed: number = 0;
 initializeChunkGrid(ChunkGrid, testingTileSet, LevelDimensions);
 globalSeed = Math.random() * 2 ** 32;
 modifyDungeonBorder(ChunkGrid, VoidTypeTile, LevelDimensions)
 generateDungeonLevelRooms(ChunkGrid, LevelDimensions);
 initializeDisplayGrid(displayGrid)
-console.log(displayGrid.length)
-displayTiles(ChunkGrid, LevelDimensions);
-let player = sprites.create(assets.image`player`, SpriteKind.Player)
-controller.moveSprite(player, 100, 100)
-scene.cameraFollowSprite(player)
+renderFrame(ChunkGrid);
+scene.centerCameraAt(Math.ceil(RenderDistance.width / 2)*TileSize.width, Math.ceil(RenderDistance.height / 2 - 0.5)*TileSize.height)
+TestingPlayer.sprite.setPosition((TestingPlayer.Position.x - 0.5) * TileSize.width, (TestingPlayer.Position.y + 0.5) * TileSize.height)

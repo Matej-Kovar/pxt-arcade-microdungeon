@@ -2,10 +2,6 @@ type Size = {
     width: number,
     height: number
 }
-type Player = {
-    inChunkPosition: Position
-    inWorldPosition: Position
-}
 type Position = {
     x: number
     y: number
