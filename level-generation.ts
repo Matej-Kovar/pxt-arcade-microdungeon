@@ -24,7 +24,6 @@ class ChunkData {
         this.ChunkIndex = index;
     }
 }
-
 const ChunkGrid: ChunkData[] = [];
 const VoidTypeTile = new ChunkTypeData([
     [15,15,15,15,15],

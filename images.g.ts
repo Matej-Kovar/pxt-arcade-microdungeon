@@ -82,18 +82,18 @@ f f f f f f f f f f f f
 `;
             case "image5":
             case "floor":return img`
-c c c b b b b b b c c c 
-c b b b b b b b b b b c 
-c b b b b b b b b b b c 
 b b b b b b b b b b b b 
 b b b b b b b b b b b b 
 b b b b b b b b b b b b 
 b b b b b b b b b b b b 
 b b b b b b b b b b b b 
 b b b b b b b b b b b b 
-c b b b b b b b b b b c 
-c b b b b b b b b b b c 
-c c c b b b b b b c c c 
+b b b b b b b b b b b b 
+b b b b b b b b b b b b 
+b b b b b b b b b b b b 
+b b b b b b b b b b b b 
+b b b b b b b b b b b b 
+b b b b b b b b b b b b 
 `;
         }
         return null;
