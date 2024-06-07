@@ -32,7 +32,7 @@ const VoidTypeTile = new ChunkTypeData([
     [15,15,15,15,15],
     [15,15,15,15,15],
     [15,15,15,15,15]
-], 1)
+], 1 , 0)
 function splitmix32(a:number) {
     return function () {
         a |= 0;
@@ -47,7 +47,7 @@ function splitmix32(a:number) {
 function modifyNeighbouringTile(chunkData: ChunkTypeData, checkSide: Sides, NeighbourTile: ChunkData) {
     if (!NeighbourTile.chunkHasBeenColapsed) {
         let opositeSide = checkSide >= 2 ? checkSide - 2 : checkSide + 2;
-        NeighbourTile.chunkTypeOptions = NeighbourTile.chunkTypeOptions.filter(option => option.getSide(opositeSide) === chunkData.getSide(checkSide));
+        NeighbourTile.chunkTypeOptions = NeighbourTile.chunkTypeOptions.filter(option => option.getSide(opositeSide).every((tile: number, index:number) => {return tile === chunkData.getSide(checkSide)[index]}));
     }
 }
 function createEntrophyGrid(gridData: ChunkData[]): ChunkData {
@@ -105,6 +105,7 @@ function generateDungeonLevelRooms(gridData: ChunkData[], dim: Size) {
             if (x != dim.width - 1) modifyNeighbouringTile(chosenTile.chunkTypeOptions[0], Sides.right, gridData[chosenIndex + 1]);
     }
 }
+
 const modifyDungeonBorder = (gridData: ChunkData[], voidType:ChunkTypeData ,dim:Size) => {
     for (let j = 0; j < dim.width; j++) {
         modifyNeighbouringTile(voidType, 2 , gridData[j])  

@@ -4,7 +4,6 @@ namespace userconfig {
 }
 namespace SpriteKind {
     export const Tile = SpriteKind.create()
-    
 }
 type Player = {
     Position: Position

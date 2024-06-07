@@ -4,17 +4,18 @@ const TileSize: Size = { width: 12, height: 12 };
 const RenderDistance: Size = { width: Math.ceil((userconfig.ARCADE_SCREEN_WIDTH + 0.5*TileSize.width) / TileSize.width), height: Math.ceil((userconfig.ARCADE_SCREEN_HEIGHT - 0.5*TileSize.height) / TileSize.height) }
 const TestingPlayer: Player = { Position: { x: Math.ceil(RenderDistance.width / 2), y: Math.ceil(RenderDistance.height / 2) }, sprite: sprites.create(assets.image`player`, SpriteKind.Player) }
 TestingPlayer.sprite.z = 10
+let test = assets.image`wall`
+console.log(test === assets.image`wall`)
 const displayGrid: Sprite[][] = [];
 const renderFrame = (gridData: ChunkData[]): void => {
     const startingPoint: Position = { y: TestingPlayer.Position.y - Math.ceil(RenderDistance.height / 2), x: TestingPlayer.Position.x - Math.ceil(RenderDistance.width / 2) }
-    console.log(TestingPlayer.Position)
     if (startingPoint.x < 0) {
         TestingPlayer.sprite.x = (TestingPlayer.Position.x + 0.5) * TileSize.width
         startingPoint.x = 0
 
     }
     if (startingPoint.y < 0) {
-        TestingPlayer.sprite.y = (TestingPlayer.Position.y + 1.5) * TileSize.height
+        TestingPlayer.sprite.y = (TestingPlayer.Position.y + 0.5) * TileSize.height
         startingPoint.y = 0
 
     }
