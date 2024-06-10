@@ -9,21 +9,24 @@ class ChunkData {
     chunkTypeOptions: Array<ChunkTypeData>
     chunkPositon: Position
     ChunkIndex: number
-    constructor(position: Position, index: number, chunkSet: ChunkTypeData[]) {
+    Entities:Entity[]
+    constructor(position: Position, index: number, chunkSet: ChunkTypeData[], entities:Entity[]) {
         this.chunkHasBeenColapsed = false;
         this.chunkTypeOptions = chunkSet;
         this.chunkPositon = position;
         this.ChunkIndex = index;
+        this.Entities = entities;
     }
 }
 const ChunkGrid: ChunkData[] = [];
+const Probability: number = 0.025;
 const VoidTypeTile = new ChunkTypeData([
     [15,15,15,15,15],
     [15,15,15,15,15],
     [15,15,15,15,15],
     [15,15,15,15,15],
     [15,15,15,15,15]
-], 1 , 0)
+], 1 , 0, ChunkTypes.room)
 function splitmix32(a:number) {
     return function () {
         a |= 0;
@@ -35,13 +38,13 @@ function splitmix32(a:number) {
         return ((t = t ^ t >>> 15) >>> 0) / 4294967296;
     }
 }
-function modifyNeighbouringTile(chunkData: ChunkTypeData, checkSide: Sides, NeighbourTile: ChunkData) {
+const modifyNeighbouringTile = (chunkData: ChunkTypeData, checkSide: Sides, NeighbourTile: ChunkData) => {
     if (!NeighbourTile.chunkHasBeenColapsed) {
         let opositeSide = checkSide >= 2 ? checkSide - 2 : checkSide + 2;
         NeighbourTile.chunkTypeOptions = NeighbourTile.chunkTypeOptions.filter(option => option.getSide(opositeSide).every((tile: number, index:number) => {return tile === chunkData.getSide(checkSide)[index]}));
     }
 }
-function createEntrophyGrid(gridData: ChunkData[]): ChunkData {
+const createEntrophyGrid = (gridData: ChunkData[]): ChunkData => {
     let minOptions: number = Infinity;
     let bestTile: ChunkData;
     gridData.forEach((chunk) => {
@@ -52,18 +55,18 @@ function createEntrophyGrid(gridData: ChunkData[]): ChunkData {
     })
     return bestTile
 }
-function initializeChunkGrid(gridData: ChunkData[], chunkSet: ChunkTypeData[], dim: Size) {
+const initializeChunkGrid = (gridData: ChunkData[], chunkSet: ChunkTypeData[], dim: Size) => {
     for (let i = 0; i < dim.width * dim.height; i++) {
-        gridData[i] = new ChunkData({ y: Math.floor(i / dim.width), x: i % dim.width }, i, chunkSet);
+        gridData[i] = new ChunkData({ y: Math.floor(i / dim.width), x: i % dim.width }, i, chunkSet, []);
     }
 }
-function resetChunkGrid(gridData: ChunkData[], chunkSet: ChunkTypeData[], dim: Size) {
+const resetChunkGrid = (gridData: ChunkData[], chunkSet: ChunkTypeData[], dim: Size) => {
     for (let i = 0; i < dim.width * dim.height; i++) {
          gridData[i].chunkHasBeenColapsed = false;
         gridData[i].chunkTypeOptions = chunkSet;
 }
 }
-function weightedRandom(chunkTypeOptions:ChunkTypeData[], generatedNum:number) {
+const weightedRandom = (chunkTypeOptions:ChunkTypeData[], generatedNum:number) => {
     let cumulativeWeights: number[] = [];
     for (let i = 0; i < chunkTypeOptions.length; i += 1) {
         cumulativeWeights[i] = chunkTypeOptions[i].weight + (cumulativeWeights[i - 1]||0);
@@ -77,7 +80,7 @@ function weightedRandom(chunkTypeOptions:ChunkTypeData[], generatedNum:number) {
     }
     return randomNumber
 }
-function generateDungeonLevelRooms(gridData: ChunkData[], dim: Size) {
+const generateDungeonLevelRooms = (gridData: ChunkData[], dim: Size) => {
     const random = splitmix32((globalSeed) >>> 0)
     for (let index: number = 0; index < gridData.length; index++) {
         let chosenTile = createEntrophyGrid(gridData);
@@ -88,6 +91,13 @@ function generateDungeonLevelRooms(gridData: ChunkData[], dim: Size) {
             chosenTile.chunkTypeOptions = [chosenTile.chunkTypeOptions[weightedRandom(chosenTile.chunkTypeOptions, random())]];
         }
         chosenTile.chunkHasBeenColapsed = true;
+        for (let i = 0; i < ChunkSize.height; i++) {
+            for (let j = 0; j < ChunkSize.width; j++) {
+                if (chosenTile.chunkTypeOptions[0].imgData[i][j] === 13 && random() <= Probability && chosenTile.chunkTypeOptions[0].chunkType !== 0) {
+                    chosenTile.Entities.push(new Entity(assets.image`entity`, { x: j, y: i }))
+                }
+            }
+        }
             let { x, y } = chosenTile.chunkPositon;
             let chosenIndex = chosenTile.ChunkIndex;
             if (y != 0) modifyNeighbouringTile(chosenTile.chunkTypeOptions[0], Sides.top, gridData[chosenIndex - dim.width]);

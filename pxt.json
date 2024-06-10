@@ -16,7 +16,8 @@
         "level-generation.ts",
         "rendering.ts",
         "player-actions.ts",
-        "position-tracking.ts"
+        "position-tracking.ts",
+        "entities.ts"
     ],
     "testFiles": [],
     "targetVersions": {

@@ -22,19 +22,6 @@ namespace myImages {
 .ddddd3.ddddd3.ddddd3.ddddd2
 ............................
 `;
-            case "image1":
-            case "chunkset-main":return img`
-3ffdff43ffdff43ffdff43fffff43fffff43fdddd4
-.ffdff4.ffdff4.ffdff4.fffff4.fdddd4.ddddd4
-.ddddd4.ffddd4.ffdff4.fffff4.fdddd4.ddddd4
-.fffff4.fffff4.ffdff4.fffff4.fdddd4.ddddd4
-.fffff3.fffff3.ffdff3.fffff3.fdddd3.ddddf1
-3ddddd43fdddd43fdddd43fdddd43fdddd43fffff4
-.ddddd4.fdddd4.fdddd4.ddddd4.fdddd4.fdddd4
-.ddddd4.ddddd4.fdddd4.ddddd4.ddddd4.ddddd4
-.ddddd4.fdddd4.fdddd4.ddddd4.fdddd4.fdddd4
-.ddddd3.fdddd3.fdddd3.ddddd3.fffff3.fdddd2
-`;
             case "image3":
             case "void-tile":return img`
 . . . . . . . . . . . . 
@@ -94,6 +81,53 @@ b b b b b b b b b b b b
 b b b b b b b b b b b b 
 b b b b b b b b b b b b 
 b b b b b b b b b b b b 
+`;
+            case "image7":
+            case "entity":return img`
+f f f f f f f f f f f f 
+f f f f f f f f f f f f 
+f f 1 1 1 1 1 1 1 f f f 
+f f 1 f f f f f f f f f 
+f f 1 f f f f f f f f f 
+f f 1 1 1 1 f f f f f f 
+f f 1 f f f f f f f f f 
+f f 1 f f f f f f f f f 
+f f 1 f f f f f f f f f 
+f f 1 1 1 1 1 1 1 f f f 
+f f f f f f f f f f f f 
+f f f f f f f f f f f f 
+`;
+            case "image1":
+            case "chunkset-room":return img`
+3fffff43fffff43fdddd43fdddd43fdddd4
+.fffff4.fdddd4.ddddd4.ddddd4.fdddd4
+.fffff4.fdddd4.ddddd4.ddddd4.ddddd4
+.fffff4.fdddd4.ddddd4.ddddd4.fdddd4
+.fffff3.fdddd3.ddddf3.ddddd3.fffff1
+3ddddd43fdddd43fdddd43fffff4.......
+.ddddd4.fdddd4.fdddd4.fdddd4.......
+.ddddd4.ddddd4.fdddd4.ddddd4.......
+.ddddd4.fdddd4.fdddd4.fdddd4.......
+.ddddd3.fdddd3.fdddd3.fdddd2.......
+`;
+            case "image8":
+            case "chunkset-hallway":return img`
+3 f f d f f 4 3 f f d f f 4 
+. f f d f f 4 . f f d f f 4 
+. f f d d d 4 . f f d f f 4 
+. f f f f f 4 . f f d f f 4 
+. f f f f f 3 . f f d f f 1 
+3 f f d f f 4 3 f f d f f 4 
+. f f d f f 4 . f f d f f 4 
+. d d d d d 4 . d d d d d 4 
+. f f f f f 4 . f f d f f 4 
+. f f f f f 2 . f f d f f 2 
+. . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . 
 `;
         }
         return null;

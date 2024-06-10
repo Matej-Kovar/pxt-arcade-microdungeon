@@ -2,10 +2,12 @@ class ChunkTypeData {
     readonly imgData: number[][]
     readonly weight: number
     readonly chunkID: number
-    constructor(array: number[][], number: number, id:number) {
+    readonly chunkType: number;
+    constructor(array: number[][], number: number, id:number, chunktype:number) {
         this.imgData = array;
         this.weight = number;
         this.chunkID = id;
+        this.chunkType = chunktype
     }
     getSide(side: number): number[]{
         let tempData: number[] = [];
@@ -35,8 +37,13 @@ class ChunkTypeData {
         return result
     }
 }
+enum ChunkTypes {
+    hallway = 0,
+    room = 1,
+    broken = 2
 
-const loadTileSet = (chunksetImg: Image, chunkset: ChunkTypeData[], weight:number) => {
+}
+const loadTileSet = (chunksetImg: Image, chunkset: ChunkTypeData[], weight:number, type:number) => {
     let imageData: number[][] = [[]];
     let chunkID:number = chunkset.length === 0 ? 0 : chunkset[chunkset.length-1].chunkID
     let pixelPosition: Position = { x: 0, y: 0 };
@@ -56,7 +63,7 @@ const loadTileSet = (chunksetImg: Image, chunkset: ChunkTypeData[], weight:numbe
                     recordingTile = false;
                     pixelPosition.y = chunkRecordingStart.y;
                     chunkID++
-                    chunkset.push(new ChunkTypeData(imageData, weight, chunkID))
+                    chunkset.push(new ChunkTypeData(imageData, weight, chunkID, type))
                     imageData = [[]]
                     break;
                 case 4:
@@ -69,7 +76,7 @@ const loadTileSet = (chunksetImg: Image, chunkset: ChunkTypeData[], weight:numbe
                     pixelPosition.y++;
                     pixelPosition.x = -1;
                     chunkID++
-                    chunkset.push(new ChunkTypeData(imageData, weight, chunkID))
+                    chunkset.push(new ChunkTypeData(imageData, weight, chunkID, type))
                     imageData = [[]]
                     break;
                 default:
@@ -84,7 +91,7 @@ const loadTileSet = (chunksetImg: Image, chunkset: ChunkTypeData[], weight:numbe
         }
     }
     chunkID++
-    chunkset.push(new ChunkTypeData(imageData, weight, chunkID))
+    chunkset.push(new ChunkTypeData(imageData, weight, chunkID,type))
 }
 const rotateMatrix = (matrix: number[][]) => {
     let width = matrix.length;
@@ -106,7 +113,7 @@ const createTileRotations = (chunkset: ChunkTypeData[]) => {
         chunkImg = JSON.parse(JSON.stringify(chunkset[i].imgData));
         for (let j = 0; j < 3; j++) {
             rotateMatrix(chunkImg);
-            chunkset.push(new ChunkTypeData(JSON.parse(JSON.stringify(chunkImg)), chunkset[i].weight, chunkset[i].chunkID));
+            chunkset.push(new ChunkTypeData(JSON.parse(JSON.stringify(chunkImg)), chunkset[i].weight, chunkset[i].chunkID, chunkset[i].chunkType));
         }
     }
     let orderedChunkSet: ChunkTypeData[] = [];
@@ -122,7 +129,7 @@ const createTileRotations = (chunkset: ChunkTypeData[]) => {
 }
 tilemap
 let testingTileSet: ChunkTypeData[] = [];
-loadTileSet(assets.image`chunkset-main`, testingTileSet, 10)
-loadTileSet(assets.image`chunkset-broken`, testingTileSet, 1)
+loadTileSet(assets.image`chunkset-room`, testingTileSet, 10, ChunkTypes.room)
+loadTileSet(assets.image`chunkset-hallway`, testingTileSet, 10, ChunkTypes.hallway)
+loadTileSet(assets.image`chunkset-broken`, testingTileSet, 1, ChunkTypes.broken)
 testingTileSet = createTileRotations(testingTileSet)
-console.log(testingTileSet.length)

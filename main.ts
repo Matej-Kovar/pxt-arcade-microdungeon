@@ -6,6 +6,7 @@ namespace SpriteKind {
     export const Tile = SpriteKind.create()
     export const Wall = SpriteKind.create()
     export const Floor = SpriteKind.create()
+    export const Entity = SpriteKind.create()
 }
 type Player = {
     absolutePosition: Position
@@ -18,6 +19,7 @@ globalSeed = Math.random() * 2 ** 32;
 modifyDungeonBorder(ChunkGrid, VoidTypeTile, LevelDimensions)
 generateDungeonLevelRooms(ChunkGrid, LevelDimensions);
 initializeDisplayGrid(displayGrid)
+initializeDisplayGrid(entityGrid)
 scene.centerCameraAt(Math.ceil(RenderDistance.width / 2)*TileSize.width, Math.ceil(RenderDistance.height / 2 - 0.5)*TileSize.height)
 renderFrame(ChunkGrid);
 TestingPlayer.sprite.setPosition((Math.ceil(RenderDistance.width / 2) + 0.5) * TileSize.width, (Math.ceil(RenderDistance.height / 2) + 0.5) * TileSize.height)

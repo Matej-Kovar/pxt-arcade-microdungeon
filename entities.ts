@@ -1,7 +1,8 @@
-class entity {
-    absolutePosition: Position;
+class Entity {
+    relativePosition: Position;
     imgData: Image;
-    constructor() {
-        
+    constructor(img: Image, position: Position) {
+        this.relativePosition = position
+        this.imgData = img
     }
 }
