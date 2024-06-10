@@ -1,12 +1,4 @@
 {
-    "myImages.image2": {
-        "id": "myImages.image2",
-        "data": "hwQcABAAAAADADAAAAMAAP//393d390N/93d/9//3w3f3d3/3//dDd/d3f/f390N393d3d3f3Q1ERENENEREAwMAMAAAAwAA///f3d3f3Q3/393f3//fDf/d3d3d/90N393d39//3Q3f3d3d3d/dDUREQ0Q0REQDAwAwAAADAAD//9/d3d/dDf/93d/d/90N3/3d3d3/3Q3f3d3d3//dDd/d3d3d390NRERDRDRERAMDADAAAAMAAP//393d390N//3d/d3f3Q3/3d3d3f/dDf/d3f3d390N393d3d3f3Q1EREFEFEREAg==",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
-        "mimeType": "image/x-mkcd-f4",
-        "displayName": "chunkset-broken"
-    },
     "myImages.image3": {
         "id": "myImages.image3",
         "data": "hwQMAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
@@ -22,14 +14,6 @@
         "namespace": "myImages.",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "wall"
-    },
-    "myImages.image6": {
-        "id": "myImages.image6",
-        "data": "hwQMAAwAAAD///////8AAP///////wAA////////AAAfEREREfEAAB//H////wAAH/8f////AAAf/x////8AAB//H////wAA/xHx////AAD///////8AAP///////wAA////////AAA=",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
-        "mimeType": "image/x-mkcd-f4",
-        "displayName": "player"
     },
     "myImages.image5": {
         "id": "myImages.image5",
@@ -47,9 +31,33 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "entity"
     },
+    "myImages.image10": {
+        "id": "myImages.image10",
+        "data": "hwQMAAwAAAD///////8AAP//EfH//wAA/x8REf//AAD/HxER//8AAP8fERH//wAA//8R8f//AAD//x////8AAP//H////wAA/x8fH///AAD//xHx//8AAP//H////wAA////////AAA=",
+        "dataEncoding": "base64",
+        "namespace": "myImages.",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "entry-point-tile"
+    },
+    "myImages.image11": {
+        "id": "myImages.image11",
+        "data": "hwQMAAwAAAD///////8AAP//H////wAA//8f////AAD/Hx8f//8AAP//EfH//wAA//8f////AAD//xHx//8AAP8fERH//wAA/x8REf//AAD/HxER//8AAP//EfH//wAA////////AAA=",
+        "dataEncoding": "base64",
+        "namespace": "myImages.",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "exit-point-tile"
+    },
+    "myImages.image2": {
+        "id": "myImages.image2",
+        "data": "hwQcABAAAAADADAAAAMAAP//7+7u7+4O/+7u/+//7w7v7u7/7//uDu/u7v/v7+4O7+7u7u7v7g5ERENENEREAwMAMAAAAwAA///v7u7v7g7/7+7v7//vDv/u7u7u/+4O7+7u7+//7g7v7u7u7u/uDkREQ0Q0REQDAwAwAAADAAD//+/u7u/uDv/+7u/u/+4O7/7u7u7/7g7v7u7u7//uDu/u7u7u7+4ORERDRDRERAMDADAAAAMAAP//7+7u7+4O//7u/u7v7g7/7u7u7v/uDv/u7v7u7+4O7+7u7u7v7g5EREFEFEREAg==",
+        "dataEncoding": "base64",
+        "namespace": "myImages.",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "chunkset-broken"
+    },
     "myImages.image1": {
         "id": "myImages.image1",
-        "data": "hwQjAAoAAAADADAAAAAAAP//393dAAAA///f3d0AAAD//9/d3QAAAP//393dAAAA///f3d0AAABERENENAAAAAMAMAAAAAAA////3/8AAADf3d3d3QAAAN/d3d3dAAAA393d3d0AAADf3d3d3QAAAEREQ0Q0AAAAAwAwAAAAAADf3f3//wAAAN3d3d3dAAAA3d3d3d0AAADd3d3d3QAAAN3d393dAAAARERDRDQAAAADADAAAAAAAN/d/d//AAAA3d393d0AAADd3f3d3QAAAN3d/d3dAAAA3d393d0AAABERENEJAAAAAMAAAAAAAAA//0PAAAAAADd3Q8AAAAAAN3dDwAAAAAA3d0PAAAAAADd3Q8AAAAAAEREAQAAAAAA",
+        "data": "hwQjAAoAAAADADAAAAAAAP//7+7uAAAA///v7u4AAAD//+/u7gAAAP//7+7uAAAA///v7u4AAABERENENAAAAAMAMAAAAAAA////7/8AAADv7u7u7gAAAO/u7u7uAAAA7+7u7u4AAADv7u7u7gAAAEREQ0Q0AAAAAwAwAAAAAADv7v7//wAAAO7u7u7uAAAA7u7u7u4AAADu7u7u7gAAAO7u7+7uAAAARERDRDQAAAADADAAAAAAAO/u/u//AAAA7u7+7u4AAADu7v7u7gAAAO7u/u7uAAAA7u7+7u4AAABERENEJAAAAAMAAAAAAAAA//4PAAAAAADu7g8AAAAAAO7uDwAAAAAA7u4PAAAAAADu7g8AAAAAAEREAQAAAAAA",
         "dataEncoding": "base64",
         "namespace": "myImages.",
         "mimeType": "image/x-mkcd-f4",
@@ -57,10 +65,90 @@
     },
     "myImages.image8": {
         "id": "myImages.image8",
-        "data": "hwQOABAAAAADADAAAAAAAP///9//AAAA////3/8AAADd/d/d/wAAAP/9/9//AAAA//3/3/8AAABERENEJAAAAAMAMAAAAAAA////3/8AAAD////f/wAAAN3d3d3dAAAA////3/8AAAD////f/wAAAEREQUQkAAAA",
+        "data": "hwQOAAoAAAADADAAAAAAAP///+//AAAA////7/8AAADu/u/u/wAAAP/+/+//AAAA//7/7/8AAABERENEJAAAAAMAMAAAAAAA////7/8AAAD////v/wAAAO7u7u7uAAAA////7/8AAAD////v/wAAAEREQUQkAAAA",
         "dataEncoding": "base64",
         "namespace": "myImages.",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "chunkset-hallway"
+    },
+    "myImages.image12": {
+        "id": "myImages.image12",
+        "data": "hwQHAAUAAAADAAAA7u4PAO7uDwDu7g8A7s4PAP//DwBERAIA",
+        "dataEncoding": "base64",
+        "namespace": "myImages.",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "exit-point-chunk"
+    },
+    "myImages.image9": {
+        "id": "myImages.image9",
+        "data": "hwQHAAUAAAADAAAA//8PAN/uDgDv/g4A//8OAO/uDgBERAIA",
+        "dataEncoding": "base64",
+        "namespace": "myImages.",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "entry-point-chunk"
+    },
+    "myImages.image6": {
+        "id": "myImages.image6",
+        "data": "hwQMAAwAAAAAAAAAAAAAAAAAAAD/AAAAAAAA8JkPAAAA////mfkAAPBVVf+Z/wAAX1X/d//3AABf9d1/d/cAAF/f3X/39wAAX9/df9//AADw///w+QAAAAAAAJ8PAAAAAAAA/wAAAAA=",
+        "dataEncoding": "base64",
+        "namespace": "myImages.",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "player-right"
+    },
+    "myImages.image17": {
+        "id": "myImages.image17",
+        "data": "hwQMAAwAAAAAAAD/AAAAAAAAAJ8PAAAA8P//8PkAAABf391/3/8AAF/f3X/39wAAX/Xdf3f3AABfVf93//cAAPBVVf+Z/wAAAP///5n5AAAAAADwmQ8AAAAAAAD/AAAAAAAAAAAAAAA=",
+        "dataEncoding": "base64",
+        "namespace": "myImages.",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "player-left"
+    },
+    "myImages.image18": {
+        "id": "myImages.image18",
+        "data": "hwQMAAwAAAAAAADwDwAAAAAAAJ/5AAAAAP8Pn5kPAADwVf////8AAF9VVVV/9wAAX1VV/3f3AABfVVX1d/cAAF9V/3939wAA8FVV////AAAA///w+QAAAAAAAJ8PAAAAAAAA/wAAAAA=",
+        "dataEncoding": "base64",
+        "namespace": "myImages.",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "player-up"
+    },
+    "myImages.image19": {
+        "id": "myImages.image19",
+        "data": "hwQMAAwAAAAAAAD/AAAAAAD/D58PAAAA8FX18PkAAABf////3/8AAF/f3X939wAAX9/df3f3AABf391/d/cAAF//3f9/9wAAX1X/n/n/AADw/wCfmQ8AAAAAAJ/5AAAAAAAA8A8AAAA=",
+        "dataEncoding": "base64",
+        "namespace": "myImages.",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "player-down"
+    },
+    "myImages.image14": {
+        "id": "myImages.image14",
+        "data": "hwQMAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/AAAAAAAA/3cPAAAAAPAOdw8AAAAA8A53DwAAAAAA/3cPAAAAAAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+        "dataEncoding": "base64",
+        "namespace": "myImages.",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "healthBoost-potion"
+    },
+    "myImages.image13": {
+        "id": "myImages.image13",
+        "data": "hwQMAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAAAAAPDyDwAAAADwLyIPAAAAAO8gIg8AAAAA7yAiDwAAAADwLyIPAAAAAADw8g8AAAAAAAD/AAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+        "dataEncoding": "base64",
+        "namespace": "myImages.",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "regen-potion"
+    },
+    "myImages.image16": {
+        "id": "myImages.image16",
+        "data": "hwQMAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP8PAAAAAADwmfkAAAAAAPCZmQ8AAAAA8JmZDwAAAADwmfkAAAAAAAD/DwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+        "dataEncoding": "base64",
+        "namespace": "myImages.",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "defenseBoost"
+    },
+    "myImages.image15": {
+        "id": "myImages.image15",
+        "data": "hwQMAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPDwDwAAAAAA3+8PAAAAAADw/QAAAAAAAJ/fDwAAAADw+fAAAAAAAJ8PAAAAAAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+        "dataEncoding": "base64",
+        "namespace": "myImages.",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "attackBoost"
     }
 }

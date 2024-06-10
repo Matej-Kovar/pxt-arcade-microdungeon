@@ -7,19 +7,22 @@ namespace SpriteKind {
     export const Wall = SpriteKind.create()
     export const Floor = SpriteKind.create()
     export const Entity = SpriteKind.create()
+    export const EntryPoint = SpriteKind.create()
+    export const ExitPoint = SpriteKind.create()
 }
 type Player = {
     absolutePosition: Position
     relativePosition:Position
     sprite: Sprite
+    maxhealth:number
+    health: number
+    attack: number
+    defense:number
 }
-let globalSeed: number = 0;
 initializeChunkGrid(ChunkGrid, testingTileSet, LevelDimensions);
-globalSeed = Math.random() * 2 ** 32;
-modifyDungeonBorder(ChunkGrid, VoidTypeTile, LevelDimensions)
-generateDungeonLevelRooms(ChunkGrid, LevelDimensions);
 initializeDisplayGrid(displayGrid)
 initializeDisplayGrid(entityGrid)
 scene.centerCameraAt(Math.ceil(RenderDistance.width / 2)*TileSize.width, Math.ceil(RenderDistance.height / 2 - 0.5)*TileSize.height)
+TestingPlayer.sprite.x = (TestingPlayer.absolutePosition.x + 0.5) * TileSize.width
+TestingPlayer.sprite.y = (TestingPlayer.absolutePosition.y + 0.5) * TileSize.height
 renderFrame(ChunkGrid);
-TestingPlayer.sprite.setPosition((Math.ceil(RenderDistance.width / 2) + 0.5) * TileSize.width, (Math.ceil(RenderDistance.height / 2) + 0.5) * TileSize.height)

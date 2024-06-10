@@ -9,8 +9,8 @@ class ChunkData {
     chunkTypeOptions: Array<ChunkTypeData>
     chunkPositon: Position
     ChunkIndex: number
-    Entities:Entity[]
-    constructor(position: Position, index: number, chunkSet: ChunkTypeData[], entities:Entity[]) {
+    Entities:Item[]
+    constructor(position: Position, index: number, chunkSet: ChunkTypeData[], entities:Item[]) {
         this.chunkHasBeenColapsed = false;
         this.chunkTypeOptions = chunkSet;
         this.chunkPositon = position;
@@ -19,7 +19,6 @@ class ChunkData {
     }
 }
 const ChunkGrid: ChunkData[] = [];
-const Probability: number = 0.025;
 const VoidTypeTile = new ChunkTypeData([
     [15,15,15,15,15],
     [15,15,15,15,15],
@@ -64,6 +63,7 @@ const resetChunkGrid = (gridData: ChunkData[], chunkSet: ChunkTypeData[], dim: S
     for (let i = 0; i < dim.width * dim.height; i++) {
          gridData[i].chunkHasBeenColapsed = false;
         gridData[i].chunkTypeOptions = chunkSet;
+        gridData[i].Entities = [];
 }
 }
 const weightedRandom = (chunkTypeOptions:ChunkTypeData[], generatedNum:number) => {
@@ -82,7 +82,9 @@ const weightedRandom = (chunkTypeOptions:ChunkTypeData[], generatedNum:number) =
 }
 const generateDungeonLevelRooms = (gridData: ChunkData[], dim: Size) => {
     const random = splitmix32((globalSeed) >>> 0)
+    
     for (let index: number = 0; index < gridData.length; index++) {
+        let probability: number = 0.01;
         let chosenTile = createEntrophyGrid(gridData);
         if (chosenTile.chunkTypeOptions.length === 0) {
             chosenTile.chunkTypeOptions = [VoidTypeTile];
@@ -93,8 +95,11 @@ const generateDungeonLevelRooms = (gridData: ChunkData[], dim: Size) => {
         chosenTile.chunkHasBeenColapsed = true;
         for (let i = 0; i < ChunkSize.height; i++) {
             for (let j = 0; j < ChunkSize.width; j++) {
-                if (chosenTile.chunkTypeOptions[0].imgData[i][j] === 13 && random() <= Probability && chosenTile.chunkTypeOptions[0].chunkType !== 0) {
-                    chosenTile.Entities.push(new Entity(assets.image`entity`, { x: j, y: i }))
+                if (chosenTile.chunkTypeOptions[0].imgData[i][j] === 14 && random() <= probability && chosenTile.chunkTypeOptions[0].chunkType !== 0) {
+                    chosenTile.Entities.push(new Item({ x: j, y: i }, Math.pickRandom([0,1,2,3])))
+                    if (probability > 0) {
+                        probability = probability - 0.005  
+                    }
                 }
             }
         }
@@ -107,7 +112,7 @@ const generateDungeonLevelRooms = (gridData: ChunkData[], dim: Size) => {
     }
 }
 
-const modifyDungeonBorder = (gridData: ChunkData[], voidType:ChunkTypeData ,dim:Size) => {
+const modifyDungeonBorder = (gridData: ChunkData[], voidType:ChunkTypeData, dim:Size) => {
     for (let j = 0; j < dim.width; j++) {
         modifyNeighbouringTile(voidType, 2 , gridData[j])  
     }
@@ -120,4 +125,12 @@ const modifyDungeonBorder = (gridData: ChunkData[], voidType:ChunkTypeData ,dim:
     for (let j = 0; j < dim.height; j++) {
         modifyNeighbouringTile(voidType, 3 , gridData[(dim.width) * j + dim.width-1])  
     }
+}
+const exitAndEntry = (gridData: ChunkData[]) => {
+    gridData[0].chunkTypeOptions = [EntryPoint[0]]
+    modifyNeighbouringTile(gridData[0].chunkTypeOptions[0], 1, gridData[1])
+    modifyNeighbouringTile(gridData[0].chunkTypeOptions[0], 2, gridData[LevelDimensions.width])
+    gridData[gridData.length-1].chunkTypeOptions = [ExitPoint[0]]
+    modifyNeighbouringTile(gridData[gridData.length-1].chunkTypeOptions[0], 0, gridData[gridData.length-1-LevelDimensions.width])
+    modifyNeighbouringTile(gridData[gridData.length-1].chunkTypeOptions[0], 3, gridData[gridData.length-3])
 }
