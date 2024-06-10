@@ -1,11 +1,3 @@
-type Size = {
-    width: number,
-    height: number
-}
-type Position = {
-    x: number
-    y: number
-}
 enum Sides {
     top = 0,
     right = 1,

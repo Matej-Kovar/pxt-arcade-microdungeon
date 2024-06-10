@@ -2,7 +2,6 @@ class ChunkTypeData {
     readonly imgData: number[][]
     readonly weight: number
     readonly chunkID: number
-
     constructor(array: number[][], number: number, id:number) {
         this.imgData = array;
         this.weight = number;
@@ -34,41 +33,6 @@ class ChunkTypeData {
             }
         }
         return result
-    }
-    colisionWillHappen(player:Player, direction:number):Boolean {
-        switch (direction) {
-            case 0:
-                if (this.imgData[player.Position.y - 1][player.Position.x] === 15) {
-                    return true;
-                } else {
-                    return false
-                }
-                break;
-            case 1:
-                if (this.imgData[player.Position.y][player.Position.x + 1] === 15) {
-                    return true;
-                } else {
-                    return false
-                }
-                break;
-            case 2:
-                if (this.imgData[player.Position.y + 1][player.Position.x] === 15) {
-                    return true;
-                } else {
-                    return false
-                }
-                break;
-            case 3:
-                if (this.imgData[player.Position.x - 1][player.Position.x] === 15) {
-                    return true;
-                } else {
-                    return false
-                }
-                    break;
-            default:
-                return false;
-                break;
-        }
     }
 }
 

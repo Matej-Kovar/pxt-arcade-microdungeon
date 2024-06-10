@@ -15,7 +15,8 @@
         "asset-initialization.ts",
         "level-generation.ts",
         "rendering.ts",
-        "player-actions.ts"
+        "player-actions.ts",
+        "position-tracking.ts"
     ],
     "testFiles": [],
     "targetVersions": {
