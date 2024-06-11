@@ -51,6 +51,7 @@ controller.left.onEvent(ControllerButtonEvent.Repeated, function () {
         renderFrame(ChunkGrid)
     }
 })
+
 controller.right.onEvent(ControllerButtonEvent.Repeated, function () {
     if (displayGrid[TestingPlayer.relativePosition.y][TestingPlayer.relativePosition.x + 1].kind() !== SpriteKind.Wall) {
         TestingPlayer.sprite.setImage(assets.image`player-right`)
