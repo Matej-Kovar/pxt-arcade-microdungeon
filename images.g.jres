@@ -7,22 +7,6 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "void-tile"
     },
-    "myImages.image4": {
-        "id": "myImages.image4",
-        "data": "hwQMAAwAAACqqqqqqqoAAMrMzMzMrAAAyszMzMysAADKzMzMzKwAAMrMzMzMrAAAyszMzMysAADKzMzMzKwAAMrMzMzMrAAAyszMzMysAADKzMzMzKwAAMrMzMzMrAAAqqqqqqqqAAA=",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
-        "mimeType": "image/x-mkcd-f4",
-        "displayName": "wall"
-    },
-    "myImages.image5": {
-        "id": "myImages.image5",
-        "data": "hwQMAAwAAAC7u7u7u7sAALu7u7u7uwAAu7u7u7u7AAC7u7u7u7sAALu7u7u7uwAAu7u7u7u7AAC7u7u7u7sAALu7u7u7uwAAu7u7u7u7AAC7u7u7u7sAALu7u7u7uwAAu7u7u7u7AAA=",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
-        "mimeType": "image/x-mkcd-f4",
-        "displayName": "floor"
-    },
     "myImages.image7": {
         "id": "myImages.image7",
         "data": "hwQMAAwAAAD///////8AAP///////wAA/xERERH/AAD/8R//H/8AAP/xH/8f/wAA//Ef/x//AAD/8f//H/8AAP/x//8f/wAA//H//x//AAD///////8AAP///////wAA////////AAA=",
@@ -87,38 +71,6 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "entry-point-chunk"
     },
-    "myImages.image6": {
-        "id": "myImages.image6",
-        "data": "hwQMAAwAAAAAAAAAAAAAAAAAAAD/AAAAAAAA8JkPAAAA////mfkAAPBVVf+Z/wAAX1X/d//3AABf9d1/d/cAAF/f3X/39wAAX9/df9//AADw///w+QAAAAAAAJ8PAAAAAAAA/wAAAAA=",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
-        "mimeType": "image/x-mkcd-f4",
-        "displayName": "player-right"
-    },
-    "myImages.image17": {
-        "id": "myImages.image17",
-        "data": "hwQMAAwAAAAAAAD/AAAAAAAAAJ8PAAAA8P//8PkAAABf391/3/8AAF/f3X/39wAAX/Xdf3f3AABfVf93//cAAPBVVf+Z/wAAAP///5n5AAAAAADwmQ8AAAAAAAD/AAAAAAAAAAAAAAA=",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
-        "mimeType": "image/x-mkcd-f4",
-        "displayName": "player-left"
-    },
-    "myImages.image18": {
-        "id": "myImages.image18",
-        "data": "hwQMAAwAAAAAAADwDwAAAAAAAJ/5AAAAAP8Pn5kPAADwVf////8AAF9VVVV/9wAAX1VV/3f3AABfVVX1d/cAAF9V/3939wAA8FVV////AAAA///w+QAAAAAAAJ8PAAAAAAAA/wAAAAA=",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
-        "mimeType": "image/x-mkcd-f4",
-        "displayName": "player-up"
-    },
-    "myImages.image19": {
-        "id": "myImages.image19",
-        "data": "hwQMAAwAAAAAAAD/AAAAAAD/D58PAAAA8FX18PkAAABf////3/8AAF/f3X939wAAX9/df3f3AABf391/d/cAAF//3f9/9wAAX1X/n/n/AADw/wCfmQ8AAAAAAJ/5AAAAAAAA8A8AAAA=",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
-        "mimeType": "image/x-mkcd-f4",
-        "displayName": "player-down"
-    },
     "myImages.image14": {
         "id": "myImages.image14",
         "data": "hwQMAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/AAAAAAAA/3cPAAAAAPAOdw8AAAAA8A53DwAAAAAA/3cPAAAAAAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
@@ -127,28 +79,76 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "healthBoost-potion"
     },
+    "myImages.image15": {
+        "id": "myImages.image15",
+        "data": "hwQMAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/wDwAAAAAA3+8PAAAAAADw/QAAAAAAAJ/fDwAAAADw+fAPAAAAAJ8PAAAAAAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+        "dataEncoding": "base64",
+        "namespace": "myImages.",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "attackBoost"
+    },
     "myImages.image13": {
         "id": "myImages.image13",
-        "data": "hwQMAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAAAAAPDyDwAAAADwLyIPAAAAAO8gIg8AAAAA7yAiDwAAAADwLyIPAAAAAADw8g8AAAAAAAD/AAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+        "data": "hwQMAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADw//8AAAAAAO8gIg8AAAAA7yAiDwAAAADw//8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
         "dataEncoding": "base64",
         "namespace": "myImages.",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "regen-potion"
     },
+    "myImages.image6": {
+        "id": "myImages.image6",
+        "data": "hwQMAAwAAAAAAAAAAAAAAAAAAAD/AAAAAAAA8JkPAAAA////mfkAAPBVVf+ZDwAAX1X/d//3AABf9d1/d/cAAF/f3X/39wAAX9/df98PAABf///w+QAAAPAAAJ8PAAAAAAAA/wAAAAA=",
+        "dataEncoding": "base64",
+        "namespace": "myImages.",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "player-right"
+    },
+    "myImages.image17": {
+        "id": "myImages.image17",
+        "data": "hwQMAAwAAAAAAAD/AAAAAPAPAJ8PAAAAX///8PkAAABf391/3w8AAF/f3X/39wAAX/Xdf3f3AABfVf93//cAAPBVVf+ZDwAAAP///5n5AAAAAADwmQ8AAAAAAAD/AAAAAAAAAAAAAAA=",
+        "dataEncoding": "base64",
+        "namespace": "myImages.",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "player-left"
+    },
+    "myImages.image18": {
+        "id": "myImages.image18",
+        "data": "hwQMAAwAAAAAAADwDwAAAAAAAJ/5AAAAAP8Pn5kPAADwVf///w8AAF9VVVV/9wAAX1VV/3f3AABfVVX1d/cAAF9V/3939wAA8FVV//8PAAAA///w+QAAAAAAAJ8PAAAAAAAA/wAAAAA=",
+        "dataEncoding": "base64",
+        "namespace": "myImages.",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "player-up"
+    },
+    "myImages.image4": {
+        "id": "myImages.image4",
+        "data": "hwQMAAwAAACqqqqqqqoAANq9u7vMrAAA2rvMzMysAAC6y8zMzKwAALrMzMzMrAAAuszMzMysAAC6zMzMzKwAALrMzMzMrAAAyszMzMyqAADKzMzMrKoAAMrMzMyqqgAAqqqqqqqqAAA=",
+        "dataEncoding": "base64",
+        "namespace": "myImages.",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "wall"
+    },
+    "myImages.image5": {
+        "id": "myImages.image5",
+        "data": "hwQMAAwAAACqzMzMzKoAAMy7u7u7rAAAvbu7u7vLAAC9u7u7u8sAAL27u7u7ywAAvbu7u7vLAAC9u7u7u8sAAL27u7u7ywAAvbu7u7vLAAC9u7u7u8sAANG7u7u7rAAAEd3d3d2sAAA=",
+        "dataEncoding": "base64",
+        "namespace": "myImages.",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "floor"
+    },
     "myImages.image16": {
         "id": "myImages.image16",
-        "data": "hwQMAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP8PAAAAAADwmfkAAAAAAPCZmQ8AAAAA8JmZDwAAAADwmfkAAAAAAAD/DwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+        "data": "hwQMAAwAAAAAAAAAAAAAAAAAAAAAAAAAAPD/DwAAAAAA/4H4DwAAAAAfiJn5AAAAAI+YmZkPAAAAj5mZaQ8AAACfmZn2AAAAAP+Z+Q8AAAAA8P8PAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
         "dataEncoding": "base64",
         "namespace": "myImages.",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "defenseBoost"
     },
-    "myImages.image15": {
-        "id": "myImages.image15",
-        "data": "hwQMAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPDwDwAAAAAA3+8PAAAAAADw/QAAAAAAAJ/fDwAAAADw+fAAAAAAAJ8PAAAAAAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+    "myImages.image19": {
+        "id": "myImages.image19",
+        "data": "hwQMAAwAAAAAAAD/AAAAAAAAAJ8PAAAAAP//8PkAAADwVVX/3w8AAF/1/3939wAAX9/df3f3AABf391/d/cAAF/13f9/9wAA8FX/n/kPAAAA/wCfmQ8AAAAAAJ/5AAAAAAAA8A8AAAA=",
         "dataEncoding": "base64",
         "namespace": "myImages.",
         "mimeType": "image/x-mkcd-f4",
-        "displayName": "attackBoost"
+        "displayName": "player-down"
     }
 }

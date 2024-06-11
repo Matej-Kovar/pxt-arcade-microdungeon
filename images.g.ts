@@ -18,36 +18,6 @@ namespace myImages {
 . . . . . . . . . . . . 
 . . . . . . . . . . . . 
 `;
-            case "image4":
-            case "wall":return img`
-a a a a a a a a a a a a 
-a c c c c c c c c c c a 
-a c c c c c c c c c c a 
-a c c c c c c c c c c a 
-a c c c c c c c c c c a 
-a c c c c c c c c c c a 
-a c c c c c c c c c c a 
-a c c c c c c c c c c a 
-a c c c c c c c c c c a 
-a c c c c c c c c c c a 
-a c c c c c c c c c c a 
-a a a a a a a a a a a a 
-`;
-            case "image5":
-            case "floor":return img`
-b b b b b b b b b b b b 
-b b b b b b b b b b b b 
-b b b b b b b b b b b b 
-b b b b b b b b b b b b 
-b b b b b b b b b b b b 
-b b b b b b b b b b b b 
-b b b b b b b b b b b b 
-b b b b b b b b b b b b 
-b b b b b b b b b b b b 
-b b b b b b b b b b b b 
-b b b b b b b b b b b b 
-b b b b b b b b b b b b 
-`;
             case "image7":
             case "entity":return img`
 f f f f f f f f f f f f 
@@ -154,66 +124,6 @@ f f f f f f f f f f f f
 . f e f f e 4 
 . f e e e e 2 
 `;
-            case "image6":
-            case "player-right":return img`
-. . . . . f f f f . . . 
-. . . . f 5 5 5 5 f . . 
-. . . f 5 5 5 f f f . . 
-. . . f 5 5 f d d f . . 
-. . . f 5 f d d d f . . 
-. . . f 5 f d d d f . . 
-. . . f f 7 f f f . f f 
-. . f f f 7 7 7 7 f 9 f 
-. f 9 9 9 f 7 7 f 9 f . 
-. f 9 9 9 f 7 f d f . . 
-. . f 9 f 7 7 7 f . . . 
-. . . f f f f f f . . . 
-`;
-            case "image17":
-            case "player-left":return img`
-. . . f f f f . . . . . 
-. . f 5 5 5 5 f . . . . 
-. . f f f 5 5 5 f . . . 
-. . f d d f 5 5 f . . . 
-. . f d d d f 5 f . . . 
-. . f d d d f 5 f . . . 
-f f . f f f 7 f f . . . 
-f 9 f 7 7 7 7 f f f . . 
-. f 9 f 7 7 f 9 9 9 f . 
-. . f d f 7 f 9 9 9 f . 
-. . . f 7 7 7 f 9 f . . 
-. . . f f f f f f . . . 
-`;
-            case "image18":
-            case "player-up":return img`
-. . . . f f f f . . . . 
-. . . f 5 5 5 5 f . . . 
-. . f 5 5 5 5 5 5 f . . 
-. . f 5 5 5 5 5 5 f . . 
-. . f f 5 5 5 f 5 f . . 
-. . . f 5 5 5 f 5 f . . 
-. f f f 5 f 5 f f . f f 
-f 9 9 f 5 f f 7 f f 9 f 
-f 9 9 f f 7 7 7 f 9 f . 
-. f 9 f 7 7 7 7 f f . . 
-. . f f 7 7 7 7 f . . . 
-. . . f f f f f f . . . 
-`;
-            case "image19":
-            case "player-down":return img`
-. . . f f f f f f . . . 
-. . f 5 5 5 5 5 5 f . . 
-. f 5 f f f f f 5 f . . 
-. f 5 f d d d f 5 f . . 
-. f 5 f d d d d f . . . 
-. . f f d d d d f . . . 
-f f . f f f f f f f f . 
-f 9 f f 7 7 7 f 9 9 9 f 
-. f 9 f 7 7 7 f 9 9 9 f 
-. . f d 7 7 7 7 f 9 f . 
-. . . f 7 7 7 7 f f . . 
-. . . f f f f f f . . . 
-`;
             case "image14":
             case "healthBoost-potion":return img`
 . . . . . . . . . . . . 
@@ -229,6 +139,21 @@ f 9 f f 7 7 7 f 9 9 9 f
 . . . . . . . . . . . . 
 . . . . . . . . . . . . 
 `;
+            case "image15":
+            case "attackBoost":return img`
+. . . . . . . . . . . . 
+. . . . . . . . . . . . 
+. . . . . . . . f f . . 
+. . . . . . . f 9 f . . 
+. . . f f . f 9 f . . . 
+. . . f d f 9 f . . . . 
+. . . . f d f . . . . . 
+. . . f e f d f . . . . 
+. . . f f . f f . . . . 
+. . . . . . . . . . . . 
+. . . . . . . . . . . . 
+. . . . . . . . . . . . 
+`;
             case "image13":
             case "regen-potion":return img`
 . . . . . . . . . . . . 
@@ -236,43 +161,118 @@ f 9 f f 7 7 7 f 9 9 9 f
 . . . . . f f . . . . . 
 . . . . f e e f . . . . 
 . . . . f . . f . . . . 
-. . . f 2 2 2 2 f . . . 
-. . f 2 2 2 2 2 2 f . . 
-. . f f 2 2 2 2 f f . . 
-. . . f f f f f f . . . 
-. . . . . . . . . . . . 
-. . . . . . . . . . . . 
-. . . . . . . . . . . . 
-`;
-            case "image16":
-            case "defenseBoost":return img`
-. . . . . . . . . . . . 
-. . . . . . . . . . . . 
-. . . . . . . . . . . . 
-. . . . f f f f . . . . 
-. . . f 9 9 9 9 f . . . 
-. . . f 9 9 9 9 f . . . 
-. . . f 9 9 9 9 f . . . 
-. . . . f 9 9 f . . . . 
+. . . . f 2 2 f . . . . 
+. . . . f 2 2 f . . . . 
+. . . . f 2 2 f . . . . 
 . . . . . f f . . . . . 
 . . . . . . . . . . . . 
 . . . . . . . . . . . . 
 . . . . . . . . . . . . 
 `;
-            case "image15":
-            case "attackBoost":return img`
+            case "image6":
+            case "player-right":return img`
+. . . . . f f f f f . . 
+. . . . f 5 5 5 5 5 f . 
+. . . f 5 5 5 f f f . . 
+. . . f 5 5 f d d f . . 
+. . . f 5 f d d d f . . 
+. . . f 5 f d d d f . . 
+. . . f f 7 f f f . f f 
+. . f f f 7 7 7 7 f 9 f 
+. f 9 9 9 f 7 7 f 9 f . 
+. f 9 9 9 f 7 f d f . . 
+. . f 9 f 7 7 7 f . . . 
+. . . f . f f f . . . . 
+`;
+            case "image17":
+            case "player-left":return img`
+. . f f f f f . . . . . 
+. f 5 5 5 5 5 f . . . . 
+. f f f f 5 5 5 f . . . 
+. . f d d f 5 5 f . . . 
+. . f d d d f 5 f . . . 
+. . f d d d f 5 f . . . 
+f f . f f f 7 f f . . . 
+f 9 f 7 7 7 7 f f f . . 
+. f 9 f 7 7 f 9 9 9 f . 
+. . f d f 7 f 9 9 9 f . 
+. . . f 7 7 7 f 9 f . . 
+. . . . f f f . f . . . 
+`;
+            case "image18":
+            case "player-up":return img`
+. . . . f f f f . . . . 
+. . . f 5 5 5 5 f . . . 
+. . f 5 5 5 5 5 5 f . . 
+. . f 5 5 5 5 5 5 f . . 
+. . f f 5 5 5 f 5 f . . 
+. . . f 5 5 5 f 5 f . . 
+. f f f 5 f 5 f f . f f 
+f 9 9 f 5 f f 7 f f 9 f 
+f 9 9 f f 7 7 7 f 9 f . 
+. f 9 f 7 7 7 7 f f . . 
+. . f f 7 7 7 7 f . . . 
+. . . . f f f f . . . . 
+`;
+            case "image4":
+            case "wall":return img`
+a a a a a a a a a a a a 
+a d d b b b b b c c c a 
+a d b b c c c c c c c a 
+a b b c c c c c c c c a 
+a b c c c c c c c c c a 
+a b c c c c c c c c c a 
+a b c c c c c c c c c a 
+a b c c c c c c c c c a 
+a c c c c c c c c c a a 
+a c c c c c c c c a a a 
+a c c c c c c c a a a a 
+a a a a a a a a a a a a 
+`;
+            case "image5":
+            case "floor":return img`
+a c d d d d d d d d 1 1 
+a c b b b b b b b b d 1 
+c b b b b b b b b b b d 
+c b b b b b b b b b b d 
+c b b b b b b b b b b d 
+c b b b b b b b b b b d 
+c b b b b b b b b b b d 
+c b b b b b b b b b b d 
+c b b b b b b b b b b d 
+c b b b b b b b b b b d 
+a c b b b b b b b b c c 
+a a c c c c c c c c a a 
+`;
+            case "image16":
+            case "defenseBoost":return img`
 . . . . . . . . . . . . 
 . . . . . . . . . . . . 
-. . . . . . . . f f . . 
-. . . . . . . f 9 f . . 
-. . . . f . f 9 f . . . 
-. . . f d f 9 f . . . . 
-. . . . f d f . . . . . 
-. . . f e f d f . . . . 
-. . . f f . f . . . . . 
+. . . f f f f f f . . . 
+. . f f 1 8 8 9 f f . . 
+. . f 1 8 8 9 9 9 f . . 
+. . f 8 8 9 9 9 9 f . . 
+. . f 8 9 9 9 9 9 f . . 
+. . . f 9 9 9 9 f . . . 
+. . . f 9 9 9 6 f . . . 
+. . . . f 9 6 f . . . . 
+. . . . . f f . . . . . 
 . . . . . . . . . . . . 
-. . . . . . . . . . . . 
-. . . . . . . . . . . . 
+`;
+            case "image19":
+            case "player-down":return img`
+. . . . f f f f . . . . 
+. . . f 5 5 5 5 f . . . 
+. . f 5 5 f f 5 5 f . . 
+. . f 5 f d d f 5 f . . 
+. . f 5 f d d d f . . . 
+. . f 5 f d d d f . . . 
+f f . f f f f f f f f . 
+f 9 f f 7 7 7 f 9 9 9 f 
+. f 9 f 7 7 7 f 9 9 9 f 
+. . f d 7 7 7 7 f 9 f . 
+. . . f 7 7 7 7 f f . . 
+. . . . f f f f . . . . 
 `;
         }
         return null;

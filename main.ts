@@ -10,15 +10,6 @@ namespace SpriteKind {
     export const EntryPoint = SpriteKind.create()
     export const ExitPoint = SpriteKind.create()
 }
-type Player = {
-    absolutePosition: Position
-    relativePosition:Position
-    sprite: Sprite
-    maxhealth:number
-    health: number
-    attack: number
-    defense:number
-}
 initializeChunkGrid(ChunkGrid, testingTileSet, LevelDimensions);
 initializeDisplayGrid(displayGrid)
 initializeDisplayGrid(entityGrid)

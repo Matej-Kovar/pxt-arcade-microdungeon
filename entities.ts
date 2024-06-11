@@ -24,6 +24,24 @@ class Item {
         }
     }
 }
+class Creature {
+    absolutePosition: Position
+    relativePosition:Position
+    sprite: Sprite
+    maxhealth:number
+    health: number
+    attack: number
+    defense: number
+    constructor(positionAbs:Position, positionRel:Position, Sprite:Sprite, Maxhealth:number, health:number, attack:number, defense:number) {
+        this.absolutePosition = positionAbs
+        this.relativePosition = positionRel
+        this.sprite = Sprite
+        this.maxhealth = Maxhealth
+        this.health = health
+        this.attack = attack
+        this.defense = defense
+    }
+}
 enum ItemTypes {
     regen = 0,
     healthBoost = 1,
