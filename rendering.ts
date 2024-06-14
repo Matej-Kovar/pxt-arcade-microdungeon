@@ -1,6 +1,17 @@
-type TileData = {
+class TileData {
     img: Image
-    kind:number
+    kind: number
+    costToTravel: number = Infinity;
+    toEnd: number = 0;
+    value: number = 0;
+    state: number = 0;
+    position: Position;
+    sprite: Sprite;
+    cameFrom:TileData = undefined
+    constructor (pos:Position, sprite:Sprite) {
+        this.position = pos
+        this.sprite = sprite
+    }
 }
 const LevelDimensions: Size = { width: 10, height: 10 };
 const ChunkSize: Size = { width: 5, height: 5 };

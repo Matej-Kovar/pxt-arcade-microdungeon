@@ -17,7 +17,8 @@
         "rendering.ts",
         "player-actions.ts",
         "position-tracking.ts",
-        "entities.ts"
+        "entities.ts",
+        "astar.ts"
     ],
     "testFiles": [],
     "targetVersions": {
