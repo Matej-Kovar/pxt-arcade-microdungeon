@@ -1,9 +1,9 @@
-class Item {
+class Entity {
     relativePosition: Position;
     type:number
-    constructor(position: Position, itemType:number){
+    constructor(position: Position, EntityType:number){
         this.relativePosition = position
-        this.type = itemType
+        this.type = EntityType
     }
     pickUp() {
         switch (this.type) {
@@ -26,25 +26,26 @@ class Item {
 }
 class Creature {
     absolutePosition: Position
-    relativePosition:Position
+    type: number
+    target: Position
+    path: Position[] = []
     sprite: Sprite
     maxhealth:number
     health: number
     attack: number
     defense: number
-    constructor(positionAbs:Position, positionRel:Position, Sprite:Sprite, Maxhealth:number, health:number, attack:number, defense:number) {
+    active:boolean = false
+    constructor(positionAbs:Position, creatureType:number) {
         this.absolutePosition = positionAbs
-        this.relativePosition = positionRel
-        this.sprite = Sprite
-        this.maxhealth = Maxhealth
-        this.health = health
-        this.attack = attack
-        this.defense = defense
+        this.type = creatureType
     }
 }
-enum ItemTypes {
+enum EntityTypes {
     regen = 0,
     healthBoost = 1,
     damageBoost = 2,
-    defenseBoost = 3
+    defenseBoost = 3,
+    tile = 4,
+    player = 5, 
+    enemy = 6
 }

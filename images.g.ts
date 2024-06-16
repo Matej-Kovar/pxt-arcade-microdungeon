@@ -33,36 +33,6 @@ f f 1 1 1 1 1 1 1 f f f
 f f f f f f f f f f f f 
 f f f f f f f f f f f f 
 `;
-            case "image10":
-            case "entry-point-tile":return img`
-f f f f f f f f f f f f 
-f f f f f f f f f f f f 
-f f f f f f f f f f f f 
-f f 1 1 1 f f f 1 f f f 
-f 1 1 1 1 1 f f f 1 f f 
-f 1 1 1 1 1 1 1 1 1 1 f 
-f 1 1 1 1 1 f f f 1 f f 
-f f 1 1 1 f f f 1 f f f 
-f f f f f f f f f f f f 
-f f f f f f f f f f f f 
-f f f f f f f f f f f f 
-f f f f f f f f f f f f 
-`;
-            case "image11":
-            case "exit-point-tile":return img`
-f f f f f f f f f f f f 
-f f f f f f f f f f f f 
-f f f f f f f f f f f f 
-f f f 1 f f f 1 1 1 f f 
-f f f f 1 f 1 1 1 1 1 f 
-f 1 1 1 1 1 1 1 1 1 1 f 
-f f f f 1 f 1 1 1 1 1 f 
-f f f 1 f f f 1 1 1 f f 
-f f f f f f f f f f f f 
-f f f f f f f f f f f f 
-f f f f f f f f f f f f 
-f f f f f f f f f f f f 
-`;
             case "image2":
             case "chunkset-broken":return img`
 3fffff43fffff43fffff43fffff4
@@ -107,22 +77,6 @@ f f f f f f f f f f f f
 . e e e e e 4 . e e e e e 4 
 . f f f f f 4 . f f e f f 4 
 . f f f f f 2 . f f e f f 2 
-`;
-            case "image12":
-            case "exit-point-chunk":return img`
-3 e e e e f 4 
-. e e e e f 4 
-. e e e e f 4 
-. e e e c f 4 
-. f f f f f 2 
-`;
-            case "image9":
-            case "entry-point-chunk":return img`
-3 f f f f f 4 
-. f d e f e 4 
-. f e e f e 4 
-. f e f f e 4 
-. f e e e e 2 
 `;
             case "image14":
             case "healthBoost-potion":return img`
@@ -273,6 +227,93 @@ f 9 f f 7 7 7 f 9 9 9 f
 . . f d 7 7 7 7 f 9 f . 
 . . . f 7 7 7 7 f f . . 
 . . . . f f f f . . . . 
+`;
+            case "image20":
+            case "path":return img`
+f f f f f f f f f f f f f f f f 
+f 9 9 9 9 9 9 9 9 9 9 9 9 9 9 f 
+f 9 9 9 9 9 9 9 9 9 9 9 9 9 9 f 
+f 9 9 9 9 9 9 9 9 9 9 9 9 9 9 f 
+f 9 9 9 9 9 9 9 9 9 9 9 9 9 9 f 
+f 9 9 9 9 9 9 9 9 9 9 9 9 9 9 f 
+f 9 9 9 9 9 9 9 9 9 9 9 9 9 9 f 
+f 9 9 9 9 9 9 9 9 9 9 9 9 9 9 f 
+f 9 9 9 9 9 9 9 9 9 9 9 9 9 9 f 
+f 9 9 9 9 9 9 9 9 9 9 9 9 9 9 f 
+f 9 9 9 9 9 9 9 9 9 9 9 9 9 9 f 
+f 9 9 9 9 9 9 9 9 9 9 9 9 9 9 f 
+f 9 9 9 9 9 9 9 9 9 9 9 9 9 9 f 
+f 9 9 9 9 9 9 9 9 9 9 9 9 9 9 f 
+f 9 9 9 9 9 9 9 9 9 9 9 9 9 9 f 
+f f f f f f f f f f f f f f f f 
+`;
+            case "image21":
+            case "open":return img`
+f f f f f f f f f f f f f f f f 
+f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
+f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
+f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
+f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
+f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
+f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
+f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
+f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
+f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
+f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
+f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
+f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
+f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
+f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
+f f f f f f f f f f f f f f f f 
+`;
+            case "image22":
+            case "closed":return img`
+f f f f f f f f f f f f f f f f 
+f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
+f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
+f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
+f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
+f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
+f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
+f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
+f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
+f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
+f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
+f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
+f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
+f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
+f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
+f f f f f f f f f f f f f f f f 
+`;
+            case "image11":
+            case "entry-point-tile":return img`
+f f . . . . . . . . . . 
+f b f . . . . . . . . . 
+f b d f . . . . . . . . 
+f b d b f . . . . . . . 
+f a d b d f . . . . . . 
+f a a b d b f . . . . . 
+f a a a d b d f . . . . 
+f a a a a b d b f . . . 
+f a a a a a d b d f . . 
+f a a a a a a b d f . . 
+f a a a a a a a d f . . 
+f f f f f f f f f f . . 
+`;
+            case "image10":
+            case "exit-point-tile":return img`
+c d d d d d d d d d 1 1 
+c f f f f f f f f f d 1 
+c b f f f f f f f f f d 
+c b c f f f f f f f f d 
+c b c b f f f f f f f d 
+c b c b c f f f f f f d 
+c b c b c b f f f f f d 
+c b c b c b c f f f f d 
+c b c b c b c b f f f d 
+c b c b c b c b c f f d 
+a c c b c b c b c b f d 
+a a c c c c c c c c c c 
 `;
         }
         return null;

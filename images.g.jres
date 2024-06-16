@@ -15,22 +15,6 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "entity"
     },
-    "myImages.image10": {
-        "id": "myImages.image10",
-        "data": "hwQMAAwAAAD///////8AAP//EfH//wAA/x8REf//AAD/HxER//8AAP8fERH//wAA//8R8f//AAD//x////8AAP//H////wAA/x8fH///AAD//xHx//8AAP//H////wAA////////AAA=",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
-        "mimeType": "image/x-mkcd-f4",
-        "displayName": "entry-point-tile"
-    },
-    "myImages.image11": {
-        "id": "myImages.image11",
-        "data": "hwQMAAwAAAD///////8AAP//H////wAA//8f////AAD/Hx8f//8AAP//EfH//wAA//8f////AAD//xHx//8AAP8fERH//wAA/x8REf//AAD/HxER//8AAP//EfH//wAA////////AAA=",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
-        "mimeType": "image/x-mkcd-f4",
-        "displayName": "exit-point-tile"
-    },
     "myImages.image2": {
         "id": "myImages.image2",
         "data": "hwQcABAAAAADADAAAAMAAP//7+7u7+4O/+7u/+//7w7v7u7/7//uDu/u7v/v7+4O7+7u7u7v7g5ERENENEREAwMAMAAAAwAA///v7u7v7g7/7+7v7//vDv/u7u7u/+4O7+7u7+//7g7v7u7u7u/uDkREQ0Q0REQDAwAwAAADAAD//+/u7u/uDv/+7u/u/+4O7/7u7u7/7g7v7u7u7//uDu/u7u7u7+4ORERDRDRERAMDADAAAAMAAP//7+7u7+4O//7u/u7v7g7/7u7u7v/uDv/u7v7u7+4O7+7u7u7v7g5EREFEFEREAg==",
@@ -54,22 +38,6 @@
         "namespace": "myImages.",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "chunkset-hallway"
-    },
-    "myImages.image12": {
-        "id": "myImages.image12",
-        "data": "hwQHAAUAAAADAAAA7u4PAO7uDwDu7g8A7s4PAP//DwBERAIA",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
-        "mimeType": "image/x-mkcd-f4",
-        "displayName": "exit-point-chunk"
-    },
-    "myImages.image9": {
-        "id": "myImages.image9",
-        "data": "hwQHAAUAAAADAAAA//8PAN/uDgDv/g4A//8OAO/uDgBERAIA",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
-        "mimeType": "image/x-mkcd-f4",
-        "displayName": "entry-point-chunk"
     },
     "myImages.image14": {
         "id": "myImages.image14",
@@ -150,5 +118,45 @@
         "namespace": "myImages.",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "player-down"
+    },
+    "myImages.image20": {
+        "id": "myImages.image20",
+        "data": "hwQQABAAAAD//////////5+ZmZmZmZn5n5mZmZmZmfmfmZmZmZmZ+Z+ZmZmZmZn5n5mZmZmZmfmfmZmZmZmZ+Z+ZmZmZmZn5n5mZmZmZmfmfmZmZmZmZ+Z+ZmZmZmZn5n5mZmZmZmfmfmZmZmZmZ+Z+ZmZmZmZn5n5mZmZmZmfn//////////w==",
+        "dataEncoding": "base64",
+        "namespace": "myImages.",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "path"
+    },
+    "myImages.image21": {
+        "id": "myImages.image21",
+        "data": "hwQQABAAAAD//////////393d3d3d3f3f3d3d3d3d/d/d3d3d3d39393d3d3d3f3f3d3d3d3d/d/d3d3d3d39393d3d3d3f3f3d3d3d3d/d/d3d3d3d39393d3d3d3f3f3d3d3d3d/d/d3d3d3d39393d3d3d3f3f3d3d3d3d/f//////////w==",
+        "dataEncoding": "base64",
+        "namespace": "myImages.",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "open"
+    },
+    "myImages.image22": {
+        "id": "myImages.image22",
+        "data": "hwQQABAAAAD//////////y8iIiIiIiLyLyIiIiIiIvIvIiIiIiIi8i8iIiIiIiLyLyIiIiIiIvIvIiIiIiIi8i8iIiIiIiLyLyIiIiIiIvIvIiIiIiIi8i8iIiIiIiLyLyIiIiIiIvIvIiIiIiIi8i8iIiIiIiLyLyIiIiIiIvL//////////w==",
+        "dataEncoding": "base64",
+        "namespace": "myImages.",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "closed"
+    },
+    "myImages.image11": {
+        "id": "myImages.image11",
+        "data": "hwQMAAwAAAD///////8AAL+7qqqq+gAA8N2tqqr6AAAAv7uqqvoAAADw3a2q+gAAAAC/u6r6AAAAAPDdrfoAAAAAAL+7+gAAAAAA8N39AAAAAAAA//8AAAAAAAAAAAAAAAAAAAAAAAA=",
+        "dataEncoding": "base64",
+        "namespace": "myImages.",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "entry-point-tile"
+    },
+    "myImages.image10": {
+        "id": "myImages.image10",
+        "data": "hwQMAAwAAADMzMzMzKoAAP27u7u7rAAA/c/MzMzMAAD9/7u7u8sAAP3/z8zMzAAA/f//u7vLAAD9///PzMwAAP3///+7ywAA/f///8/MAAD9/////8sAANH/////zwAAEd3d3d3NAAA=",
+        "dataEncoding": "base64",
+        "namespace": "myImages.",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "exit-point-tile"
     }
 }

@@ -7,18 +7,18 @@ enum Sides {
 class ChunkData {
     chunkHasBeenColapsed: boolean
     chunkTypeOptions: Array<ChunkTypeData>
-    chunkPositon: Position
-    ChunkIndex: number
-    Entities:Item[]
-    constructor(position: Position, index: number, chunkSet: ChunkTypeData[], entities:Item[]) {
+    position: Position
+    toEnd: number = 0;
+    state: number = 0;
+    Entities:Entity[]
+    constructor(position: Position, chunkSet: ChunkTypeData[], entities:Entity[]) {
         this.chunkHasBeenColapsed = false;
         this.chunkTypeOptions = chunkSet;
-        this.chunkPositon = position;
-        this.ChunkIndex = index;
+        this.position = position;
         this.Entities = entities;
     }
 }
-const ChunkGrid: ChunkData[] = [];
+const ChunkGrid: ChunkData[][] = [];
 const VoidTypeTile = new ChunkTypeData([
     [15,15,15,15,15],
     [15,15,15,15,15],
@@ -43,28 +43,53 @@ const modifyNeighbouringTile = (chunkData: ChunkTypeData, checkSide: Sides, Neig
         NeighbourTile.chunkTypeOptions = NeighbourTile.chunkTypeOptions.filter(option => option.getSide(opositeSide).every((tile: number, index:number) => {return tile === chunkData.getSide(checkSide)[index]}));
     }
 }
-const createEntrophyGrid = (gridData: ChunkData[]): ChunkData => {
-    let minOptions: number = Infinity;
-    let bestTile: ChunkData;
-    gridData.forEach((chunk) => {
-        if (!chunk.chunkHasBeenColapsed && chunk.chunkTypeOptions.length < minOptions) {
-            minOptions = chunk.chunkTypeOptions.length
-            bestTile = chunk
-        }
-    })
-    return bestTile
-}
-const initializeChunkGrid = (gridData: ChunkData[], chunkSet: ChunkTypeData[], dim: Size) => {
-    for (let i = 0; i < dim.width * dim.height; i++) {
-        gridData[i] = new ChunkData({ y: Math.floor(i / dim.width), x: i % dim.width }, i, chunkSet, []);
+const modifyByTile = (checkSide: Sides, NeighbourTile: ChunkData) => {
+    switch (checkSide) {
+        case 0:
+            NeighbourTile.chunkTypeOptions = NeighbourTile.chunkTypeOptions.filter(option => option.imgData[ChunkSize.height - 1][2] === 14)
+            break;
+        case 1:
+            NeighbourTile.chunkTypeOptions = NeighbourTile.chunkTypeOptions.filter(option => option.imgData[2][0] === 14)
+            break;
+        case 2:
+            NeighbourTile.chunkTypeOptions = NeighbourTile.chunkTypeOptions.filter(option => option.imgData[0][2] === 14)
+            break;
+        case 3:
+            NeighbourTile.chunkTypeOptions = NeighbourTile.chunkTypeOptions.filter(option => option.imgData[2][ChunkSize.width - 1] === 14)
+            break;
+        default:
+            break;
     }
 }
-const resetChunkGrid = (gridData: ChunkData[], chunkSet: ChunkTypeData[], dim: Size) => {
-    for (let i = 0; i < dim.width * dim.height; i++) {
-         gridData[i].chunkHasBeenColapsed = false;
-        gridData[i].chunkTypeOptions = chunkSet;
-        gridData[i].Entities = [];
+const createEntrophyGrid = (gridData: ChunkData[][]): ChunkData => {
+    let minOptions: number = Infinity;
+    let bestTile: ChunkData;
+    for (let i = 0; i < gridData.length; i++) {
+        for (let j = 0; j < gridData[i].length; j++) {
+            if (!gridData[i][j].chunkHasBeenColapsed && gridData[i][j].chunkTypeOptions.length < minOptions) {
+                minOptions = gridData[i][j].chunkTypeOptions.length
+                bestTile = gridData[i][j]
+            }
+        }
+    }
+    return bestTile
 }
+const initializeChunkGrid = (gridData: ChunkData[][], chunkSet: ChunkTypeData[], dim: Size) => {
+    for (let i = 0; i < dim.height; i++) {
+        gridData.push([])
+        for (let j = 0; j < dim.width; j++) {
+            gridData[i][j] = new ChunkData({ y: i, x: j }, chunkSet, []);
+        }
+    }
+}
+const resetChunkGrid = (gridData: ChunkData[][], chunkSet: ChunkTypeData[], dim: Size) => {
+    for (let i = 0; i < dim.height; i++) {
+        for (let j = 0; j < dim.width; j++) {
+            gridData[i][j].chunkHasBeenColapsed = false;
+            gridData[i][j].chunkTypeOptions = chunkSet;
+            gridData[i][j].Entities = [];
+        }
+    }
 }
 const weightedRandom = (chunkTypeOptions:ChunkTypeData[], generatedNum:number) => {
     let cumulativeWeights: number[] = [];
@@ -80,10 +105,30 @@ const weightedRandom = (chunkTypeOptions:ChunkTypeData[], generatedNum:number) =
     }
     return randomNumber
 }
-const generateDungeonLevelRooms = (gridData: ChunkData[], dim: Size) => {
+const generatePath = (grid:ChunkData[][]) => {
+    let path: ChunkData[] = randomPath(grid[EntryPointPosition.y][EntryPointPosition.x], grid[ExitPointPosition.y][ExitPointPosition.x], grid);
+    for (let i = 1; i < path.length; i++) {
+        if (path[i].position.x - path[i - 1].position.x === 1) {
+            modifyByTile(Sides.right, path[i])
+            modifyByTile(Sides.left, path[i - 1])
+        }
+        if (path[i].position.y - path[i - 1].position.y === 1) {
+            modifyByTile(Sides.bottom, path[i])
+            modifyByTile(Sides.top, path[i - 1])
+        }
+        if (path[i].position.x - path[i - 1].position.x === -1) {
+            modifyByTile(Sides.left, path[i])
+            modifyByTile(Sides.right, path[i - 1])
+        }
+        if (path[i].position.y - path[i - 1].position.y === -1) {
+            modifyByTile(Sides.top, path[i])
+            modifyByTile(Sides.bottom, path[i - 1])
+        }
+    }
+}
+const generateDungeonLevelRooms = (gridData: ChunkData[][], dim: Size) => {
     const random = splitmix32((globalSeed) >>> 0)
-    
-    for (let index: number = 0; index < gridData.length; index++) {
+    for (let index: number = 0; index < LevelDimensions.height * LevelDimensions.width; index++) {
         let probability: number = 0.01;
         let chosenTile = createEntrophyGrid(gridData);
         if (chosenTile.chunkTypeOptions.length === 0) {
@@ -96,41 +141,50 @@ const generateDungeonLevelRooms = (gridData: ChunkData[], dim: Size) => {
         for (let i = 0; i < ChunkSize.height; i++) {
             for (let j = 0; j < ChunkSize.width; j++) {
                 if (chosenTile.chunkTypeOptions[0].imgData[i][j] === 14 && random() <= probability && chosenTile.chunkTypeOptions[0].chunkType !== 0) {
-                    chosenTile.Entities.push(new Item({ x: j, y: i }, Math.pickRandom([0,1,2,3])))
-                    if (probability > 0) {
-                        probability = probability - 0.005  
+                    if (random() > 0.5) {
+                        chosenTile.Entities.push(new Entity({ x: j, y: i }, Math.pickRandom([0, 1, 2, 3])))
+                        if (probability > 0) {
+                            probability = probability - 0.005
+                        }
+                    } else {
+                        Enemies.push(new Creature({x: j + chosenTile.position.x * ChunkSize.width, y: i + chosenTile.position.y * ChunkSize.height}, 6))
                     }
                 }
             }
         }
-            let { x, y } = chosenTile.chunkPositon;
-            let chosenIndex = chosenTile.ChunkIndex;
-            if (y != 0) modifyNeighbouringTile(chosenTile.chunkTypeOptions[0], Sides.top, gridData[chosenIndex - dim.width]);
-            if (y != dim.height - 1) modifyNeighbouringTile(chosenTile.chunkTypeOptions[0], Sides.bottom, gridData[chosenIndex + dim.width]);
-            if (x != 0) modifyNeighbouringTile(chosenTile.chunkTypeOptions[0], Sides.left, gridData[chosenIndex - 1]);
-            if (x != dim.width - 1) modifyNeighbouringTile(chosenTile.chunkTypeOptions[0], Sides.right, gridData[chosenIndex + 1]);
+        let { x, y } = chosenTile.position;
+        if (y != 0) modifyNeighbouringTile(chosenTile.chunkTypeOptions[0], Sides.top, gridData[y - 1][x]);
+        if (y != dim.height - 1) modifyNeighbouringTile(chosenTile.chunkTypeOptions[0], Sides.bottom, gridData[y + 1][x]);
+        if (x != 0) modifyNeighbouringTile(chosenTile.chunkTypeOptions[0], Sides.left, gridData[y][x - 1]);
+        if (x != dim.width - 1) modifyNeighbouringTile(chosenTile.chunkTypeOptions[0], Sides.right, gridData[y][x + 1]);
     }
+    gridData[EntryPointPosition.y][EntryPointPosition.x].Entities.push(new Entity({ x: 2, y: 2 }, 13))
+    gridData[ExitPointPosition.y][ExitPointPosition.x].Entities.push(new Entity({x:2, y:2}, 12))
 }
 
-const modifyDungeonBorder = (gridData: ChunkData[], voidType:ChunkTypeData, dim:Size) => {
+const modifyDungeonBorder = (gridData: ChunkData[][], voidType:ChunkTypeData, dim:Size) => {
     for (let j = 0; j < dim.width; j++) {
-        modifyNeighbouringTile(voidType, 2 , gridData[j])  
+        modifyNeighbouringTile(voidType, 2 , gridData[0][j])  
     }
     for (let j = 0; j < dim.width; j++) {
-        modifyNeighbouringTile(voidType, 0 , gridData[gridData.length - j - 1])  
+        modifyNeighbouringTile(voidType, 0 , gridData[LevelDimensions.height - 1][j])  
     }
     for (let j = 0; j < dim.height; j++) {
-        modifyNeighbouringTile(voidType, 1 , gridData[(dim.width) * j])  
+        modifyNeighbouringTile(voidType, 1 , gridData[j][0])  
     }
     for (let j = 0; j < dim.height; j++) {
-        modifyNeighbouringTile(voidType, 3 , gridData[(dim.width) * j + dim.width-1])  
+        modifyNeighbouringTile(voidType, 3 , gridData[j][LevelDimensions.width - 1])  
     }
 }
-const exitAndEntry = (gridData: ChunkData[]) => {
-    gridData[0].chunkTypeOptions = [EntryPoint[0]]
-    modifyNeighbouringTile(gridData[0].chunkTypeOptions[0], 1, gridData[1])
-    modifyNeighbouringTile(gridData[0].chunkTypeOptions[0], 2, gridData[LevelDimensions.width])
-    gridData[gridData.length-1].chunkTypeOptions = [ExitPoint[0]]
-    modifyNeighbouringTile(gridData[gridData.length-1].chunkTypeOptions[0], 0, gridData[gridData.length-1-LevelDimensions.width])
-    modifyNeighbouringTile(gridData[gridData.length-1].chunkTypeOptions[0], 3, gridData[gridData.length-3])
+const exitAndEntry = () => {
+    if (EntryPointPosition.x < LevelDimensions.width * 0.5) {
+        ExitPointPosition.x = EntryPointPosition.x + LevelDimensions.width * 0.5 + Math.floor(Math.random() * Math.abs(LevelDimensions.width * 0.5 - EntryPointPosition.x))
+    } else {
+        ExitPointPosition.x = EntryPointPosition.x - LevelDimensions.width * 0.5 - Math.floor(Math.random() * Math.abs(LevelDimensions.width * 0.5 - EntryPointPosition.x))
+    }
+    if (EntryPointPosition.y < LevelDimensions.height * 0.5) {
+        ExitPointPosition.y = EntryPointPosition.y + LevelDimensions.height * 0.5 + Math.floor(Math.random() * Math.abs(LevelDimensions.height * 0.5 - EntryPointPosition.y))
+    } else {
+        ExitPointPosition.y = EntryPointPosition.y - LevelDimensions.height * 0.5 - Math.floor(Math.random() * Math.abs(LevelDimensions.height * 0.5 - EntryPointPosition.y))
+    }
 }

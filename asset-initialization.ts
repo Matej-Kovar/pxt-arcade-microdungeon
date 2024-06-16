@@ -133,7 +133,3 @@ loadTileSet(assets.image`chunkset-room`, testingTileSet, 10, ChunkTypes.room)
 loadTileSet(assets.image`chunkset-hallway`, testingTileSet, 10, ChunkTypes.hallway)
 loadTileSet(assets.image`chunkset-broken`, testingTileSet, 1, ChunkTypes.broken)
 testingTileSet = createTileRotations(testingTileSet)
-const ExitPoint: ChunkTypeData[] = []
-const EntryPoint: ChunkTypeData[] = []
-loadTileSet(assets.image`exit-point-chunk`, ExitPoint, 1, ChunkTypes.special)
-loadTileSet(assets.image`entry-point-chunk`, EntryPoint, 1, ChunkTypes.special)
