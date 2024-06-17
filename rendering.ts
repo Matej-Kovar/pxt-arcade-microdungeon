@@ -26,7 +26,7 @@ const startingPoint:Position = { y: TestingPlayer.absolutePosition.y - Math.ceil
 let globalSeed: number = Math.random() * 2 ** 32;
 const renderFrame = (gridData: ChunkData[][]): void => {
     for (let i = 0; i < Enemies.length; i++) {
-            Enemies[i].active = false
+        Enemies[i].active = false
     }
     clearDisplayGrid(entityGrid)
     startingPoint.y = TestingPlayer.absolutePosition.y - Math.ceil(RenderDistance.height / 2)
@@ -90,14 +90,28 @@ const renderFrame = (gridData: ChunkData[][]): void => {
     }
     for (let i = 0; i < Enemies.length; i++) {
         if (Enemies[i].absolutePosition.x > startingPoint.x && Enemies[i].absolutePosition.x < startingPoint.x + RenderDistance.width && Enemies[i].absolutePosition.y > startingPoint.y && Enemies[i].absolutePosition.y < startingPoint.y + RenderDistance.height) {
-            lookupTileData(Enemies[i].type, entityGrid[Enemies[i].absolutePosition.y - startingPoint.y][Enemies[i].absolutePosition.x - startingPoint.x])
             Enemies[i].active = true
+            if (Enemies[i].path.length > 0) {
+                if (entityGrid[Enemies[i].newPos.y - startingPoint.y][Enemies[i].newPos.x - startingPoint.x].sprite.kind() !== SpriteKind.Player) {
+                    Enemies[i].absolutePosition.y = Enemies[i].newPos.y
+                    Enemies[i].absolutePosition.x = Enemies[i].newPos.x
+                    Enemies[i].path.splice(Enemies[i].path.length - 1, 1)
+                }
+            }
+            lookupTileData(Enemies[i].type, entityGrid[Enemies[i].absolutePosition.y - startingPoint.y][Enemies[i].absolutePosition.x - startingPoint.x])
+            //if (absoluteToChunks(Enemies[i].absolutePosition).x === absoluteToChunks(TestingPlayer.absolutePosition).x && absoluteToChunks(Enemies[i].absolutePosition).y === absoluteToChunks(TestingPlayer.absolutePosition).y) {
+                //Enemies[i].path = []
+            //}
             if (Enemies[i].path.length === 0) {
                 Enemies[i].path = findPath(displayGrid[Enemies[i].absolutePosition.y-startingPoint.y][Enemies[i].absolutePosition.x - startingPoint.x], displayGrid[TestingPlayer.absolutePosition.y - startingPoint.y][TestingPlayer.absolutePosition.x - startingPoint.x], displayGrid)
             }
-            Enemies[i].absolutePosition.x = Enemies[i].path[Enemies[i].path.length - 1].x
-            Enemies[i].absolutePosition.y = Enemies[i].path[Enemies[i].path.length-1].y
-            Enemies[i].path.splice(Enemies[i].path.length-1, 1)
+                Enemies[i].newPos.x = Enemies[i].path[Enemies[i].path.length - 1].x
+            Enemies[i].newPos.y = Enemies[i].path[Enemies[i].path.length - 1].y
+            console.log("Absolute pos:")
+            console.log(Enemies[i].absolutePosition)
+            console.log("New pos:")
+            console.log(Enemies[i].newPos)
+            console.log(Enemies[i].newPos)
         }
         
     }

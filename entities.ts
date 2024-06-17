@@ -26,6 +26,7 @@ class Entity {
 }
 class Creature {
     absolutePosition: Position
+    newPos:Position = {x:0, y:0}
     type: number
     target: Position
     path: Position[] = []

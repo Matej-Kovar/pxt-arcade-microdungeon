@@ -45,7 +45,6 @@ const findPath = (Start: TileData, End: TileData, grid: TileData[][]) => {
                 lowestFIndex = i
             }
         }
-    
         const CurrentTile: TileData = TilesToDo[lowestFIndex];
         TilesToDo.splice(lowestFIndex, 1)
         TilesFinished.push(CurrentTile)
@@ -55,7 +54,8 @@ const findPath = (Start: TileData, End: TileData, grid: TileData[][]) => {
         for (let i = 0; i < Neighbors.length; i++) {
             const CurrentNeigbor = Neighbors[i]
             let tempG = CurrentTile.costToTravel + 1
-            if (CurrentNeigbor.state !== TileStates.closedSet && CurrentNeigbor.sprite.kind() !== SpriteKind.Wall) {
+            const NeighborPos:Position = CurrentNeigbor.position
+            if (CurrentNeigbor.state !== TileStates.closedSet && CurrentNeigbor.sprite.kind() !== SpriteKind.Wall && entityGrid[NeighborPos.y][NeighborPos.x].sprite.kind() !== SpriteKind.Player) {
                 if (CurrentNeigbor.state === TileStates.openSet) {
                     if (tempG < CurrentNeigbor.costToTravel) {
                         CurrentNeigbor.costToTravel = tempG
@@ -69,7 +69,6 @@ const findPath = (Start: TileData, End: TileData, grid: TileData[][]) => {
                 if (CurrentNeigbor.costToTravel === tempG) {
                     CurrentNeigbor.cameFrom = CurrentTile
                 }
-
             }
         }
         if (CurrentTile.position.x === End.position.x && CurrentTile.position.y === End.position.y) {
