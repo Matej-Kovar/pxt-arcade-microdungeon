@@ -29,6 +29,7 @@ const isColision = (position: Position, Side: Number) => {
 const AttackEnemy = (Position:Position)=> {
     if (entityGrid[Position.y][Position.x].sprite.kind() === SpriteKind.Enemy) {
         const Enemy: Creature = Enemies.find((enemy: Creature) => enemy.absolutePosition.y - startingPoint.y === Position.y && enemy.absolutePosition.x - startingPoint.x === Position.x)
+        music.play(music.melodyPlayable(music.pewPew), music.PlaybackMode.InBackground)
         if (Enemy !== undefined) {
             Enemy.health -= Attack(Enemy.defense, TestingPlayer.attack)
         }

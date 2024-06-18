@@ -21,7 +21,7 @@ const ExitPointPosition: Position = { x: 0, y: 0 }
 exitAndEntry()
 //inicializace Hráče
 let level:number = 1
-const TestingPlayer: Creature = new Creature({ x: EntryPointPosition.x * ChunkSize.width + 2, y: EntryPointPosition.y * ChunkSize.height + 2 }, EntityTypes.player, 100, 5, 10)
+const TestingPlayer: Creature = new Creature({ x: EntryPointPosition.x * ChunkSize.width + 2, y: EntryPointPosition.y * ChunkSize.height + 2 }, EntityTypes.player, 100, 100, 10)
 TestingPlayer.sprite = sprites.create(assets.image`player-right`, SpriteKind.Player)
 TestingPlayer.sprite.z = 10
 const playerHealth = textsprite.create(TestingPlayer.health.toString(), 0, 1)
@@ -39,7 +39,7 @@ playerAttack.z = 100
 const playerDefense = textsprite.create(TestingPlayer.defense.toString(), 0, 1)
 playerDefense.setIcon(assets.image`defense`)
 playerDefense.setOutline(1, 15)
-playerDefense.x = 95
+playerDefense.x = 105
 playerDefense.y = 15
 playerDefense.z = 100
 const dungeonLevel = textsprite.create(level.toString(), 0, 1)
@@ -127,12 +127,12 @@ const renderFrame = (gridData: ChunkData[][]): void => {
         }
     }
     //resetuje nepřáteled
-    for (let i = Enemies.length-1; i > 0; i--) {
+    for (let i = Enemies.length-1; i >= 0; i--) {
         const enemyPos = Enemies[i].absolutePosition
-        if (enemyPos.x >= startingPoint.x && enemyPos.x < startingPoint.x + RenderDistance.width && enemyPos.y >= startingPoint.y && enemyPos.y < startingPoint.y + RenderDistance.height) {
-            if (Enemies[i].health <= 0) {
-                Enemies.splice(i, 1)
-            } else {
+        if (Enemies[i].health <= 0) {
+            Enemies.splice(i, 1)
+        } else {
+            if (enemyPos.x >= startingPoint.x && enemyPos.x < startingPoint.x + RenderDistance.width && enemyPos.y >= startingPoint.y && enemyPos.y < startingPoint.y + RenderDistance.height) { 
                 entityGrid[enemyPos.y - startingPoint.y][enemyPos.x - startingPoint.x].sprite.setKind(SpriteKind.Enemy)
             }
         }
@@ -148,6 +148,8 @@ const renderFrame = (gridData: ChunkData[][]): void => {
                 enemyPos.y = Enemies[i].newPosition.y
             }
             //útok na hráče
+            //console.log(Enemies[i].attack)
+            console.log(Enemies[i].health)
             if (Enemies[i].newPosition.x === TestingPlayer.absolutePosition.x && Enemies[i].newPosition.y === TestingPlayer.absolutePosition.y) {
                 TestingPlayer.health -= Attack(TestingPlayer.defense, Enemies[i].attack)
                 if (TestingPlayer.health <= 0) {
