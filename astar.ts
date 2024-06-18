@@ -46,7 +46,6 @@ const findPath = (Start: TileData, End: TileData, grid: TileData[][]) => {
                 lowestFIndex = i
             }
         }
-    
         const CurrentTile: TileData = TilesToDo[lowestFIndex];
         TilesToDo.splice(lowestFIndex, 1)
         TilesFinished.push(CurrentTile)
@@ -71,7 +70,6 @@ const findPath = (Start: TileData, End: TileData, grid: TileData[][]) => {
                 if (CurrentNeigbor.costToTravel === tempG) {
                     CurrentNeigbor.cameFrom = CurrentTile
                 }
-
             }
         }
         if (CurrentTile.position.x === End.position.x && CurrentTile.position.y === End.position.y) {
