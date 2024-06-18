@@ -129,7 +129,7 @@ const generatePath = (grid:ChunkData[][]) => {
 const generateDungeonLevelRooms = (gridData: ChunkData[][], dim: Size) => {
     const random = splitmix32((globalSeed) >>> 0)
     for (let index: number = 0; index < LevelDimensions.height * LevelDimensions.width; index++) {
-        let probability: number = 0.01;
+        let probability: number = 0.025;
         let chosenTile = createEntrophyGrid(gridData);
         if (chosenTile.chunkTypeOptions.length === 0) {
             chosenTile.chunkTypeOptions = [VoidTypeTile];
@@ -147,7 +147,9 @@ const generateDungeonLevelRooms = (gridData: ChunkData[][], dim: Size) => {
                             probability = probability - 0.005
                         }
                     } else {
-                        Enemies.push(new Creature({x: j + chosenTile.position.x * ChunkSize.width, y: i + chosenTile.position.y * ChunkSize.height}, 6))
+                        Enemies.push(new Creature({ x: j + chosenTile.position.x * ChunkSize.width, y: i + chosenTile.position.y * ChunkSize.height }, 6, 20 * level, 7 * level, 10 * level))
+                        Enemies[Enemies.length - 1].newPosition.x = Enemies[Enemies.length - 1].absolutePosition.x
+                        Enemies[Enemies.length - 1].newPosition.y = Enemies[Enemies.length - 1].absolutePosition.y
                     }
                 }
             }

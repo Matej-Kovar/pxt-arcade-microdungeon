@@ -2,7 +2,8 @@
     "name": "Wave function collapse",
     "description": "",
     "dependencies": {
-        "device": "*"
+        "device": "*",
+        "arcade-text": "github:microsoft/arcade-text#v1.3.0"
     },
     "files": [
         "main.ts",
@@ -31,7 +32,7 @@
     "preferredEditor": "tsprj",
     "languageRestriction": "javascript-only",
     "palette": [
-        "#FFFFFF",
+        "#000000",
         "#FFFFFF",
         "#FF2121",
         "#FF93C4",

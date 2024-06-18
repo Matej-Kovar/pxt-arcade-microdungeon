@@ -228,25 +228,6 @@ f 9 f f 7 7 7 f 9 9 9 f
 . . . f 7 7 7 7 f f . . 
 . . . . f f f f . . . . 
 `;
-            case "image20":
-            case "path":return img`
-f f f f f f f f f f f f f f f f 
-f 9 9 9 9 9 9 9 9 9 9 9 9 9 9 f 
-f 9 9 9 9 9 9 9 9 9 9 9 9 9 9 f 
-f 9 9 9 9 9 9 9 9 9 9 9 9 9 9 f 
-f 9 9 9 9 9 9 9 9 9 9 9 9 9 9 f 
-f 9 9 9 9 9 9 9 9 9 9 9 9 9 9 f 
-f 9 9 9 9 9 9 9 9 9 9 9 9 9 9 f 
-f 9 9 9 9 9 9 9 9 9 9 9 9 9 9 f 
-f 9 9 9 9 9 9 9 9 9 9 9 9 9 9 f 
-f 9 9 9 9 9 9 9 9 9 9 9 9 9 9 f 
-f 9 9 9 9 9 9 9 9 9 9 9 9 9 9 f 
-f 9 9 9 9 9 9 9 9 9 9 9 9 9 9 f 
-f 9 9 9 9 9 9 9 9 9 9 9 9 9 9 f 
-f 9 9 9 9 9 9 9 9 9 9 9 9 9 9 f 
-f 9 9 9 9 9 9 9 9 9 9 9 9 9 9 f 
-f f f f f f f f f f f f f f f f 
-`;
             case "image21":
             case "open":return img`
 f f f f f f f f f f f f f f f f 
@@ -264,25 +245,6 @@ f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f
 f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
 f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
 f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
-f f f f f f f f f f f f f f f f 
-`;
-            case "image22":
-            case "closed":return img`
-f f f f f f f f f f f f f f f f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
 f f f f f f f f f f f f f f f f 
 `;
             case "image11":
@@ -314,6 +276,95 @@ c b c b c b c b f f f d
 c b c b c b c b c f f d 
 a c c b c b c b c b f d 
 a a c c c c c c c c c c 
+`;
+            case "image22":
+            case "closed":return img`
+f f f f f f f f f f f f 
+f 2 2 2 2 2 2 2 2 2 2 f 
+f 2 2 2 2 2 2 2 2 2 2 f 
+f 2 2 2 2 2 2 2 2 2 2 f 
+f 2 2 2 2 2 2 2 2 2 2 f 
+f 2 2 2 2 2 2 2 2 2 2 f 
+f 2 2 2 2 2 2 2 2 2 2 f 
+f 2 2 2 2 2 2 2 2 2 2 f 
+f 2 2 2 2 2 2 2 2 2 2 f 
+f 2 2 2 2 2 2 2 2 2 2 f 
+f 2 2 2 2 2 2 2 2 2 2 f 
+f f f f f f f f f f f f 
+`;
+            case "image20":
+            case "path":return img`
+. . . . . . . . . . . . 
+. . . . . . . . . . . . 
+. . . . f f f f . . . . 
+. . . f 9 9 9 9 f . . . 
+. . f 9 9 9 9 9 9 f . . 
+. . f 9 9 9 9 9 9 f . . 
+. . f 9 9 9 9 9 9 f . . 
+. . f 9 9 9 9 9 9 f . . 
+. . . f 9 9 9 9 f . . . 
+. . . . f f f f . . . . 
+. . . . . . . . . . . . 
+. . . . . . . . . . . . 
+`;
+            case "image12":
+            case "attack":return img`
+. . . . . f f 
+. . . . f 9 f 
+f f . f 9 f . 
+f d f 9 f . . 
+. f d f . . . 
+f e f d f . . 
+f f . f f . . 
+`;
+            case "image9":
+            case "lives":return img`
+. f f . f f . 
+f 2 2 f 2 2 f 
+f 2 2 2 2 2 f 
+f 2 2 2 2 2 f 
+. f 2 2 2 f . 
+. . f 2 f . . 
+. . . f . . . 
+`;
+            case "image24":
+            case "myImage":return img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`;
+            case "image25":
+            case "level":return img`
+f f f . . . . . . 
+f 5 f . f f f f f 
+f 5 f . f 5 f 5 f 
+f 5 f . f 5 f 5 f 
+f 5 f f f 5 f 5 f 
+f 5 5 5 f f 5 f f 
+f f f f f f f f . 
+`;
+            case "image23":
+            case "defense":return img`
+. f f f f f . 
+f 9 9 9 9 9 f 
+f 9 9 9 9 9 f 
+f 9 9 9 9 9 f 
+. f 9 9 9 f . 
+. . f 9 f . . 
+. . . f . . . 
 `;
         }
         return null;

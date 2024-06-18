@@ -19,13 +19,14 @@ const getNeighborsDiagonal = (element: TileData, gridData:TileData[][]) => {
     if (element.position.x != 0 && element.position.y != RenderDistance.height - 1) Neighbors.push(gridData[element.position.y + 1][element.position.x - 1]);
     return Neighbors
 }
-const getDistanceToEnd = (thisTile: any, end:any) => {
-    return Math.sqrt((end.position.x - thisTile.position.x) ** 2) + Math.sqrt((end.position.y - thisTile.position.y) ** 2)
+const getDistanceToEnd = (thisPosition: any, endPosition:any) => {
+    return Math.sqrt((endPosition.x - thisPosition.x) ** 2) + Math.sqrt((endPosition.y - thisPosition.y) ** 2)
 }
+//nejde cestu mezi 2 body
 const findPath = (Start: TileData, End: TileData, grid: TileData[][]) => {
     for (let i = 0; i < RenderDistance.height; i++) {
         for (let j = 0; j < RenderDistance.width; j++) {
-            grid[i][j].toEnd = getDistanceToEnd(grid[i][j], End)
+            grid[i][j].toEnd = getDistanceToEnd(grid[i][j].position, End.position)
             grid[i][j].cameFrom = undefined
             grid[i][j].costToTravel = Infinity
             grid[i][j].state = 0
@@ -55,6 +56,7 @@ const findPath = (Start: TileData, End: TileData, grid: TileData[][]) => {
         for (let i = 0; i < Neighbors.length; i++) {
             const CurrentNeigbor = Neighbors[i]
             let tempG = CurrentTile.costToTravel + 1
+            const NeighborPos:Position = CurrentNeigbor.position
             if (CurrentNeigbor.state !== TileStates.closedSet && CurrentNeigbor.sprite.kind() !== SpriteKind.Wall) {
                 if (CurrentNeigbor.state === TileStates.openSet) {
                     if (tempG < CurrentNeigbor.costToTravel) {
@@ -83,10 +85,11 @@ const findPath = (Start: TileData, End: TileData, grid: TileData[][]) => {
     }
     return PathToEnd
 }
+//geneneruje přímou cestu s náhodnými odchylkami od startu k cíli
 const randomPath = (Start: ChunkData, End: ChunkData, grid: ChunkData[][]) => {
     for (let i = 0; i < LevelDimensions.height; i++) {
         for (let j = 0; j < LevelDimensions.width; j++) {
-            grid[i][j].toEnd = getDistanceToEnd(grid[i][j], End)
+            grid[i][j].toEnd = getDistanceToEnd(grid[i][j].position, End.position)
             grid[i][j].state = TileStates.noSet
         }
     }

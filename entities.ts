@@ -11,13 +11,13 @@ class Entity {
                 TestingPlayer.health = TestingPlayer.maxhealth
                 break;
             case 1:
-                TestingPlayer.maxhealth = TestingPlayer.maxhealth*1.2
+                TestingPlayer.maxhealth = Math.ceil(TestingPlayer.maxhealth*1.2)
             break;
             case 2:
-                TestingPlayer.attack = TestingPlayer.attack*1.2
+                TestingPlayer.attack = Math.ceil(TestingPlayer.attack*1.2)
                 break;
             case 3:
-                TestingPlayer.defense = TestingPlayer.defense*1.2
+                TestingPlayer.defense = Math.ceil(TestingPlayer.defense*1.2)
                 break;
             default:
                 break;
@@ -26,6 +26,8 @@ class Entity {
 }
 class Creature {
     absolutePosition: Position
+    newPosition: Position = { x: 0, y: 0 }
+    relativePos: Position;
     type: number
     target: Position
     path: Position[] = []
@@ -35,9 +37,13 @@ class Creature {
     attack: number
     defense: number
     active:boolean = false
-    constructor(positionAbs:Position, creatureType:number) {
+    constructor(positionAbs:Position, creatureType:number, maxhlt:number, dfn:number, atk:number) {
         this.absolutePosition = positionAbs
         this.type = creatureType
+        this.maxhealth = maxhlt
+        this.health = maxhlt
+        this.defense = dfn
+        this.attack = atk
     }
 }
 enum EntityTypes {

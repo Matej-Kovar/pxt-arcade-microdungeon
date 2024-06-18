@@ -10,28 +10,60 @@ class TileData {
         this.position = pos
     }
 }
+//inicializace velikostí
 const LevelDimensions: Size = { width: 10, height: 10 };
 const ChunkSize: Size = { width: 5, height: 5 };
 const TileSize: Size = { width: 12, height: 12 };
-const RenderDistance: Size = { width: Math.floor((userconfig.ARCADE_SCREEN_WIDTH + 0.5 * TileSize.width) / TileSize.width), height: Math.floor((userconfig.ARCADE_SCREEN_HEIGHT + 0.5 * TileSize.height) / TileSize.height) }
+const RenderDistance: Size = { width: Math.ceil((userconfig.ARCADE_SCREEN_WIDTH + 0.5 * TileSize.width) / TileSize.width), height: Math.ceil((userconfig.ARCADE_SCREEN_HEIGHT + 0.5 * TileSize.height) / TileSize.height) }
+//inicializace vchodu a východu do dungeonu
 const EntryPointPosition: Position = { x: Math.floor(Math.random() * (LevelDimensions.width - 1) + 1), y: Math.floor(Math.random() * (LevelDimensions.height - 1) + 1) }
 const ExitPointPosition: Position = { x: 0, y: 0 }
 exitAndEntry()
-const TestingPlayer: Creature = new Creature({ x: EntryPointPosition.x * ChunkSize.width + 2, y: EntryPointPosition.y * ChunkSize.height + 2 }, EntityTypes.player)
+//inicializace Hráče
+let level:number = 1
+const TestingPlayer: Creature = new Creature({ x: EntryPointPosition.x * ChunkSize.width + 2, y: EntryPointPosition.y * ChunkSize.height + 2 }, EntityTypes.player, 100, 5, 10)
 TestingPlayer.sprite = sprites.create(assets.image`player-right`, SpriteKind.Player)
 TestingPlayer.sprite.z = 10
+const playerHealth = textsprite.create(TestingPlayer.health.toString(), 0, 1)
+playerHealth.setIcon(assets.image`lives`)
+playerHealth.setOutline(1, 15)
+playerHealth.x = 20
+playerHealth.y = 15
+playerHealth.z = 100
+const playerAttack = textsprite.create(TestingPlayer.attack.toString(), 0, 1)
+playerAttack.setIcon(assets.image`attack`)
+playerAttack.setOutline(1, 15)
+playerAttack.x = 75
+playerAttack.y = 15
+playerAttack.z = 100
+const playerDefense = textsprite.create(TestingPlayer.defense.toString(), 0, 1)
+playerDefense.setIcon(assets.image`defense`)
+playerDefense.setOutline(1, 15)
+playerDefense.x = 95
+playerDefense.y = 15
+playerDefense.z = 100
+const dungeonLevel = textsprite.create(level.toString(), 0, 1)
+dungeonLevel.setIcon(assets.image`level`)
+dungeonLevel.setOutline(1, 15)
+dungeonLevel.x = 145
+dungeonLevel.y = 15
+dungeonLevel.z = 100
+
+//inicializace gridů pro zobrazování políček
 const displayGrid: TileData[][] = [];
 const entityGrid: TileData[][] = [];
+
 const startingPoint:Position = { y: TestingPlayer.absolutePosition.y - Math.ceil(RenderDistance.height / 2), x: TestingPlayer.absolutePosition.x - Math.ceil(RenderDistance.width / 2) }
 let globalSeed: number = Math.random() * 2 ** 32;
 const renderFrame = (gridData: ChunkData[][]): void => {
-    for (let i = 0; i < Enemies.length; i++) {
-            Enemies[i].active = false
-    }
     clearDisplayGrid(entityGrid)
+    //Definuje absolutní pozici počítečního bodu pro vykreslení
     startingPoint.y = TestingPlayer.absolutePosition.y - Math.ceil(RenderDistance.height / 2)
-    startingPoint.x = TestingPlayer.absolutePosition.x - Math.ceil(RenderDistance.width / 2 )
+    startingPoint.x = TestingPlayer.absolutePosition.x - Math.ceil(RenderDistance.width / 2)
+    //vygeneruje mapu pokud hráč dorazil do cíle
     if (TestingPlayer.absolutePosition.x === ExitPointPosition.x * ChunkSize.width + 2 && TestingPlayer.absolutePosition.y === ExitPointPosition.y * ChunkSize.height + 2) {
+        music.play(music.melodyPlayable(music.beamUp), music.PlaybackMode.InBackground)
+        level++;
         EntryPointPosition.x = Math.floor(Math.random() * (LevelDimensions.width - 1))
         EntryPointPosition.y = Math.floor(Math.random() * (LevelDimensions.height - 1))
         exitAndEntry()
@@ -46,7 +78,9 @@ const renderFrame = (gridData: ChunkData[][]): void => {
         generatePath(ChunkGrid)
         modifyDungeonBorder(ChunkGrid, VoidTypeTile, LevelDimensions);
         generateDungeonLevelRooms(ChunkGrid, LevelDimensions);
+        dungeonLevel.setText(level.toString())
     }
+    //zajišťuje aby kamera "nevyšla" mimo mapu (ve skutečnosti se kamera nepohubuje, jenom se mění textury)
     if (startingPoint.x <= 0) {
         TestingPlayer.sprite.x = (TestingPlayer.absolutePosition.x + 0.5) * TileSize.width
         startingPoint.x = 0
@@ -65,6 +99,8 @@ const renderFrame = (gridData: ChunkData[][]): void => {
         startingPoint.y = (LevelDimensions.height * ChunkSize.height) - RenderDistance.height
         TestingPlayer.sprite.y = (TestingPlayer.absolutePosition.y + 0.5 - startingPoint.y) * TileSize.height
     }
+    //vykreslení políček
+    TestingPlayer.relativePos = {x: TestingPlayer.absolutePosition.x - startingPoint.x, y: TestingPlayer.absolutePosition.y - startingPoint.y}
     for (let i = 0; i < RenderDistance.height; i++) {
         for (let j = 0; j < RenderDistance.width; j++) {
             const chunkPos = absoluteToChunks({ x: startingPoint.x + j, y: startingPoint.y + i })
@@ -78,29 +114,68 @@ const renderFrame = (gridData: ChunkData[][]): void => {
             lookupTileData(tileData, displayGrid[i][j]);
         }
     }
+    //detekce sebrání předmětu
     const playerChunk = absoluteToChunks(TestingPlayer.absolutePosition)
     const playerTile = absoluteToTiles(TestingPlayer.absolutePosition)
-    if (entityGrid[TestingPlayer.absolutePosition.y - startingPoint.y][TestingPlayer.absolutePosition.x - startingPoint.x].sprite.kind() === SpriteKind.Item) {
+    if (entityGrid[TestingPlayer.relativePos.y][TestingPlayer.relativePos.x].sprite.kind() === SpriteKind.Item) {
         for (let i = 0; i < gridData[playerChunk.y][playerChunk.x].Entities.length; i++) {
             if (gridData[playerChunk.y][playerChunk.x].Entities[i].relativePosition.x === playerTile.x && gridData[playerChunk.y][playerChunk.x].Entities[i].relativePosition.y === playerTile.y) {
+                music.play(music.melodyPlayable(music.baDing), music.PlaybackMode.InBackground)
                 gridData[playerChunk.y][playerChunk.x].Entities[i].pickUp()
                 gridData[playerChunk.y][playerChunk.x].Entities.splice(i, 1)
             }
         }
     }
-    for (let i = 0; i < Enemies.length; i++) {
-        if (Enemies[i].absolutePosition.x > startingPoint.x && Enemies[i].absolutePosition.x < startingPoint.x + RenderDistance.width && Enemies[i].absolutePosition.y > startingPoint.y && Enemies[i].absolutePosition.y < startingPoint.y + RenderDistance.height) {
-            lookupTileData(Enemies[i].type, entityGrid[Enemies[i].absolutePosition.y - startingPoint.y][Enemies[i].absolutePosition.x - startingPoint.x])
-            Enemies[i].active = true
-            if (Enemies[i].path.length === 0) {
-                Enemies[i].path = findPath(displayGrid[Enemies[i].absolutePosition.y-startingPoint.y][Enemies[i].absolutePosition.x - startingPoint.x], displayGrid[TestingPlayer.absolutePosition.y - startingPoint.y][TestingPlayer.absolutePosition.x - startingPoint.x], displayGrid)
+    //resetuje nepřáteled
+    for (let i = Enemies.length-1; i > 0; i--) {
+        const enemyPos = Enemies[i].absolutePosition
+        if (enemyPos.x >= startingPoint.x && enemyPos.x < startingPoint.x + RenderDistance.width && enemyPos.y >= startingPoint.y && enemyPos.y < startingPoint.y + RenderDistance.height) {
+            if (Enemies[i].health <= 0) {
+                Enemies.splice(i, 1)
+            } else {
+                entityGrid[enemyPos.y - startingPoint.y][enemyPos.x - startingPoint.x].sprite.setKind(SpriteKind.Enemy)
             }
-            Enemies[i].absolutePosition.x = Enemies[i].path[Enemies[i].path.length - 1].x
-            Enemies[i].absolutePosition.y = Enemies[i].path[Enemies[i].path.length-1].y
-            Enemies[i].path.splice(Enemies[i].path.length-1, 1)
         }
-        
     }
+    //pohyb nepřátel
+    for (let i = 0; i < Enemies.length; i++) {
+        const enemyPos = Enemies[i].absolutePosition
+        if (enemyPos.x >= startingPoint.x && enemyPos.x < startingPoint.x + RenderDistance.width && enemyPos.y >= startingPoint.y && enemyPos.y < startingPoint.y + RenderDistance.height) {
+            //detekce kolizí
+            if (entityGrid[Enemies[i].newPosition.y - startingPoint.y][Enemies[i].newPosition.x - startingPoint.x].sprite.kind() !== SpriteKind.Enemy && !(Enemies[i].newPosition.x === TestingPlayer.absolutePosition.x && Enemies[i].newPosition.y === TestingPlayer.absolutePosition.y)) {
+                entityGrid[enemyPos.y - startingPoint.y][enemyPos.x - startingPoint.x].sprite.setKind(SpriteKind.Tile)
+                enemyPos.x = Enemies[i].newPosition.x
+                enemyPos.y = Enemies[i].newPosition.y
+            }
+            //útok na hráče
+            if (Enemies[i].newPosition.x === TestingPlayer.absolutePosition.x && Enemies[i].newPosition.y === TestingPlayer.absolutePosition.y) {
+                TestingPlayer.health -= Attack(TestingPlayer.defense, Enemies[i].attack)
+                if (TestingPlayer.health <= 0) {
+                    game.gameOver(false)
+                }
+            }
+            //vykreslení nepřátel
+            lookupTileData(Enemies[i].type, entityGrid[enemyPos.y - startingPoint.y][enemyPos.x - startingPoint.x])
+            //hledání cesty, buď pokud cesta skončila, nebo je nepřítel blízko hráže
+            if (getDistanceToEnd(enemyPos, TestingPlayer.absolutePosition) < ChunkSize.width || Enemies[i].path.length === 0) {
+                Enemies[i].path = findPath(displayGrid[enemyPos.y-startingPoint.y][enemyPos.x - startingPoint.x], displayGrid[TestingPlayer.relativePos.y][TestingPlayer.relativePos.x], displayGrid)
+                if (Enemies[i].path.length > 0) {
+                    Enemies[i].newPosition.x = Enemies[i].path[Enemies[i].path.length - 1].x
+                    Enemies[i].newPosition.y = Enemies[i].path[Enemies[i].path.length - 1].y
+                }
+            }
+            //posunutí nepřítele na dál po cestě
+            if (Enemies[i].path.length > 0) {
+                Enemies[i].newPosition.x = Enemies[i].path[Enemies[i].path.length - 1].x
+                Enemies[i].newPosition.y = Enemies[i].path[Enemies[i].path.length - 1].y
+                Enemies[i].path.splice(Enemies[i].path.length - 1, 1)
+            }
+        }
+    }
+    //vykreslení vlastností hráče
+    playerHealth.setText(TestingPlayer.health.toString() + "/" + TestingPlayer.maxhealth.toString())
+    playerAttack.setText(TestingPlayer.attack.toString())
+    playerDefense.setText(TestingPlayer.defense.toString())
 }
 const initializeDisplayGrid = (grid: TileData[][]) => {
     for (let i = 0; i < RenderDistance.height; i++) {
@@ -115,7 +190,8 @@ const initializeDisplayGrid = (grid: TileData[][]) => {
 const clearDisplayGrid = (grid: TileData[][]) => {
     for (let i = 0; i < RenderDistance.height; i++) {
         for (let j = 0; j < RenderDistance.width; j++) {
-                grid[i][j].sprite.setImage(assets.image`void-tile`)
+            grid[i][j].sprite.setImage(assets.image`void-tile`)
+            entityGrid[i][j].sprite.setKind(SpriteKind.Tile)
         }
     }
 }
@@ -155,11 +231,18 @@ const lookupTileData = (ID: number, tile:TileData) => {
             break;
         case 6:
             tile.sprite.setImage(assets.image`entity`)
-            tile.sprite.setKind(SpriteKind.Player)
+            tile.sprite.setKind(SpriteKind.Enemy)
             break;
         default:
             tile.sprite.setImage(assets.image`closed`)
             tile.sprite.setKind(SpriteKind.Tile)
             break;
     }
+}
+const Attack = (def: number, atk: number) => {
+    let damage:number = atk - def
+    if (damage < 0) {
+        damage = 0
+    }
+    return damage
 }

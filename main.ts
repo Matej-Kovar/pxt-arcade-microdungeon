@@ -10,6 +10,9 @@ namespace SpriteKind {
     export const EntryPoint = SpriteKind.create()
     export const ExitPoint = SpriteKind.create()
 }
+game.setGameOverMessage(true, "GAME OVER!")
+game.setGameOverPlayable(false, music.melodyPlayable(music.powerDown), false)
+game.setGameOverEffect(false, effects.dissolve)
 const Enemies: Creature[] = []
 initializeChunkGrid(ChunkGrid, testingTileSet, LevelDimensions);
 initializeDisplayGrid(displayGrid)
