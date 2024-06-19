@@ -1,7 +1,7 @@
  
 
 
-> Open this page at [[https://matej-kovar.github.io/wave-function-collapse/](https://matej-kovar.github.io/wave-function-collapse/)](https://matej-kovar.github.io/pxt-arcade-microdungeon/)
+> Open this page at [https://matej-kovar.github.io/pxt-arcade-microdungeon/](https://matej-kovar.github.io/pxt-arcade-microdungeon/)
 
 ## Use as Extension
 
