@@ -28,7 +28,7 @@ const absoluteToTiles = (absolutePosition:Position):Position => {
     return {x: absolutePosition.x - Math.floor(absolutePosition.x/ChunkSize.width)*ChunkSize.width, y: absolutePosition.y - Math.floor(absolutePosition.y/ChunkSize.height)*ChunkSize.height}
 }
 //inicializace velikostí
-const LevelDimensions: Size = { width: 10, height: 10 };
+const LevelDimensions: Size = { width: 10, height:10 };
 const ChunkSize: Size = { width: 5, height: 5 };
 const TileSize: Size = { width: 12, height: 12 };
 const RenderDistance: Size = { width: Math.ceil((userconfig.ARCADE_SCREEN_WIDTH + 0.5 * TileSize.width) / TileSize.width), height: Math.ceil((userconfig.ARCADE_SCREEN_HEIGHT + 0.5 * TileSize.height) / TileSize.height) }
@@ -91,21 +91,11 @@ title3.setMaxFontHeight(10)
 title3.x = 84
 title3.y = 105
 title3.z = 101
-const BlankTypeChunk:ChunkTypeData = {
-    imgData: [
-    [14, 14, 14, 14, 14],
-    [14, 14, 14, 14, 14],
-    [14, 14, 14, 14, 14],
-    [14, 14, 14, 14, 14],
-    [14, 14, 14, 14, 14]
-    ], weight: 1 ,chunkID: 0, chunkType: ChunkTypes.room
-}
 let tileSet: ChunkTypeData[] = [];
 loadTileSet(assets.image`chunkset-room`, tileSet, 10, ChunkTypes.room)
 loadTileSet(assets.image`chunkset-hallway`, tileSet, 10, ChunkTypes.hallway)
 loadTileSet(assets.image`chunkset-broken`, tileSet, 1, ChunkTypes.broken)
 tileSet = createTileRotations(tileSet)
-tileSet.unshift(BlankTypeChunk)
 const TileSetIndexes:number[] = []
 for (let i = 1; i < tileSet.length - 1; i++) {
     TileSetIndexes.push(i)

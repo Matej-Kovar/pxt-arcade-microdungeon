@@ -92,7 +92,7 @@ const renderFrame = (gridData: ChunkData[][]): void => {
         if (Enemies[i].health <= 0) {
             Enemies.splice(i, 1)
         } else {
-            if (enemyPos.x >= startingPoint.x && enemyPos.x < startingPoint.x + RenderDistance.width && enemyPos.y >= startingPoint.y && enemyPos.y < startingPoint.y + RenderDistance.height) { 
+            if (enemyPos.x > startingPoint.x && enemyPos.x < startingPoint.x + RenderDistance.width && enemyPos.y > startingPoint.y && enemyPos.y < startingPoint.y + RenderDistance.height) { 
                 entityGrid[enemyPos.y - startingPoint.y][enemyPos.x - startingPoint.x].sprite.setKind(SpriteKind.Enemy)
             }
         }
@@ -100,7 +100,7 @@ const renderFrame = (gridData: ChunkData[][]): void => {
     //pohyb nepřátel
     for (let i = 0; i < Enemies.length; i++) {
         const enemyPos = Enemies[i].absolutePosition
-        if (enemyPos.x >= startingPoint.x && enemyPos.x < startingPoint.x + RenderDistance.width && enemyPos.y >= startingPoint.y && enemyPos.y < startingPoint.y + RenderDistance.height) {
+        if (enemyPos.x > startingPoint.x && enemyPos.x < startingPoint.x + RenderDistance.width && enemyPos.y > startingPoint.y && enemyPos.y < startingPoint.y + RenderDistance.height) {
             //detekce kolizí
             if (entityGrid[Enemies[i].secondaryPosition.y - startingPoint.y][Enemies[i].secondaryPosition.x - startingPoint.x].sprite.kind() !== SpriteKind.Enemy && !(Enemies[i].secondaryPosition.x === TestingPlayer.absolutePosition.x && Enemies[i].secondaryPosition.y === TestingPlayer.absolutePosition.y)) {
                 entityGrid[enemyPos.y - startingPoint.y][enemyPos.x - startingPoint.x].sprite.setKind(SpriteKind.Tile)
