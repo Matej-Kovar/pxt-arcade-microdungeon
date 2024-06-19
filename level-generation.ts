@@ -6,7 +6,7 @@ enum Sides {
 }
 type ChunkData =  {
     chunkHasBeenColapsed: boolean
-    chunkTypeOptions: Array<ChunkTypeData>
+    chunkTypeOptions: number[]
     position: Position
     toEnd: number
     state: number
@@ -45,22 +45,22 @@ function splitmix32(a:number) {
 const modifyNeighbouringTile = (chunkData: ChunkTypeData, checkSide: Sides, NeighbourTile: ChunkData) => {
     if (!NeighbourTile.chunkHasBeenColapsed) {
         let opositeSide = checkSide >= 2 ? checkSide - 2 : checkSide + 2;
-        NeighbourTile.chunkTypeOptions = NeighbourTile.chunkTypeOptions.filter(option => getSide(opositeSide, option.imgData).every((tile: number, index:number) => {return tile === getSide(checkSide, chunkData.imgData)[index]}));
+        NeighbourTile.chunkTypeOptions = NeighbourTile.chunkTypeOptions.filter(option => getSide(opositeSide, tileSet[option].imgData).every((tile: number, index:number) => {return tile === getSide(checkSide, chunkData.imgData)[index]}));
     }
 }
 const modifyByTile = (checkSide: Sides, NeighbourTile: ChunkData) => {
     switch (checkSide) {
         case 0:
-            NeighbourTile.chunkTypeOptions = NeighbourTile.chunkTypeOptions.filter(option => option.imgData[ChunkSize.height - 1][2] === 14)
+            NeighbourTile.chunkTypeOptions = NeighbourTile.chunkTypeOptions.filter(option => tileSet[option].imgData[ChunkSize.height - 1][2] === 14)
             break;
         case 1:
-            NeighbourTile.chunkTypeOptions = NeighbourTile.chunkTypeOptions.filter(option => option.imgData[2][0] === 14)
+            NeighbourTile.chunkTypeOptions = NeighbourTile.chunkTypeOptions.filter(option => tileSet[option].imgData[2][0] === 14)
             break;
         case 2:
-            NeighbourTile.chunkTypeOptions = NeighbourTile.chunkTypeOptions.filter(option => option.imgData[0][2] === 14)
+            NeighbourTile.chunkTypeOptions = NeighbourTile.chunkTypeOptions.filter(option => tileSet[option].imgData[0][2] === 14)
             break;
         case 3:
-            NeighbourTile.chunkTypeOptions = NeighbourTile.chunkTypeOptions.filter(option => option.imgData[2][ChunkSize.width - 1] === 14)
+            NeighbourTile.chunkTypeOptions = NeighbourTile.chunkTypeOptions.filter(option => tileSet[option].imgData[2][ChunkSize.width - 1] === 14)
             break;
         default:
             break;
@@ -79,27 +79,27 @@ const createEntrophyGrid = (gridData: ChunkData[][]): ChunkData => {
     }
     return bestTile
 }
-const initializeChunkGrid = (gridData: ChunkData[][], chunkSet: ChunkTypeData[], dim: Size) => {
+const initializeChunkGrid = (gridData: ChunkData[][], chunkSetIndexes: number[], dim: Size) => {
     for (let i = 0; i < dim.height; i++) {
         gridData.push([])
         for (let j = 0; j < dim.width; j++) {
-            gridData[i][j] = {position:{ y: i, x: j }, chunkTypeOptions: chunkSet, Entities: [], chunkHasBeenColapsed: false, toEnd:Infinity, state: TileStates.noSet};
+            gridData[i][j] = {position:{ y: i, x: j }, chunkTypeOptions: chunkSetIndexes, Entities: [], chunkHasBeenColapsed: false, toEnd:Infinity, state: TileStates.noSet};
         }
     }
 }
-const resetChunkGrid = (gridData: ChunkData[][], chunkSet: ChunkTypeData[], dim: Size) => {
+const resetChunkGrid = (gridData: ChunkData[][], chunkSetIndexes: number[], dim: Size) => {
     for (let i = 0; i < dim.height; i++) {
         for (let j = 0; j < dim.width; j++) {
             gridData[i][j].chunkHasBeenColapsed = false;
-            gridData[i][j].chunkTypeOptions = chunkSet;
+            gridData[i][j].chunkTypeOptions = chunkSetIndexes;
             gridData[i][j].Entities = [];
         }
     }
 }
-const weightedRandom = (chunkTypeOptions:ChunkTypeData[], generatedNum:number) => {
+const weightedRandom = (chunkTypeOptions:number[], generatedNum:number) => {
     let cumulativeWeights: number[] = [];
     for (let i = 0; i < chunkTypeOptions.length; i += 1) {
-        cumulativeWeights[i] = chunkTypeOptions[i].weight + (cumulativeWeights[i - 1]||0);
+        cumulativeWeights[i] = tileSet[chunkTypeOptions[i]].weight + (cumulativeWeights[i - 1]||0);
     }
     let randomNumber = cumulativeWeights[cumulativeWeights.length - 1] * generatedNum;
     for (let index = 0; index < chunkTypeOptions.length; index ++) {
@@ -137,7 +137,7 @@ const generateDungeonLevelRooms = (gridData: ChunkData[][], dim: Size) => {
         let probability: number = 0.025;
         let chosenTile = createEntrophyGrid(gridData);
         if (chosenTile.chunkTypeOptions.length === 0) {
-            chosenTile.chunkTypeOptions = [BlankTypeChunk];
+            chosenTile.chunkTypeOptions = [0];
         }
         else {
             chosenTile.chunkTypeOptions = [chosenTile.chunkTypeOptions[weightedRandom(chosenTile.chunkTypeOptions, random())]];
@@ -145,7 +145,7 @@ const generateDungeonLevelRooms = (gridData: ChunkData[][], dim: Size) => {
         chosenTile.chunkHasBeenColapsed = true;
         for (let i = 0; i < ChunkSize.height; i++) {
             for (let j = 0; j < ChunkSize.width; j++) {
-                if (chosenTile.chunkTypeOptions[0].imgData[i][j] === 14 && random() <= probability && chosenTile.chunkTypeOptions[0].chunkType !== 0) {
+                if (tileSet[chosenTile.chunkTypeOptions[0]].imgData[i][j] === 14 && random() <= probability && tileSet[chosenTile.chunkTypeOptions[0]].chunkType !== 0) {
                     if (random() > 0.5) {
                         chosenTile.Entities.push({ inChunkPosition: { x: j, y: i }, type: Math.pickRandom([0, 1, 2, 3]) })
                         if (probability > 0) {
@@ -158,10 +158,10 @@ const generateDungeonLevelRooms = (gridData: ChunkData[][], dim: Size) => {
             }
         }
         let { x, y } = chosenTile.position;
-        if (y != 0) modifyNeighbouringTile(chosenTile.chunkTypeOptions[0], Sides.top, gridData[y - 1][x]);
-        if (y != dim.height - 1) modifyNeighbouringTile(chosenTile.chunkTypeOptions[0], Sides.bottom, gridData[y + 1][x]);
-        if (x != 0) modifyNeighbouringTile(chosenTile.chunkTypeOptions[0], Sides.left, gridData[y][x - 1]);
-        if (x != dim.width - 1) modifyNeighbouringTile(chosenTile.chunkTypeOptions[0], Sides.right, gridData[y][x + 1]);
+        if (y != 0) modifyNeighbouringTile(tileSet[chosenTile.chunkTypeOptions[0]], Sides.top, gridData[y - 1][x]);
+        if (y != dim.height - 1) modifyNeighbouringTile(tileSet[chosenTile.chunkTypeOptions[0]], Sides.bottom, gridData[y + 1][x]);
+        if (x != 0) modifyNeighbouringTile(tileSet[chosenTile.chunkTypeOptions[0]], Sides.left, gridData[y][x - 1]);
+        if (x != dim.width - 1) modifyNeighbouringTile(tileSet[chosenTile.chunkTypeOptions[0]], Sides.right, gridData[y][x + 1]);
     }
     gridData[EntryPointPosition.y][EntryPointPosition.x].Entities.push({ inChunkPosition: { x: 2, y: 2 }, type: 13})
     gridData[ExitPointPosition.y][ExitPointPosition.x].Entities.push({ inChunkPosition: { x: 2, y: 2 }, type: 12})

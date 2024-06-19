@@ -76,7 +76,7 @@ const renderFrame = (gridData: ChunkData[][]): void => {
         TestingPlayerSprite.y = (TestingPlayer.absolutePosition.y - startingPoint.y + 0.5) * TileSize.height
         Enemies = []
         globalSeed = Math.random() * 2 ** 32
-        resetChunkGrid(ChunkGrid, tileSet, LevelDimensions);
+        resetChunkGrid(ChunkGrid, TileSetIndexes, LevelDimensions);
         generatePath(ChunkGrid)
         modifyDungeonBorder(ChunkGrid, voidTypeChunk, LevelDimensions);
         generateDungeonLevelRooms(ChunkGrid, LevelDimensions);
@@ -112,7 +112,7 @@ const renderFrame = (gridData: ChunkData[][]): void => {
                     lookupTileData(gridData[chunkPos.y][chunkPos.x].Entities[m].type, entityGrid[i][j])
                 }
             }
-            const tileData = gridData[chunkPos.y][chunkPos.x].chunkTypeOptions[0].imgData[TilePos.y][TilePos.x];
+            const tileData = tileSet[gridData[chunkPos.y][chunkPos.x].chunkTypeOptions[0]].imgData[TilePos.y][TilePos.x];
             lookupTileData(tileData, displayGrid[i][j]);
         }
     }

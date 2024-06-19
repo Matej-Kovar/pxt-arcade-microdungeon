@@ -127,3 +127,7 @@ loadTileSet(assets.image`chunkset-room`, tileSet, 10, ChunkTypes.room)
 loadTileSet(assets.image`chunkset-hallway`, tileSet, 10, ChunkTypes.hallway)
 loadTileSet(assets.image`chunkset-broken`, tileSet, 1, ChunkTypes.broken)
 tileSet = createTileRotations(tileSet)
+const TileSetIndexes:number[] = []
+for (let i = 1; i < tileSet.length - 1; i++) {
+    TileSetIndexes.push(i)
+}

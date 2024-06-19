@@ -14,7 +14,7 @@ game.setGameOverMessage(true, "GAME OVER!")
 game.setGameOverPlayable(false, music.melodyPlayable(music.powerDown), false)
 game.setGameOverEffect(false, effects.dissolve)
 let Enemies: Creature[] = []
-initializeChunkGrid(ChunkGrid, tileSet, LevelDimensions);
+initializeChunkGrid(ChunkGrid, TileSetIndexes, LevelDimensions);
 initializeDisplayGrid(displayGrid)
 initializeDisplayGrid(entityGrid)
 scene.centerCameraAt(Math.ceil(RenderDistance.width / 2)*TileSize.width, Math.ceil(RenderDistance.height / 2 - 0.5)*TileSize.height)
