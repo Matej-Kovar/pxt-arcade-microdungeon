@@ -5,6 +5,7 @@ type Item = {
 type Creature = {
     absolutePosition: Position
     secondaryPosition: Position
+    side:number
     type: number
     path: Position[]
     maxhealth:number

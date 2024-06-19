@@ -10,48 +10,6 @@ class TileData {
         this.position = pos
     }
 }
-//inicializace velikostí
-const LevelDimensions: Size = { width: 4, height: 4 };
-const ChunkSize: Size = { width: 5, height: 5 };
-const TileSize: Size = { width: 12, height: 12 };
-const RenderDistance: Size = { width: Math.ceil((userconfig.ARCADE_SCREEN_WIDTH + 0.5 * TileSize.width) / TileSize.width), height: Math.ceil((userconfig.ARCADE_SCREEN_HEIGHT + 0.5 * TileSize.height) / TileSize.height) }
-//inicializace vchodu a východu do dungeonu
-const EntryPointPosition: Position = { x: Math.floor(Math.random() * (LevelDimensions.width - 1) + 1), y: Math.floor(Math.random() * (LevelDimensions.height - 1) + 1) }
-const ExitPointPosition: Position = { x: 0, y: 0 }
-exitAndEntry()
-//inicializace Hráče
-let level:number = 1
-const TestingPlayer: Creature = {absolutePosition:{ x: EntryPointPosition.x * ChunkSize.width + 2, y: EntryPointPosition.y * ChunkSize.height + 2 }, secondaryPosition:{ x: EntryPointPosition.x * ChunkSize.width + 2, y: EntryPointPosition.y * ChunkSize.height + 2 }, type: EntityTypes.player, health: 100, maxhealth: 100, defense: 100, attack:10, path:[]}
-const TestingPlayerSprite = sprites.create(assets.image`player-right`, SpriteKind.Player)
-TestingPlayerSprite.z = 10
-const startingPoint: Position = { y: TestingPlayer.absolutePosition.y - Math.ceil(RenderDistance.height / 2), x: TestingPlayer.absolutePosition.x - Math.ceil(RenderDistance.width / 2) }
-TestingPlayerSprite.x = (TestingPlayer.absolutePosition.x - startingPoint.x + 0.5) * TileSize.width
-TestingPlayerSprite.y = (TestingPlayer.absolutePosition.y - startingPoint.y + 0.5) * TileSize.height
-const playerHealth = textsprite.create(TestingPlayer.health.toString(), 0, 1)
-playerHealth.setIcon(assets.image`lives`)
-playerHealth.setOutline(1, 15)
-playerHealth.x = 20
-playerHealth.y = 15
-playerHealth.z = 100
-const playerAttack = textsprite.create(TestingPlayer.attack.toString(), 0, 1)
-playerAttack.setIcon(assets.image`attack`)
-playerAttack.setOutline(1, 15)
-playerAttack.x = 75
-playerAttack.y = 15
-playerAttack.z = 100
-const playerDefense = textsprite.create(TestingPlayer.defense.toString(), 0, 1)
-playerDefense.setIcon(assets.image`defense`)
-playerDefense.setOutline(1, 15)
-playerDefense.x = 105
-playerDefense.y = 15
-playerDefense.z = 100
-const dungeonLevel = textsprite.create(level.toString(), 0, 1)
-dungeonLevel.setIcon(assets.image`level`)
-dungeonLevel.setOutline(1, 15)
-dungeonLevel.x = 145
-dungeonLevel.y = 15
-dungeonLevel.z = 100
-
 //inicializace gridů pro zobrazování políček
 const displayGrid: TileData[][] = [];
 const entityGrid: TileData[][] = [];
@@ -146,6 +104,18 @@ const renderFrame = (gridData: ChunkData[][]): void => {
             //detekce kolizí
             if (entityGrid[Enemies[i].secondaryPosition.y - startingPoint.y][Enemies[i].secondaryPosition.x - startingPoint.x].sprite.kind() !== SpriteKind.Enemy && !(Enemies[i].secondaryPosition.x === TestingPlayer.absolutePosition.x && Enemies[i].secondaryPosition.y === TestingPlayer.absolutePosition.y)) {
                 entityGrid[enemyPos.y - startingPoint.y][enemyPos.x - startingPoint.x].sprite.setKind(SpriteKind.Tile)
+                if (Enemies[i].secondaryPosition.x - enemyPos.x > 0) {
+                    Enemies[i].side = Sides.right
+                }
+                if (Enemies[i].secondaryPosition.y - enemyPos.y > 0) {
+                    Enemies[i].side = Sides.bottom
+                }
+                if (Enemies[i].secondaryPosition.x - enemyPos.x < 0) {
+                    Enemies[i].side = Sides.left
+                }
+                if (Enemies[i].secondaryPosition.y - enemyPos.y < 0) {
+                    Enemies[i].side = Sides.top
+                }
                 enemyPos.x = Enemies[i].secondaryPosition.x
                 enemyPos.y = Enemies[i].secondaryPosition.y
             }
@@ -157,14 +127,10 @@ const renderFrame = (gridData: ChunkData[][]): void => {
                 }
             }
             //vykreslení nepřátel
-            lookupTileData(Enemies[i].type, entityGrid[enemyPos.y - startingPoint.y][enemyPos.x - startingPoint.x])
+            lookupTileData(Enemies[i].type, entityGrid[enemyPos.y - startingPoint.y][enemyPos.x - startingPoint.x], Enemies[i].side)
             //hledání cesty, buď pokud cesta skončila, nebo je nepřítel blízko hráže
             if (getDistanceToEnd(enemyPos, TestingPlayer.absolutePosition) < ChunkSize.width || Enemies[i].path.length === 0) {
                 Enemies[i].path = findPath(displayGrid[enemyPos.y-startingPoint.y][enemyPos.x - startingPoint.x], displayGrid[TestingPlayer.secondaryPosition.y][TestingPlayer.secondaryPosition.x], displayGrid)
-                if (Enemies[i].path.length > 0) {
-                    Enemies[i].secondaryPosition.x = Enemies[i].path[Enemies[i].path.length - 1].x
-                    Enemies[i].secondaryPosition.y = Enemies[i].path[Enemies[i].path.length - 1].y
-                }
             }
             //posunutí nepřítele na dál po cestě
             if (Enemies[i].path.length > 0) {
@@ -197,7 +163,7 @@ const clearDisplayGrid = (grid: TileData[][]) => {
         }
     }
 }
-const lookupTileData = (ID: number, tile:TileData) => {
+const lookupTileData = (ID: number, tile:TileData, side?: number) => {
     switch (ID) {
         case 15:
             tile.sprite.setImage(assets.image`wall`)
@@ -232,7 +198,18 @@ const lookupTileData = (ID: number, tile:TileData) => {
             tile.sprite.setKind(SpriteKind.Item)
             break;
         case 6:
-            tile.sprite.setImage(assets.image`entity`)
+            if (side === 0) {
+                tile.sprite.setImage(assets.image`zombie-up`)
+            }
+            if (side === 1) {
+                tile.sprite.setImage(assets.image`zombie-right`)
+            }
+            if (side === 2) {
+                tile.sprite.setImage(assets.image`zombie-down`)
+            }
+            if (side === 3) {
+                tile.sprite.setImage(assets.image`zombie-left`)
+            }
             tile.sprite.setKind(SpriteKind.Enemy)
             break;
         default:
