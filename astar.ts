@@ -31,6 +31,7 @@ const findPath = (Start: TileData, End: TileData, grid: TileData[][]) => {
             grid[i][j].costToTravel = Infinity
             grid[i][j].state = 0
             grid[i][j].value = 0
+            basic.pause(10)
         }
     }
     Start.costToTravel = 0
@@ -45,6 +46,7 @@ const findPath = (Start: TileData, End: TileData, grid: TileData[][]) => {
             if (TilesToDo[i].value < TilesToDo[lowestFIndex].value) {
                 lowestFIndex = i
             }
+            basic.pause(10)
         }
         const CurrentTile: TileData = TilesToDo[lowestFIndex];
         TilesToDo.splice(lowestFIndex, 1)
@@ -75,11 +77,13 @@ const findPath = (Start: TileData, End: TileData, grid: TileData[][]) => {
         if (CurrentTile.position.x === End.position.x && CurrentTile.position.y === End.position.y) {
             break
         }
+        basic.pause(10)
     }
     let pathStep = End
     while (pathStep.cameFrom !== undefined) {
         PathToEnd.push({ x: pathStep.position.x + startingPoint.x, y: pathStep.position.y + startingPoint.y })
         pathStep = pathStep.cameFrom
+        basic.pause(10)
     }
     return PathToEnd
 }
@@ -89,6 +93,7 @@ const randomPath = (Start: ChunkData, End: ChunkData, grid: ChunkData[][]) => {
         for (let j = 0; j < LevelDimensions.width; j++) {
             grid[i][j].toEnd = getDistanceToEnd(grid[i][j].position, End.position)
             grid[i][j].state = TileStates.noSet
+            basic.pause(10)
         }
     }
     const PathToEnd: ChunkData[] = []
@@ -99,6 +104,7 @@ const randomPath = (Start: ChunkData, End: ChunkData, grid: ChunkData[][]) => {
         const PathStep = Neighbors[Math.floor(Math.random() * Neighbors.length)];
         PathStep.state = TileStates.closedSet;
         PathToEnd.push(PathStep);
+        basic.pause(10)
     }
     return PathToEnd
 }

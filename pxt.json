@@ -6,18 +6,17 @@
         "arcade-text": "github:microsoft/arcade-text#v1.3.0"
     },
     "files": [
-        "main.ts",
-        "README.md",
         "assets.json",
         "tilemap.g.jres",
         "tilemap.g.ts",
         "images.g.jres",
         "images.g.ts",
+        "main.ts",
+        "rendering.ts",
+        "README.md",
         "asset-initialization.ts",
         "level-generation.ts",
-        "rendering.ts",
         "player-actions.ts",
-        "position-tracking.ts",
         "entities.ts",
         "astar.ts"
     ],

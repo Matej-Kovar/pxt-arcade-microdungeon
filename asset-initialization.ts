@@ -83,6 +83,7 @@ const loadTileSet = (chunksetImg: Image, chunkset: ChunkTypeData[], weightofTile
             pixelPosition.x = 0;
             pixelPosition.y++;
         }
+        basic.pause(10)
     }
     ID++
     chunkset.push({imgData: imageData, weight: weightofTile,chunkID: ID,chunkType: type })
@@ -96,6 +97,7 @@ const rotateMatrix = (matrix: number[][]) => {
             matrix[width - j - 1][i] = matrix[width - i - 1][width - j - 1];
             matrix[width - i - 1][width - j - 1] = matrix[j][width - i - 1];
             matrix[j][width - i - 1] = tmp;
+            basic.pause(10)
         }
     }
     return matrix;
@@ -108,6 +110,7 @@ const createTileRotations = (chunkset: ChunkTypeData[]) => {
         for (let j = 0; j < 3; j++) {
             rotateMatrix(chunkImg);
             chunkset.push({ imgData: JSON.parse(JSON.stringify(chunkImg)),weight: chunkset[i].weight,chunkID: chunkset[i].chunkID,chunkType: chunkset[i].chunkType });
+            basic.pause(10)
         }
     }
     let orderedChunkSet: ChunkTypeData[] = [];
@@ -120,14 +123,4 @@ const createTileRotations = (chunkset: ChunkTypeData[]) => {
 });
     chunkset = orderedChunkSet;
     return chunkset
-}
-tilemap
-let tileSet: ChunkTypeData[] = [];
-loadTileSet(assets.image`chunkset-room`, tileSet, 10, ChunkTypes.room)
-loadTileSet(assets.image`chunkset-hallway`, tileSet, 10, ChunkTypes.hallway)
-loadTileSet(assets.image`chunkset-broken`, tileSet, 1, ChunkTypes.broken)
-tileSet = createTileRotations(tileSet)
-const TileSetIndexes:number[] = []
-for (let i = 1; i < tileSet.length - 1; i++) {
-    TileSetIndexes.push(i)
 }
