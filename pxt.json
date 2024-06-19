@@ -1,6 +1,6 @@
 {
-    "name": "Wave function collapse",
-    "version": "1.0.0",
+    "name": "ptx-arcade-microdungeon",
+    "version": "2.0.0",
     "description": "",
     "dependencies": {
         "device": "*",
