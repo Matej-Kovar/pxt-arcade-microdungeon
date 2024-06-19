@@ -13,15 +13,13 @@ namespace SpriteKind {
 game.setGameOverMessage(true, "GAME OVER!")
 game.setGameOverPlayable(false, music.melodyPlayable(music.powerDown), false)
 game.setGameOverEffect(false, effects.dissolve)
-const Enemies: Creature[] = []
-initializeChunkGrid(ChunkGrid, testingTileSet, LevelDimensions);
+let Enemies: Creature[] = []
+initializeChunkGrid(ChunkGrid, tileSet, LevelDimensions);
 initializeDisplayGrid(displayGrid)
 initializeDisplayGrid(entityGrid)
 scene.centerCameraAt(Math.ceil(RenderDistance.width / 2)*TileSize.width, Math.ceil(RenderDistance.height / 2 - 0.5)*TileSize.height)
-TestingPlayer.sprite.x = (TestingPlayer.absolutePosition.x - startingPoint.x + 0.5) * TileSize.width
-TestingPlayer.sprite.y = (TestingPlayer.absolutePosition.y - startingPoint.y + 0.5) * TileSize.height
 globalSeed = Math.random() * 2 ** 32
 generatePath(ChunkGrid)
-modifyDungeonBorder(ChunkGrid, VoidTypeTile, LevelDimensions);
+modifyDungeonBorder(ChunkGrid, voidTypeChunk, LevelDimensions);
 generateDungeonLevelRooms(ChunkGrid, LevelDimensions);
 renderFrame(ChunkGrid);

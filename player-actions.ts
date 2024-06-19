@@ -39,59 +39,59 @@ const AttackEnemy = (Position:Position)=> {
     }
 }
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (!isColision(TestingPlayer.relativePos, Sides.top)) {
+    if (!isColision(TestingPlayer.secondaryPosition, Sides.top)) {
         TestingPlayer.absolutePosition.y--;
     }
-    TestingPlayer.sprite.setImage(assets.image`player-up`)
+    TestingPlayerSprite.setImage(assets.image`player-up`)
     renderFrame(ChunkGrid)
 })
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (!isColision(TestingPlayer.relativePos, Sides.bottom)) {
+    if (!isColision(TestingPlayer.secondaryPosition, Sides.bottom)) {
         TestingPlayer.absolutePosition.y++;
     }
-    TestingPlayer.sprite.setImage(assets.image`player-down`)
+    TestingPlayerSprite.setImage(assets.image`player-down`)
     renderFrame(ChunkGrid)
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (!isColision(TestingPlayer.relativePos, Sides.left)) {
+    if (!isColision(TestingPlayer.secondaryPosition, Sides.left)) {
         TestingPlayer.absolutePosition.x--;
     }
-    TestingPlayer.sprite.setImage(assets.image`player-left`)
+    TestingPlayerSprite.setImage(assets.image`player-left`)
     renderFrame(ChunkGrid)
 })
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (!isColision(TestingPlayer.relativePos, Sides.right)) {
+    if (!isColision(TestingPlayer.secondaryPosition, Sides.right)) {
         TestingPlayer.absolutePosition.x++;
     }
-    TestingPlayer.sprite.setImage(assets.image`player-right`)
+    TestingPlayerSprite.setImage(assets.image`player-right`)
     renderFrame(ChunkGrid)
 })
 controller.up.onEvent(ControllerButtonEvent.Repeated, function () {
-    if (!isColision(TestingPlayer.relativePos, Sides.top)) {
+    if (!isColision(TestingPlayer.secondaryPosition, Sides.top)) {
         TestingPlayer.absolutePosition.y--;
     }
-    TestingPlayer.sprite.setImage(assets.image`player-up`)
+    TestingPlayerSprite.setImage(assets.image`player-up`)
     renderFrame(ChunkGrid)
 })
 controller.down.onEvent(ControllerButtonEvent.Repeated, function () {
-    if (!isColision(TestingPlayer.relativePos, Sides.bottom)) {
+    if (!isColision(TestingPlayer.secondaryPosition, Sides.bottom)) {
         TestingPlayer.absolutePosition.y++;
     }
-    TestingPlayer.sprite.setImage(assets.image`player-down`)
+    TestingPlayerSprite.setImage(assets.image`player-down`)
     renderFrame(ChunkGrid)
 })
 controller.left.onEvent(ControllerButtonEvent.Repeated, function () {
-    if (!isColision(TestingPlayer.relativePos, Sides.left)) {
+    if (!isColision(TestingPlayer.secondaryPosition, Sides.left)) {
         TestingPlayer.absolutePosition.x--;
     }
-    TestingPlayer.sprite.setImage(assets.image`player-left`)
+    TestingPlayerSprite.setImage(assets.image`player-left`)
     renderFrame(ChunkGrid)
 })
 
 controller.right.onEvent(ControllerButtonEvent.Repeated, function () {
-    if (!isColision(TestingPlayer.relativePos, Sides.right)) {
+    if (!isColision(TestingPlayer.secondaryPosition, Sides.right)) {
         TestingPlayer.absolutePosition.x++;
     }
-    TestingPlayer.sprite.setImage(assets.image`player-right`)
+    TestingPlayerSprite.setImage(assets.image`player-right`)
     renderFrame(ChunkGrid)
 })

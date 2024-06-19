@@ -4,28 +4,33 @@ enum Sides {
     bottom = 2,
     left = 3
 }
-class ChunkData {
+type ChunkData =  {
     chunkHasBeenColapsed: boolean
     chunkTypeOptions: Array<ChunkTypeData>
     position: Position
-    toEnd: number = 0;
-    state: number = 0;
-    Entities:Entity[]
-    constructor(position: Position, chunkSet: ChunkTypeData[], entities:Entity[]) {
-        this.chunkHasBeenColapsed = false;
-        this.chunkTypeOptions = chunkSet;
-        this.position = position;
-        this.Entities = entities;
-    }
+    toEnd: number
+    state: number
+    Entities:Item[]
 }
 const ChunkGrid: ChunkData[][] = [];
-const VoidTypeTile = new ChunkTypeData([
-    [15,15,15,15,15],
-    [15,15,15,15,15],
-    [15,15,15,15,15],
-    [15,15,15,15,15],
-    [15,15,15,15,15]
-], 1 , 0, ChunkTypes.room)
+const voidTypeChunk:ChunkTypeData = {
+    imgData: [
+    [15, 15, 15, 15, 15],
+    [15, 15, 15, 15, 15],
+    [15, 15, 15, 15, 15],
+    [15, 15, 15, 15, 15],
+    [15, 15, 15, 15, 15]
+    ], weight: 1 ,chunkID: 0, chunkType: ChunkTypes.room
+}
+const BlankTypeChunk:ChunkTypeData = {
+    imgData: [
+    [14, 14, 14, 14, 14],
+    [14, 14, 14, 14, 14],
+    [14, 14, 14, 14, 14],
+    [14, 14, 14, 14, 14],
+    [14, 14, 14, 14, 14]
+    ], weight: 1 ,chunkID: 0, chunkType: ChunkTypes.room
+}
 function splitmix32(a:number) {
     return function () {
         a |= 0;
@@ -40,7 +45,7 @@ function splitmix32(a:number) {
 const modifyNeighbouringTile = (chunkData: ChunkTypeData, checkSide: Sides, NeighbourTile: ChunkData) => {
     if (!NeighbourTile.chunkHasBeenColapsed) {
         let opositeSide = checkSide >= 2 ? checkSide - 2 : checkSide + 2;
-        NeighbourTile.chunkTypeOptions = NeighbourTile.chunkTypeOptions.filter(option => option.getSide(opositeSide).every((tile: number, index:number) => {return tile === chunkData.getSide(checkSide)[index]}));
+        NeighbourTile.chunkTypeOptions = NeighbourTile.chunkTypeOptions.filter(option => getSide(opositeSide, option.imgData).every((tile: number, index:number) => {return tile === getSide(checkSide, chunkData.imgData)[index]}));
     }
 }
 const modifyByTile = (checkSide: Sides, NeighbourTile: ChunkData) => {
@@ -78,7 +83,7 @@ const initializeChunkGrid = (gridData: ChunkData[][], chunkSet: ChunkTypeData[],
     for (let i = 0; i < dim.height; i++) {
         gridData.push([])
         for (let j = 0; j < dim.width; j++) {
-            gridData[i][j] = new ChunkData({ y: i, x: j }, chunkSet, []);
+            gridData[i][j] = {position:{ y: i, x: j }, chunkTypeOptions: chunkSet, Entities: [], chunkHasBeenColapsed: false, toEnd:Infinity, state: TileStates.noSet};
         }
     }
 }
@@ -132,7 +137,7 @@ const generateDungeonLevelRooms = (gridData: ChunkData[][], dim: Size) => {
         let probability: number = 0.025;
         let chosenTile = createEntrophyGrid(gridData);
         if (chosenTile.chunkTypeOptions.length === 0) {
-            chosenTile.chunkTypeOptions = [VoidTypeTile];
+            chosenTile.chunkTypeOptions = [BlankTypeChunk];
         }
         else {
             chosenTile.chunkTypeOptions = [chosenTile.chunkTypeOptions[weightedRandom(chosenTile.chunkTypeOptions, random())]];
@@ -142,14 +147,12 @@ const generateDungeonLevelRooms = (gridData: ChunkData[][], dim: Size) => {
             for (let j = 0; j < ChunkSize.width; j++) {
                 if (chosenTile.chunkTypeOptions[0].imgData[i][j] === 14 && random() <= probability && chosenTile.chunkTypeOptions[0].chunkType !== 0) {
                     if (random() > 0.5) {
-                        chosenTile.Entities.push(new Entity({ x: j, y: i }, Math.pickRandom([0, 1, 2, 3])))
+                        chosenTile.Entities.push({ inChunkPosition: { x: j, y: i }, type: Math.pickRandom([0, 1, 2, 3]) })
                         if (probability > 0) {
                             probability = probability - 0.005
                         }
                     } else {
-                        Enemies.push(new Creature({ x: j + chosenTile.position.x * ChunkSize.width, y: i + chosenTile.position.y * ChunkSize.height }, 6, 20 * level, 7 * level, 10 * level))
-                        Enemies[Enemies.length - 1].newPosition.x = Enemies[Enemies.length - 1].absolutePosition.x
-                        Enemies[Enemies.length - 1].newPosition.y = Enemies[Enemies.length - 1].absolutePosition.y
+                        Enemies.push({absolutePosition: { x: j + chosenTile.position.x * ChunkSize.width, y: i + chosenTile.position.y * ChunkSize.height }, secondaryPosition: { x: j + chosenTile.position.x * ChunkSize.width, y: i + chosenTile.position.y * ChunkSize.height }, path: [], type: 6, health: 20 * level, maxhealth: 20 * level, defense: 3 * level, attack: 10 * level})
                     }
                 }
             }
@@ -160,8 +163,8 @@ const generateDungeonLevelRooms = (gridData: ChunkData[][], dim: Size) => {
         if (x != 0) modifyNeighbouringTile(chosenTile.chunkTypeOptions[0], Sides.left, gridData[y][x - 1]);
         if (x != dim.width - 1) modifyNeighbouringTile(chosenTile.chunkTypeOptions[0], Sides.right, gridData[y][x + 1]);
     }
-    gridData[EntryPointPosition.y][EntryPointPosition.x].Entities.push(new Entity({ x: 2, y: 2 }, 13))
-    gridData[ExitPointPosition.y][ExitPointPosition.x].Entities.push(new Entity({x:2, y:2}, 12))
+    gridData[EntryPointPosition.y][EntryPointPosition.x].Entities.push({ inChunkPosition: { x: 2, y: 2 }, type: 13})
+    gridData[ExitPointPosition.y][ExitPointPosition.x].Entities.push({ inChunkPosition: { x: 2, y: 2 }, type: 12})
 }
 
 const modifyDungeonBorder = (gridData: ChunkData[][], voidType:ChunkTypeData, dim:Size) => {
