@@ -9,11 +9,9 @@ Hru můžeme spustit [zde](https://matej-kovar.github.io/pxt-arcade-microdungeon
 
 * z makecode assets se načtou chunky, ze kterých se dungeon skládá
 * otáčením se získají všechny možné verze stejného chunku
-* pocí algoritmu [wave function collapse](https://github.com/mxgmn/WaveFunctionCollapse/blob/master/README.md)
+* vygeneruje se přímá cesta s náhodnými odbočkami od startu k cíli, která musí být vždy průchozí
+* pomocí algoritmu [wave function collapse](https://github.com/mxgmn/WaveFunctionCollapse/blob/master/README.md) se vyplní dungeon tak, aby na sebe chunky navazovaly.
 
-* open [https://arcade.makecode.com/](https://arcade.makecode.com/)
-* click on **New Project**
-* click on **Extensions** under the gearwheel menu
-* search for **https://github.com/matej-kovar/wave-function-collapse** and import
-
-## Edit this project ![Build status badge](https://github.com/matej-kovar/wave-function-collapse/workflows/MakeCode/badge.svg)
+## Jak hrát
+* Pohyb: pomocí wsad, šipek, nebo joystiku
+* Útok: pokud další pozice hráče byla schodná s pozicí nepřítele, je nepřítelovy ubrán počet životů schodný útočnou sílou hráče mínus obráná schopnost protivníka. Pokud by naopak protivníkova další pozice byla ta hráčova, ubere životy hráči.
