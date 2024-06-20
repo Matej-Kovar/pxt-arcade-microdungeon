@@ -1,7 +1,9 @@
  
 #Micro Dungeon
 
-> Open this page at [https://matej-kovar.github.io/pxt-arcade-microdungeon/](https://matej-kovar.github.io/pxt-arcade-microdungeon/)
+Micro Dungeon je hrou žánru dungeon-crawler, ve které je cílem projít náhodně vygenerovaný dungeon. V tom se vám snaží zabranit nepřátele (zombící), kteří jsou s každým podlaží silnější. Po dungeon jsou rozházené pozůstatky dobrodruhů, kteří  se pokusili projít dungeonem před vámi. Jejich vybavení vám může značně pomoct. Není třeba se bát vstoupit!
+
+Hru můžeme spustit [zde](https://matej-kovar.github.io/pxt-arcade-microdungeon/)
 
 ## Use as Extension
 
