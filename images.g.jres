@@ -1,234 +1,142 @@
 {
-    "myImages.image3": {
-        "id": "myImages.image3",
+    "image3": {
         "data": "hwQMAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "void-tile"
     },
-    "myImages.image2": {
-        "id": "myImages.image2",
+    "image2": {
         "data": "hwQcABAAAAADADAAAAMAAP//7+7u7+4O/+7u/+//7w7v7u7/7//uDu/u7v/v7+4O7+7u7u7v7g5ERENENEREAwMAMAAAAwAA///v7u7v7g7/7+7v7//vDv/u7u7u/+4O7+7u7+//7g7v7u7u7u/uDkREQ0Q0REQDAwAwAAADAAD//+/u7u/uDv/+7u/u/+4O7/7u7u7/7g7v7u7u7//uDu/u7u7u7+4ORERDRDRERAMDADAAAAMAAP//7+7u7+4O//7u/u7v7g7/7u7u7v/uDv/u7v7u7+4O7+7u7u7v7g5EREFEFEREAg==",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "chunkset-broken"
     },
-    "myImages.image1": {
-        "id": "myImages.image1",
+    "image1": {
         "data": "hwQjAAoAAAADADAAAAAAAP//7+7uAAAA///v7u4AAAD//+/u7gAAAP//7+7uAAAA///v7u4AAABERENENAAAAAMAMAAAAAAA////7/8AAADv7u7u7gAAAO/u7u7uAAAA7+7u7u4AAADv7u7u7gAAAEREQ0Q0AAAAAwAwAAAAAADv7v7//wAAAO7u7u7uAAAA7u7u7u4AAADu7u7u7gAAAO7u7+7uAAAARERDRDQAAAADADAAAAAAAO/u/u//AAAA7u7+7u4AAADu7v7u7gAAAO7u/u7uAAAA7u7+7u4AAABERENEJAAAAAMAAAAAAAAA//4PAAAAAADu7g8AAAAAAO7uDwAAAAAA7u4PAAAAAADu7g8AAAAAAEREAQAAAAAA",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "chunkset-room"
     },
-    "myImages.image8": {
-        "id": "myImages.image8",
+    "image8": {
         "data": "hwQOAAoAAAADADAAAAAAAP///+//AAAA////7/8AAADu/u/u/wAAAP/+/+//AAAA//7/7/8AAABERENEJAAAAAMAMAAAAAAA////7/8AAAD////v/wAAAO7u7u7uAAAA////7/8AAAD////v/wAAAEREQUQkAAAA",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "chunkset-hallway"
     },
-    "myImages.image14": {
-        "id": "myImages.image14",
+    "image14": {
         "data": "hwQMAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/AAAAAAAA/3cPAAAAAPAOdw8AAAAA8A53DwAAAAAA/3cPAAAAAAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "healthBoost-potion"
     },
-    "myImages.image15": {
-        "id": "myImages.image15",
+    "image15": {
         "data": "hwQMAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/wDwAAAAAA3+8PAAAAAADw/QAAAAAAAJ/fDwAAAADw+fAPAAAAAJ8PAAAAAAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "attackBoost"
     },
-    "myImages.image13": {
-        "id": "myImages.image13",
+    "image13": {
         "data": "hwQMAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADw//8AAAAAAO8gIg8AAAAA7yAiDwAAAADw//8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "regen-potion"
     },
-    "myImages.image6": {
-        "id": "myImages.image6",
+    "image6": {
         "data": "hwQMAAwAAAAAAAAAAAAAAAAAAAD/AAAAAAAA8JkPAAAA////mfkAAPBVVf+ZDwAAX1X/d//3AABf9d1/d/cAAF/f3X/39wAAX9/df98PAABf///w+QAAAPAAAJ8PAAAAAAAA/wAAAAA=",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "player-right"
     },
-    "myImages.image17": {
-        "id": "myImages.image17",
+    "image17": {
         "data": "hwQMAAwAAAAAAAD/AAAAAPAPAJ8PAAAAX///8PkAAABf391/3w8AAF/f3X/39wAAX/Xdf3f3AABfVf93//cAAPBVVf+ZDwAAAP///5n5AAAAAADwmQ8AAAAAAAD/AAAAAAAAAAAAAAA=",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "player-left"
     },
-    "myImages.image18": {
-        "id": "myImages.image18",
+    "image18": {
         "data": "hwQMAAwAAAAAAADwDwAAAAAAAJ/5AAAAAP8Pn5kPAADwVf///w8AAF9VVVV/9wAAX1VV/3f3AABfVVX1d/cAAF9V/3939wAA8FVV//8PAAAA///w+QAAAAAAAJ8PAAAAAAAA/wAAAAA=",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "player-up"
     },
-    "myImages.image4": {
-        "id": "myImages.image4",
+    "image4": {
         "data": "hwQMAAwAAACqqqqqqqoAANq9u7vMrAAA2rvMzMysAAC6y8zMzKwAALrMzMzMrAAAuszMzMysAAC6zMzMzKwAALrMzMzMrAAAyszMzMyqAADKzMzMrKoAAMrMzMyqqgAAqqqqqqqqAAA=",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "wall"
     },
-    "myImages.image5": {
-        "id": "myImages.image5",
+    "image5": {
         "data": "hwQMAAwAAACqzMzMzKoAAMy7u7u7rAAAvbu7u7vLAAC9u7u7u8sAAL27u7u7ywAAvbu7u7vLAAC9u7u7u8sAAL27u7u7ywAAvbu7u7vLAAC9u7u7u8sAANG7u7u7rAAAEd3d3d2sAAA=",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "floor"
     },
-    "myImages.image16": {
-        "id": "myImages.image16",
+    "image16": {
         "data": "hwQMAAwAAAAAAAAAAAAAAAAAAAAAAAAAAPD/DwAAAAAA/4H4DwAAAAAfiJn5AAAAAI+YmZkPAAAAj5mZaQ8AAACfmZn2AAAAAP+Z+Q8AAAAA8P8PAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "defenseBoost"
     },
-    "myImages.image19": {
-        "id": "myImages.image19",
+    "image19": {
         "data": "hwQMAAwAAAAAAAD/AAAAAAAAAJ8PAAAAAP//8PkAAADwVVX/3w8AAF/1/3939wAAX9/df3f3AABf391/d/cAAF/13f9/9wAA8FX/n/kPAAAA/wCfmQ8AAAAAAJ/5AAAAAAAA8A8AAAA=",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "player-down"
     },
-    "myImages.image21": {
-        "id": "myImages.image21",
-        "data": "hwQQABAAAAD//////////393d3d3d3f3f3d3d3d3d/d/d3d3d3d39393d3d3d3f3f3d3d3d3d/d/d3d3d3d39393d3d3d3f3f3d3d3d3d/d/d3d3d3d39393d3d3d3f3f3d3d3d3d/d/d3d3d3d39393d3d3d3f3f3d3d3d3d/f//////////w==",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
-        "mimeType": "image/x-mkcd-f4",
-        "displayName": "open"
-    },
-    "myImages.image11": {
-        "id": "myImages.image11",
+    "image11": {
         "data": "hwQMAAwAAAD///////8AAL+7qqqq+gAA8N2tqqr6AAAAv7uqqvoAAADw3a2q+gAAAAC/u6r6AAAAAPDdrfoAAAAAAL+7+gAAAAAA8N39AAAAAAAA//8AAAAAAAAAAAAAAAAAAAAAAAA=",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "entry-point-tile"
     },
-    "myImages.image10": {
-        "id": "myImages.image10",
+    "image10": {
         "data": "hwQMAAwAAADMzMzMzKoAAP27u7u7rAAA/c/MzMzMAAD9/7u7u8sAAP3/z8zMzAAA/f//u7vLAAD9///PzMwAAP3///+7ywAA/f///8/MAAD9/////8sAANH/////zwAAEd3d3d3NAAA=",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "exit-point-tile"
     },
-    "myImages.image22": {
-        "id": "myImages.image22",
+    "image22": {
         "data": "hwQMAAwAAAD///////8AAC8iIiIi8gAALyIiIiLyAAAvIiIiIvIAAC8iIiIi8gAALyIiIiLyAAAvIiIiIvIAAC8iIiIi8gAALyIiIiLyAAAvIiIiIvIAAC8iIiIi8gAA////////AAA=",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "closed"
     },
-    "myImages.image20": {
-        "id": "myImages.image20",
-        "data": "hwQMAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAAAAAA8JmZDwAAAACfmZn5AAAAAJ+ZmfkAAAAAn5mZ+QAAAACfmZn5AAAAAPCZmQ8AAAAAAP//AAAAAAAAAAAAAAAAAAAAAAAAAAA=",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
-        "mimeType": "image/x-mkcd-f4",
-        "displayName": "path"
-    },
-    "myImages.image12": {
-        "id": "myImages.image12",
+    "image12": {
         "data": "hwQHAAcAAAAA//APAN/vDwDw/QAAn98P8PnwD58PAAD/AAAA",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "attack"
     },
-    "myImages.image9": {
-        "id": "myImages.image9",
+    "image9": {
         "data": "hwQHAAcAAADw/wAALyIPAC8i8gDwIiIPLyLyAC8iDwDw/wAA",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "lives"
     },
-    "myImages.image24": {
-        "id": "myImages.image24",
+    "image24": {
         "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "myImage"
     },
-    "myImages.image25": {
-        "id": "myImages.image25",
+    "image25": {
         "data": "hwQJAAcAAAD///8PX1VVD///Xw8AAF8P8P//D/BV9Q/w/18P8FX1D/D//wA=",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "level"
     },
-    "myImages.image23": {
-        "id": "myImages.image23",
+    "image23": {
         "data": "hwQHAAcAAADw/wAAn5kPAJ+Z+QCfmZkPn5n5AJ+ZDwDw/wAA",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "defense"
     },
-    "myImages.image26": {
-        "id": "myImages.image26",
+    "image26": {
         "data": "hwQMAAwAAAAAAAAAAAAAAAAAAPD/AAAAAAAA7+4PAAAA8P///w8AAPDf/f9k9gAA3/3d3U/2AADf/d39RPYAAPDf/U9E9AAAAPD///8PAAAAAACfDwAAAAAA8PkAAAAAAADwDwAAAAA=",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "zombie-up"
     },
-    "myImages.image28": {
-        "id": "myImages.image28",
+    "image28": {
         "data": "hwQMAAwAAAAAAPAPAAAAAAAA8PgAAAAAAAAAjw8AAAAA////9g8AAPBm9kRk9gAA32/2RET2AADfb/b0//QAAP/9/+/u/wAA393d7+4PAADw3/3v7g8AAADwD/D/AAAAAAAAAAAAAAA=",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "zombie-left"
     },
-    "myImages.image27": {
-        "id": "myImages.image27",
+    "image27": {
         "data": "hwQMAAwAAAAAAAAAAAAAAADwD/D/AAAA8N/97+4PAADf3d3v7g8AAP/9/+/u/wAA32/29P/0AADfb/ZERPYAAPBm9kRk9gAAAP////YPAAAAAACfDwAAAAAA8PkAAAAAAADwDwAAAAA=",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "zombie-right"
     },
-    "myImages.image29": {
-        "id": "myImages.image29",
+    "image29": {
         "data": "hwSgAIAAAACqqqqqqszMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzKqqqqqqqqqqqqrMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMyqqqqqqqqqqqqqzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMqqqqqqqqqqqqqszMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzKqqqqqqqqqqqqrMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMyqqqqqqt3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7zMysqqrd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8zMrKqq3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vMzKyqqt3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7zMysqqrd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8zMrKqq3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMzd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7y8zM3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMzd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7y8zM3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMzd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7y8zM3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMzd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7y8zM3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMzd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7y8zM3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMzd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7y8zM3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMzd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7y8zM3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMzd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7y8zM3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMzd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7y8zM3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMzd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7y8zM3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMzd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7y8zM3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMzd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7y8zM3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMzd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7y8zM3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMzd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7y8zM3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMzd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7y8zM3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMzd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7y8zM3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMzd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7y8zM3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMzd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7y8zM3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMzd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7y8zM3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMzd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7y8zM3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMzd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7y8zM3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMzd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7y8zM3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMzd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7y8zM3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMzd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7y8zM3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMzd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7y8zM3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMzd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7y8zM3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMzd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7y8zM3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMzd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7y8zM3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMzd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7y8zM3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMzd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7y8zM3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMzd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7y8zM3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMzd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7y8zM3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMzd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7y8zM3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMzd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7y8zM3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMzd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7y8zM3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMzd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7y8zM3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMzd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7y8zM3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMzd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7y8zM3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMzd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7y8zM3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMzd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7y8zM3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMzd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7y8zM3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMzd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7y8zM3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMzd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7y8zM3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMzd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7y8zM3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMzd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7y8zM3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMzd3b27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7y8zM3d29u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8vMzN3dvbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7vLzMwREdHd3bu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7q6qqERHR3d27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u6uqqhER0d3du7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7urqqoREdHd3bu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7q6qqERHR3d27u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u6uqqhERERER3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d2tqqoREREREd3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3draqqERERERHd3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3a2qqhERERER3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d2tqqoREREREd3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3draqq",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "menu"
     },
-    "myImages.image7": {
-        "id": "myImages.image7",
+    "image7": {
         "data": "hwQMAAwAAAAAAPAPAAAAAAAA8PkAAAAAAAAAnw8AAAAA/w//9g8AAPBm9kRE9gAA32/2RGT2AADfb/b0//QAAPBm9u/u/wAAAP8P7+4PAAAAAADv7g8AAAAAAPD/AAAAAAAAAAAAAAA=",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "zombie-down"
+    },
+    "*": {
+        "mimeType": "image/x-mkcd-f4",
+        "dataEncoding": "base64",
+        "namespace": "myImages"
     }
 }

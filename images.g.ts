@@ -213,25 +213,6 @@ f 9 f f 7 7 7 f 9 9 9 f
 . . . f 7 7 7 7 f f . . 
 . . . . f f f f . . . . 
 `;
-            case "image21":
-            case "open":return img`
-f f f f f f f f f f f f f f f f 
-f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
-f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
-f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
-f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
-f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
-f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
-f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
-f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
-f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
-f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
-f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
-f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
-f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
-f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
-f f f f f f f f f f f f f f f f 
-`;
             case "image11":
             case "entry-point-tile":return img`
 f f . . . . . . . . . . 
@@ -276,21 +257,6 @@ f 2 2 2 2 2 2 2 2 2 2 f
 f 2 2 2 2 2 2 2 2 2 2 f 
 f 2 2 2 2 2 2 2 2 2 2 f 
 f f f f f f f f f f f f 
-`;
-            case "image20":
-            case "path":return img`
-. . . . . . . . . . . . 
-. . . . . . . . . . . . 
-. . . . f f f f . . . . 
-. . . f 9 9 9 9 f . . . 
-. . f 9 9 9 9 9 9 f . . 
-. . f 9 9 9 9 9 9 f . . 
-. . f 9 9 9 9 9 9 f . . 
-. . f 9 9 9 9 9 9 f . . 
-. . . f 9 9 9 9 f . . . 
-. . . . f f f f . . . . 
-. . . . . . . . . . . . 
-. . . . . . . . . . . . 
 `;
             case "image12":
             case "attack":return img`
@@ -559,12 +525,6 @@ f 9 f f 4 4 4 f f f . .
         }
         return null;
     })
-
-}
-// Auto-generated code. Do not edit.
-
-// Auto-generated code. Do not edit.
-namespace myTiles {
 
 }
 // Auto-generated code. Do not edit.

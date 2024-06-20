@@ -69,7 +69,7 @@ const renderFrame = (gridData: ChunkData[][]): void => {
             }
         }
     }
-    //resetuje nepřáteled
+    //resetuje nepřátele
     resetEnemies()
     //pohyb nepřátel
     for (let i = 0; i < Enemies.length; i++) {
