@@ -191,14 +191,6 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "defense"
     },
-    "myImages.image7": {
-        "id": "myImages.image7",
-        "data": "hwQMAAwAAAAAAPAPAAAAAAAA8PkAAAAAAAAAnw8AAAAA/w//9g8AAPBm9kRE9gAA32b2RGT2AADfZvb0//QAAPBm9u/u/wAAAP8P7+4PAAAAAADv7g8AAAAAAPD/AAAAAAAAAAAAAAA=",
-        "dataEncoding": "base64",
-        "namespace": "myImages.",
-        "mimeType": "image/x-mkcd-f4",
-        "displayName": "zombie-down"
-    },
     "myImages.image26": {
         "id": "myImages.image26",
         "data": "hwQMAAwAAAAAAAAAAAAAAAAAAPD/AAAAAAAA7+4PAAAA8P///w8AAPDf/f9k9gAA3/3d3U/2AADf/d39RPYAAPDf/U9E9AAAAPD///8PAAAAAACfDwAAAAAA8PkAAAAAAADwDwAAAAA=",
@@ -230,5 +222,13 @@
         "namespace": "myImages.",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "menu"
+    },
+    "myImages.image7": {
+        "id": "myImages.image7",
+        "data": "hwQMAAwAAAAAAPAPAAAAAAAA8PkAAAAAAAAAnw8AAAAA/w//9g8AAPBm9kRE9gAA32/2RGT2AADfb/b0//QAAPBm9u/u/wAAAP8P7+4PAAAAAADv7g8AAAAAAPD/AAAAAAAAAAAAAAA=",
+        "dataEncoding": "base64",
+        "namespace": "myImages.",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "zombie-down"
     }
 }

@@ -351,21 +351,6 @@ f 9 9 9 9 9 f
 . . f 9 f . . 
 . . . f . . . 
 `;
-            case "image7":
-            case "zombie-down":return img`
-. . . . . f f . . . . . 
-. . . . f d d f . . . . 
-. . . f 6 6 6 6 f . . . 
-. . . f 6 6 6 6 f . . . 
-. . . f 6 6 6 6 f . . . 
-f f . . f f f f . . . . 
-f 9 f f 4 4 4 f f f . . 
-. f 9 f 4 4 f e e e f . 
-. . f 6 4 4 f e e e f . 
-. . . f 4 6 f e e e f . 
-. . . f 6 6 4 f f f . . 
-. . . . f f f f . . . . 
-`;
             case "image26":
             case "zombie-up":return img`
 . . . . . f f . . . . . 
@@ -541,6 +526,21 @@ aaaaaaaaaacccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 aaaaaaaaaaccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccaaaaaaaaaa
 aaaaaaaaaaccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccaaaaaaaaaa
 aaaaaaaaaaccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccaaaaaaaaaa
+`;
+            case "image7":
+            case "zombie-down":return img`
+. . . . . f f . . . . . 
+. . . . f d d f . . . . 
+. . . f 6 f f 6 f . . . 
+. . . f 6 6 6 6 f . . . 
+. . . f 6 6 6 6 f . . . 
+f f . . f f f f . . . . 
+f 9 f f 4 4 4 f f f . . 
+. f 9 f 4 4 f e e e f . 
+. . f 6 4 4 f e e e f . 
+. . . f 4 6 f e e e f . 
+. . . f 6 6 4 f f f . . 
+. . . . f f f f . . . . 
 `;
         }
         return null;
