@@ -125,7 +125,7 @@ const generateDungeonLevelRooms = (gridData: ChunkData[][], dim: Size) => {
         for (let i = 0; i < ChunkSize.height; i++) {
             for (let j = 0; j < ChunkSize.width; j++) {
                 if (tileSet[chosenTile.chunkTypeOptions[0]].imgData[i][j] === 14 && Math.random() <= probability && tileSet[chosenTile.chunkTypeOptions[0]].chunkType !== 0) {
-                    if (Math.random() > 0.5) {
+                    if (Math.random() > 0.8) {
                         chosenTile.Entities.push({ inChunkPosition: { x: j, y: i }, type: Math.pickRandom([0, 1, 2, 3]) })
                         if (probability > 0) {
                             probability = probability - 0.005
