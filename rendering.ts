@@ -181,16 +181,18 @@ const Attack = (def: number, atk: number) => {
 const pickUp = (player:Creature, itemType:number) => {
     switch (itemType) {
         case 0:
-            player.health = player.maxhealth
+            if(player.health + player.maxhealth*0.2){
+                player.health += player.maxhealth*0.2
+            }
             break;
         case 1:
-            player.maxhealth = Math.ceil(player.maxhealth*1.2)
+            player.maxhealth += Math.ceil(player.maxhealth*0.02)
         break;
         case 2:
-            player.attack = Math.ceil(player.attack*1.2)
+            player.attack += Math.ceil(player.attack*0.02)
             break;
         case 3:
-            player.defense = Math.ceil(player.defense*1.2)
+            player.defense += Math.ceil(player.defense*0.02)
             break;
         default:
             break;
