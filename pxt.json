@@ -23,7 +23,7 @@
     ],
     "testFiles": [],
     "targetVersions": {
-        "target": "1.12.53",
+        "target": "2.0.48",
         "targetId": "arcade"
     },
     "supportedTargets": [
@@ -48,5 +48,13 @@
         "#E5CDC4",
         "#91463d",
         "#000000"
-    ]
+    ],
+    "theme": {
+        "skin": "blue",
+        "background-color": "#5C406C",
+        "button-stroke": "#412D4D",
+        "text-color": "#FFEFE9",
+        "button-fill": "#251D2A",
+        "dpad-fill": "#A4839F"
+    }
 }
