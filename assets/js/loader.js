@@ -10,7 +10,9 @@ function makeCodeRun(options) {
     var simState = {}
     var simStateChanged = false
     var started = false;
-    var meta = undefined;
+    var meta = {
+    simUrl: "https://matej-kovar.github.io/ptx-arcade-microdungeon-simulator/"
+};
 
     // hide scrollbar
     window.scrollTo(0, 1);
@@ -38,7 +40,7 @@ function makeCodeRun(options) {
             }
             // load simulator with correct version
             document.getElementById("simframe")
-                .setAttribute("src", meta.simUrl);
+                .setAttribute("src", "https://matej-kovar.github.io/ptx-arcade-microdungeon-simulator/");
             initFullScreen();
         })
     }
@@ -130,7 +132,7 @@ function makeCodeRun(options) {
     function postMessage(msg) {
         const frame = document.getElementById("simframe");
         if (frame)
-            frame.contentWindow.postMessage(msg, meta.simUrl);
+            frame.contentWindow.postMessage(msg, "https://matej-kovar.github.io/ptx-arcade-microdungeon-simulator/");
     }
 
     function sendReq(url, cb) {
